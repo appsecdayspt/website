@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OWASP AppSec Days Portugal 2026</title>
+    <meta name="description" content="Join Portugal's premier application security conference. September 9-10, 2026 in Porto, Portugal. 400+ security professionals, keynotes, workshops, and CTF.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png" href="assets/appsecdayspt2026.png">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <img src="assets/appsecdayspt2026.png" alt="OWASP AppSec Days Portugal 2026">
+            </a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" data-en="Home" data-pt="Início">Home</a></li>
+                <li><a href="#program" data-en="Program" data-pt="Programa">Program</a></li>
+                <li><a href="#cfp" data-en="CFP" data-pt="CFP">CFP</a></li>
+                <li><a href="#sponsorship" data-en="Sponsorship" data-pt="Patrocínio">Sponsorship</a></li>
+                <li><a href="#venue" data-en="Venue" data-pt="Local">Venue</a></li>
+                <li><a href="#about" data-en="About" data-pt="Sobre">About</a></li>
+                <li>
+                    <button class="lang-toggle" id="lang-toggle">
+                        <span class="lang-option active" data-lang="en">EN</span>
+                        <span class="lang-separator">|</span>
+                        <span class="lang-option" data-lang="pt">PT</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <div class="hero-badge" data-en="OWASP Official Event" data-pt="Evento Oficial OWASP">OWASP Official Event</div>
+            <div class="hero-logo">
+                <img src="assets/appsecdayspt2026.png" alt="OWASP AppSec Days Portugal 2026">
+            </div>
+            <div class="hero-details">
+                <div class="hero-detail">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    <span data-en="September 9-10, 2026" data-pt="9-10 de Setembro, 2026">September 9-10, 2026</span>
+                </div>
+                <div class="hero-detail">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span>Porto, Portugal</span>
+                </div>
+            </div>
+            <p class="hero-description" data-en="Join 400+ security professionals, developers, and architects for Portugal's premier application security conference. Two days of keynotes, workshops, CTF, and networking." data-pt="Junte-se a mais de 400 profissionais de segurança, desenvolvedores e arquitetos na principal conferência de segurança de aplicações de Portugal. Dois dias de keynotes, workshops, CTF e networking.">
+                Join 400+ security professionals, developers, and architects for Portugal's premier application security conference. Two days of keynotes, workshops, CTF, and networking.
+            </p>
+            <div class="hero-cta">
+                <a href="#program" class="btn btn-primary btn-lg" data-en="View Program" data-pt="Ver Programa">View Program</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <a href="#program" aria-label="Scroll to program">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 5v14M19 12l-7 7-7-7"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section id="program" class="section section-light">
+        <div class="container">
+            <h2 class="section-title" data-en="Program" data-pt="Programa">Program</h2>
+            <p class="section-subtitle" data-en="Two days of cutting-edge application security content" data-pt="Dois dias de conteúdo de segurança de aplicações de ponta">Two days of cutting-edge application security content</p>
+
+            <div class="program-grid">
+                <!-- Day 1 -->
+                <div class="program-day">
+                    <div class="program-day-header">
+                        <span class="program-day-label" data-en="Day 1" data-pt="Dia 1">Day 1</span>
+                        <h3 data-en="Wednesday, September 9" data-pt="Quarta-feira, 9 de Setembro">Wednesday, September 9</h3>
+                        <span class="program-day-type" data-en="Half Day - Afternoon Start" data-pt="Meio Dia - Início à Tarde">Half Day - Afternoon Start</span>
+                    </div>
+                    <ul class="program-items">
+                        <li>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                            </svg>
+                            <span data-en="Afternoon Workshops & Trainings" data-pt="Workshops & Formações da Tarde">Afternoon Workshops & Trainings</span>
+                        </li>
+                        <li>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                                <line x1="4" y1="22" x2="4" y2="15"></line>
+                            </svg>
+                            <span data-en="CTF Kick-off" data-pt="Início do CTF">CTF Kick-off</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="program-day program-day-main">
+                    <div class="program-day-header">
+                        <span class="program-day-label" data-en="Day 2" data-pt="Dia 2">Day 2</span>
+                        <h3 data-en="Thursday, September 10" data-pt="Quinta-feira, 10 de Setembro">Thursday, September 10</h3>
+                        <span class="program-day-type" data-en="Full Conference Day (9:00 AM - 6:00 PM)" data-pt="Dia Completo de Conferência (9:00 - 18:00)">Full Conference Day (9:00 AM - 6:00 PM)</span>
+                    </div>
+                    <ul class="program-items">
+                        <li>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                                <line x1="12" y1="19" x2="12" y2="23"></line>
+                                <line x1="8" y1="23" x2="16" y2="23"></line>
+                            </svg>
+                            <span data-en="Keynotes" data-pt="Keynotes">Keynotes</span>
+                        </li>
+                        <li>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                            <span data-en="Main Track (Auditorium)" data-pt="Track Principal (Auditório)">Main Track (Auditorium)</span>
+                        </li>
+                        <li>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <span data-en="Alternative Track" data-pt="Track Alternativa">Alternative Track</span>
+                        </li>
+                        <li>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <span data-en="Closing Remarks" data-pt="Encerramento">Closing Remarks</span>
+                        </li>
+                        <li class="program-item-highlight">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                            </svg>
+                            <span data-en="6:00 PM - 8:00 PM: Evening Social Event" data-pt="18:00 - 20:00: Evento Social Noturno">6:00 PM - 8:00 PM: Evening Social Event</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="program-cta">
+                <a href="#cfp" class="btn btn-secondary" data-en="Submit to CFP" data-pt="Submeter ao CFP">Submit to CFP</a>
+                <p class="program-note" data-en="Share your knowledge with the community." data-pt="Partilhe o seu conhecimento com a comunidade.">Call for Papers is open! Share your knowledge with the community.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CFP Section -->
+    <section id="cfp" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title" data-en="Call for Papers" data-pt="Call for Papers">Call for Papers</h2>
+            <p class="section-subtitle" data-en="Share your knowledge with the AppSec community" data-pt="Partilhe o seu conhecimento com a comunidade AppSec">Share your knowledge with the AppSec community</p>
+
+            <div class="cfp-content">
+                <div class="cfp-info">
+                    <p data-en="We're looking for speakers to share their expertise in application security. Whether you're a seasoned professional or a first-time speaker, we want to hear from you!" data-pt="Procuramos oradores para partilhar a sua experiência em segurança de aplicações. Seja um profissional experiente ou um orador pela primeira vez, queremos ouvi-lo!">We're looking for speakers to share their expertise in application security. Whether you're a seasoned professional or a first-time speaker, we want to hear from you!</p>
+
+                    <div class="cfp-topics">
+                        <h3 data-en="Topics of Interest (examples; not limited to these)" data-pt="Tópicos de Interesse (exemplos; não limitado a estes)">Topics of Interest (examples; not limited to these)</h3>
+                        <ul>
+                            <li data-en="Web Application Security" data-pt="Segurança de Aplicações Web">Web Application Security</li>
+                            <li data-en="Mobile Security" data-pt="Segurança Mobile">Mobile Security</li>
+                            <li data-en="API Security" data-pt="Segurança de APIs">API Security</li>
+                            <li data-en="DevSecOps" data-pt="DevSecOps">DevSecOps</li>
+                            <li data-en="Cloud Security" data-pt="Segurança na Cloud">Cloud Security</li>
+                            <li data-en="Threat Modeling" data-pt="Modelagem de Ameaças">Threat Modeling</li>
+                            <li data-en="Security Architecture" data-pt="Arquitetura de Segurança">Security Architecture</li>
+                            <li data-en="Secure Coding Practices" data-pt="Práticas de Código Seguro">Secure Coding Practices</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="cfp-cta">
+                    <div class="cfp-buttons">
+                        <a href="https://sessionize.com/owasp-appsecportugalcfp-2026/" target="_blank" rel="noopener" class="btn btn-primary btn-lg" data-en="Submit a Presentation" data-pt="Submeter Apresentação">Submit a Presentation</a>
+                        <a href="https://sessionize.com/owasp-appsecportugalcft-2026/" target="_blank" rel="noopener" class="btn btn-secondary btn-lg" data-en="Submit a Training" data-pt="Submeter Formação">Submit a Training</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsorship Section -->
+    <section id="sponsorship" class="section section-light">
+        <div class="container">
+            <h2 class="section-title" data-en="Become a Sponsor" data-pt="Torne-se Patrocinador">Become a Sponsor</h2>
+            <p class="section-subtitle" data-en="Support the growth of application security in Portugal" data-pt="Apoie o crescimento da segurança de aplicações em Portugal">Support the growth of application security in Portugal</p>
+
+            <div class="sponsor-benefits">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                        </svg>
+                    </div>
+                    <h4 data-en="Brand Visibility" data-pt="Visibilidade da Marca">Brand Visibility</h4>
+                    <p data-en="Reach a highly targeted audience of 400+ security professionals in Portugal" data-pt="Alcance um público altamente segmentado de mais de 400 profissionais de segurança em Portugal">Reach a highly targeted audience of 400+ security professionals in Portugal</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <h4 data-en="Network & Grow" data-pt="Networking & Crescimento">Network & Grow</h4>
+                    <p data-en="Connect with developers and security professionals seeking solutions" data-pt="Conecte-se com desenvolvedores e profissionais de segurança em busca de soluções">Connect with developers and security professionals seeking solutions</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <h4 data-en="Thought Leadership" data-pt="Liderança de Pensamento">Thought Leadership</h4>
+                    <p data-en="Establish your expertise within the Portuguese security community" data-pt="Estabeleça a sua expertise na comunidade de segurança portuguesa">Establish your expertise within the Portuguese security community</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                    <h4 data-en="Community Investment" data-pt="Investimento na Comunidade">Community Investment</h4>
+                    <p data-en="Support OWASP's mission and the growth of AppSec in Portugal" data-pt="Apoie a missão da OWASP e o crescimento de AppSec em Portugal">Support OWASP's mission and the growth of AppSec in Portugal</p>
+                </div>
+            </div>
+
+            <div class="sponsor-cta">
+                <a href="mailto:appsecdayspt2026@owasp.org" class="btn btn-primary" data-en="Contact Us" data-pt="Contacte-nos">Contact Us</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Venue Section -->
+    <section id="venue" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title" data-en="Venue" data-pt="Local">Venue</h2>
+            <p class="section-subtitle" data-en="Join us in the beautiful city of Porto" data-pt="Junte-se a nós na bela cidade do Porto">Join us in the beautiful city of Porto</p>
+
+            <div class="venue-content">
+                <div class="venue-info">
+                    <div class="venue-card">
+                        <h3 data-en="Conference Location" data-pt="Local da Conferência">Conference Location</h3>
+                        <p class="venue-name" data-en="Venue to be confirmed" data-pt="Local a confirmar">Venue to be confirmed</p>
+                        <p class="venue-address">Porto, Portugal</p>
+                        <p class="venue-note" data-en="Venue details will be announced soon. We're finalizing arrangements at a flagship location in Porto." data-pt="Os detalhes do local serão anunciados em breve. Estamos a finalizar os preparativos num local de destaque no Porto.">Venue details will be announced soon. We're finalizing arrangements at a flagship location in Porto.</p>
+                    </div>
+                </div>
+
+                <div class="venue-image">
+                    <img src="assets/porto.png" alt="Porto, Portugal">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section section-light">
+        <div class="container">
+            <h2 class="section-title" data-en="About" data-pt="Sobre">About</h2>
+
+            <div class="about-content">
+                <div class="about-owasp">
+                    <h3 data-en="What is OWASP?" data-pt="O que é a OWASP?">What is OWASP?</h3>
+                    <p data-en="The Open Worldwide Application Security Project (OWASP) is a nonprofit foundation well-known for being a long-living group of security professionals and enthusiasts working together to improve applications' security." data-pt="O Open Worldwide Application Security Project (OWASP) é uma fundação sem fins lucrativos conhecida por ser um grupo de longa data de profissionais e entusiastas de segurança que trabalham juntos para melhorar a segurança das aplicações.">The Open Worldwide Application Security Project (OWASP) is a nonprofit foundation well-known for being a long-living group of security professionals and enthusiasts working together to improve applications' security.</p>
+                    <ul class="owasp-activities">
+                        <li data-en="Open-source software projects" data-pt="Projetos de software open-source">Open-source software projects</li>
+                        <li data-en="Local chapters (hundreds worldwide)" data-pt="Capítulos locais (centenas em todo o mundo)">Local chapters (hundreds worldwide)</li>
+                        <li data-en="Educational and training conferences, including Regional AppSec Days" data-pt="Conferências educacionais e de formação, incluindo Regional AppSec Days">Educational and training conferences, including Regional AppSec Days</li>
+                    </ul>
+                </div>
+
+                <div class="about-event">
+                    <h3 data-en="About AppSec Days Portugal" data-pt="Sobre AppSec Days Portugal">About AppSec Days Portugal</h3>
+                    <p data-en="AppSec Days Portugal 2026 brings together Portugal's AppSec community to share cutting-edge ideas and innovation. We're creating a top-tier, forward-thinking meetup for leaders, architects, developers and other AppSec minds." data-pt="AppSec Days Portugal 2026 reúne a comunidade AppSec de Portugal para partilhar ideias de ponta e inovação. Estamos a criar um encontro de alto nível e visionário para líderes, arquitetos, desenvolvedores e outras mentes AppSec.">AppSec Days Portugal 2026 brings together Portugal's AppSec community to share cutting-edge ideas and innovation. We're creating a top-tier, forward-thinking meetup for leaders, architects, developers and other AppSec minds.</p>
+                    <div class="event-highlights">
+                        <div class="highlight">
+                            <span class="highlight-number">400+</span>
+                            <span class="highlight-label" data-en="Participants" data-pt="Participantes">Participants</span>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-number">15+</span>
+                            <span class="highlight-label" data-en="Talks" data-pt="Palestras">Talks</span>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-number">2</span>
+                            <span class="highlight-label" data-en="Tracks" data-pt="Tracks">Tracks</span>
+                        </div>
+                        <div class="highlight">
+                            <span class="highlight-number">2</span>
+                            <span class="highlight-label" data-en="Days" data-pt="Dias">Days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="organizing-committee">
+                <h3 data-en="Organizing Committee" data-pt="Comité Organizador">Organizing Committee</h3>
+                <p class="committee-intro" data-en="Team from regional OWASP Chapters around Portugal" data-pt="Equipa dos Capítulos regionais da OWASP em Portugal">Team from regional OWASP Chapters around Portugal</p>
+                <div class="committee-grid">
+                    <div class="committee-member">
+                        <h4>Pedro Fortuna</h4>
+                        <p data-en="Porto Chapter" data-pt="Capítulo do Porto">Porto Chapter</p>
+                        <a href="https://linkedin.com/in/pedrofortuna" target="_blank" rel="noopener" class="member-linkedin" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </div>
+                    <div class="committee-member">
+                        <h4>Paulo Silva</h4>
+                        <p data-en="Beja Chapter" data-pt="Capítulo de Beja">Beja Chapter</p>
+                        <a href="https://www.linkedin.com/in/devpauloasilva/" target="_blank" rel="noopener" class="member-linkedin" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </div>
+                    <div class="committee-member">
+                        <h4>Nuno Pereira</h4>
+                        <p data-en="Porto Chapter" data-pt="Capítulo do Porto">Porto Chapter</p>
+                        <a href="https://www.linkedin.com/in/napereira/" target="_blank" rel="noopener" class="member-linkedin" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </div>
+                    <div class="committee-member">
+                        <h4>Wilberto Filho</h4>
+                        <p data-en="Porto Chapter" data-pt="Capítulo do Porto">Porto Chapter</p>
+                        <a href="https://www.linkedin.com/in/wilbertofilho/" target="_blank" rel="noopener" class="member-linkedin" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </div>
+                    <div class="committee-member">
+                        <h4>Teresa Pereira</h4>
+                        <p data-en="Leiria Chapter" data-pt="Capítulo de Leiria">Leiria Chapter</p>
+                        <a href="https://www.linkedin.com/in/maria-teresa-pereira/" target="_blank" rel="noopener" class="member-linkedin" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </div>
+                    <div class="committee-member">
+                        <h4>Bruno Morisson</h4>
+                        <p data-en="Advisor" data-pt="Advisor">Advisor</p>
+                        <a href="https://www.linkedin.com/in/morisson/" target="_blank" rel="noopener" class="member-linkedin" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <p class="volunteers-note" data-en="Actively recruiting volunteers! Contact us if you'd like to help." data-pt="A recrutar voluntários ativamente! Contacte-nos se quiser ajudar.">Actively recruiting volunteers! Contact us if you'd like to help.</p>
+                <div class="volunteers-cta">
+                    <a href="mailto:appsecdayspt2026@owasp.org" class="btn btn-primary" data-en="Contact Us" data-pt="Contacte-nos">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="assets/appsecdayspt2026.png" alt="OWASP AppSec Days Portugal 2026" class="footer-logo">
+                    <p data-en="Portugal's premier application security conference" data-pt="A principal conferência de segurança de aplicações de Portugal">Portugal's premier application security conference</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 data-en="Event" data-pt="Evento">Event</h4>
+                        <ul>
+                            <li><a href="#program" data-en="Program" data-pt="Programa">Program</a></li>
+                            <li><a href="#cfp" data-en="CFP" data-pt="CFP">CFP</a></li>
+                            <li><a href="#venue" data-en="Venue" data-pt="Local">Venue</a></li>
+                            <li><a href="#sponsorship" data-en="Sponsorship" data-pt="Patrocínio">Sponsorship</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4 data-en="OWASP" data-pt="OWASP">OWASP</h4>
+                        <ul>
+                            <li><a href="https://owasp.org" target="_blank" rel="noopener">OWASP Foundation</a></li>
+                            <li><a href="https://owasp.org/chapters/" target="_blank" rel="noopener" data-en="Local Chapters" data-pt="Capítulos Locais">Local Chapters</a></li>
+                            <li><a href="https://owasp.org/projects/" target="_blank" rel="noopener" data-en="Projects" data-pt="Projetos">Projects</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4 data-en="Contact" data-pt="Contacto">Contact</h4>
+                        <ul>
+                            <li><a href="mailto:appsecdayspt2026@owasp.org">appsecdayspt2026@owasp.org</a></li>
+                            <li><a href="https://twitter.com/owaspportugal" target="_blank" rel="noopener">Twitter/X</a></li>
+                            <li><a href="https://linkedin.com/company/owasp" target="_blank" rel="noopener">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 OWASP Foundation. <span data-en="All rights reserved." data-pt="Todos os direitos reservados.">All rights reserved.</span></p>
+                <p data-en="OWASP is a nonprofit foundation that works to improve the security of software." data-pt="OWASP é uma fundação sem fins lucrativos que trabalha para melhorar a segurança do software.">OWASP is a nonprofit foundation that works to improve the security of software.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
