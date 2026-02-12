@@ -1178,17 +1178,39 @@ h4 {
     background: rgba(91, 164, 229, 0.05);
 }
 
+/* Sponsor logo links */
+.sponsor-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-light-surface);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    transition: all var(--transition-normal);
+}
+
+.sponsor-logo:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.sponsor-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
 /* Diamond - Largest */
 .sponsor-logo-diamond {
-    width: 280px;
-    height: 140px;
+    width: 400px;
+    height: 200px;
     font-size: 0.875rem;
 }
 
 /* Platinum - Large */
 .sponsor-logo-platinum {
-    width: 220px;
-    height: 110px;
+    width: 260px;
+    height: 130px;
     font-size: 0.8rem;
 }
 
@@ -1208,14 +1230,14 @@ h4 {
 @media (max-width: 600px) {
     .sponsor-logo-diamond {
         width: 100%;
-        max-width: 280px;
-        height: 120px;
+        max-width: 400px;
+        height: 180px;
     }
 
     .sponsor-logo-platinum {
         width: 100%;
-        max-width: 200px;
-        height: 100px;
+        max-width: 260px;
+        height: 120px;
     }
 
     .sponsor-logo-gold {
