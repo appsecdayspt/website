@@ -888,6 +888,40 @@ h4 {
 }
 
 /* --------------------------------------------------------------------------
+   Tickets Section
+   -------------------------------------------------------------------------- */
+.tickets-coming-soon {
+    text-align: center;
+    padding: var(--spacing-3xl) var(--spacing-lg);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.tickets-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-lg);
+    color: var(--color-primary);
+}
+
+.tickets-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.tickets-coming-soon h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-dark);
+}
+
+.tickets-coming-soon p {
+    font-size: 1.1rem;
+    color: var(--color-text-light-muted);
+}
+
+/* --------------------------------------------------------------------------
    Sponsorship Section
    -------------------------------------------------------------------------- */
 .sponsor-benefits {
