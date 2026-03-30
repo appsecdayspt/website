@@ -1236,54 +1236,54 @@ h4 {
 
 /* Diamond - Largest */
 .sponsor-logo-diamond {
-    width: 400px;
-    height: 200px;
+    width: 460px;
+    height: 230px;
     font-size: 0.875rem;
 }
 
 /* Platinum - Large */
 .sponsor-logo-platinum {
-    width: 260px;
-    height: 130px;
+    width: 300px;
+    height: 150px;
     font-size: 0.8rem;
 }
 
 /* Gold - Medium */
 .sponsor-logo-gold {
-    width: 180px;
-    height: 90px;
+    width: 210px;
+    height: 105px;
 }
 
 /* Silver - Small */
 .sponsor-logo-silver {
-    width: 140px;
-    height: 70px;
+    width: 165px;
+    height: 83px;
     font-size: 0.7rem;
 }
 
 @media (max-width: 600px) {
     .sponsor-logo-diamond {
         width: 100%;
-        max-width: 400px;
-        height: 180px;
+        max-width: 460px;
+        height: 210px;
     }
 
     .sponsor-logo-platinum {
         width: 100%;
-        max-width: 260px;
-        height: 120px;
+        max-width: 300px;
+        height: 140px;
     }
 
     .sponsor-logo-gold {
         width: calc(50% - var(--spacing-sm));
-        max-width: 160px;
-        height: 80px;
+        max-width: 185px;
+        height: 93px;
     }
 
     .sponsor-logo-silver {
         width: calc(50% - var(--spacing-sm));
-        max-width: 120px;
-        height: 60px;
+        max-width: 140px;
+        height: 70px;
     }
 }
 
