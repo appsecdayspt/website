@@ -1089,20 +1089,21 @@ h4 {
 }
 
 .cfp-info p {
-    color: var(--color-text-light-muted);
+    color: var(--color-text-dark-muted);
     font-size: 1.125rem;
     margin-bottom: var(--spacing-2xl);
 }
 
 .cfp-topics {
-    background: var(--color-dark-surface);
+    background: var(--color-light-surface);
+    border: 1px solid rgba(91, 164, 229, 0.2);
     padding: var(--spacing-xl);
     border-radius: var(--radius-lg);
     margin-bottom: var(--spacing-2xl);
 }
 
 .cfp-topics h3 {
-    color: var(--color-primary);
+    color: var(--color-primary-dark);
     margin-bottom: var(--spacing-lg);
     font-size: 1.25rem;
 }
@@ -1121,9 +1122,9 @@ h4 {
 
 .cfp-topics li {
     padding: var(--spacing-sm) var(--spacing-md);
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--color-light-bg);
     border-radius: var(--radius-sm);
-    color: var(--color-text-light-muted);
+    color: var(--color-text-dark);
 }
 
 .cfp-cta {
@@ -1144,7 +1145,7 @@ h4 {
 
 .cfp-deadline {
     margin-top: var(--spacing-md);
-    color: var(--color-text-light-muted);
+    color: var(--color-text-dark-muted);
     font-size: 0.9rem;
 }
 
