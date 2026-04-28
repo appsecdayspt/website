@@ -249,6 +249,10 @@ h4 {
     color: var(--color-text-light);
 }
 
+.btn-primary:visited {
+    color: var(--color-text-light);
+}
+
 .btn-primary:hover {
     background: var(--color-primary-dark);
     transform: translateY(-2px);
@@ -257,6 +261,10 @@ h4 {
 
 .btn-secondary {
     background: var(--color-accent);
+    color: var(--color-text-light);
+}
+
+.btn-secondary:visited {
     color: var(--color-text-light);
 }
 
@@ -346,6 +354,10 @@ h4 {
     font-weight: 500;
     padding: var(--spacing-sm) 0;
     position: relative;
+}
+
+.nav-menu a:not(.btn):visited {
+    color: var(--color-text-light);
 }
 
 .nav-menu a:not(.btn)::after {
@@ -871,6 +883,10 @@ h4 {
     transition: transform var(--transition-normal);
 }
 
+.keynote-thumb:visited {
+    color: var(--color-text-light-muted);
+}
+
 .keynote-thumb:hover {
     transform: translateY(-4px);
 }
@@ -915,7 +931,7 @@ h4 {
 }
 
 .keynote-thumb-name {
-    color: var(--color-text-dark);
+    color: inherit;
     font-size: 1.1rem;
     font-weight: 700;
     text-align: center;
@@ -1045,6 +1061,10 @@ h4 {
     font-weight: 600;
     width: fit-content;
     transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.keynote-linkedin:visited {
+    color: var(--color-text-light);
 }
 
 .keynote-linkedin:hover {
@@ -1796,6 +1816,10 @@ h4 {
     transition: all var(--transition-fast);
 }
 
+.member-linkedin:visited {
+    color: #0077b5;
+}
+
 .member-linkedin:hover {
     color: #005582;
     transform: scale(1.1);
@@ -1910,6 +1934,10 @@ h4 {
 .footer-column a {
     color: var(--color-text-light-muted);
     transition: color var(--transition-fast);
+}
+
+.footer-column a:visited {
+    color: var(--color-text-light-muted);
 }
 
 .footer-column a:hover {
