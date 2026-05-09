@@ -1470,6 +1470,21 @@ h4 {
     color: var(--color-text-light);
 }
 
+.sponsor-tier-community {
+}
+
+.sponsor-tier-community .sponsor-tier-label {
+    background: linear-gradient(135deg, #1a3a6e, #2e5ea8, #5ba4e5);
+    color: var(--color-text-light);
+}
+
+.sponsor-community-tagline {
+    font-size: 0.85rem;
+    color: var(--color-text-dark-muted);
+    margin: calc(-1 * var(--spacing-xs)) 0 var(--spacing-md);
+    font-style: italic;
+}
+
 .sponsor-logos {
     display: flex;
     flex-wrap: wrap;
@@ -1543,6 +1558,14 @@ h4 {
     font-size: 0.7rem;
 }
 
+/* Community - Smaller than Silver */
+.sponsor-logo-community {
+    width: 120px;
+    height: 60px;
+    font-size: 0.65rem;
+    padding: 0;
+}
+
 @media (max-width: 600px) {
     .sponsor-logo-diamond {
         width: 100%;
@@ -1566,6 +1589,12 @@ h4 {
         width: calc(50% - var(--spacing-sm));
         max-width: 140px;
         height: 70px;
+    }
+
+    .sponsor-logo-community {
+        width: calc(50% - var(--spacing-sm));
+        max-width: 120px;
+        height: 60px;
     }
 }
 
