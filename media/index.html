@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Kit – OWASP AppSec Days Portugal 2026</title>
+    <meta name="description" content="Media kit, logos, and brand assets for OWASP AppSec Days Portugal 2026 – for sponsors, press, and partners.">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="../assets/appsecdayspt2026.png">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --blue:    #5BA4E5;
+            --purple:  #7C5CFF;
+            --dark:    #0d1421;
+            --surface: #1a2332;
+            --card:    #1e2a3d;
+            --text:    #e8edf5;
+            --muted:   rgba(255,255,255,0.55);
+            --border:  rgba(91,164,229,0.2);
+            --green:   #4caf82;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ── Header ── */
+        header {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        header img { height: 38px; }
+        header h1 { font-size: 1rem; font-weight: 600; color: var(--text); }
+        header h1 span { color: var(--blue); }
+        .back-link {
+            margin-left: auto;
+            color: var(--blue);
+            text-decoration: none;
+            font-size: 0.875rem;
+            white-space: nowrap;
+        }
+        .back-link:hover { text-decoration: underline; }
+
+        /* ── Layout ── */
+        main { max-width: 920px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+
+        /* ── Hero ── */
+        .hero {
+            text-align: center;
+            padding: 1rem 0 3rem;
+        }
+        .hero-eyebrow {
+            display: inline-block;
+            background: rgba(91,164,229,0.12);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 0.25rem 1rem;
+            font-size: 0.78rem;
+            color: var(--blue);
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 0.75rem;
+        }
+        .hero h1 em { font-style: normal; color: var(--blue); }
+        .hero p {
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.65;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .accent-bar {
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue), var(--purple));
+            border-radius: 2px;
+            margin: 2.5rem 0;
+        }
+
+        /* ── Section header ── */
+        .sec-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        section { margin-bottom: 3.5rem; }
+
+        /* ── Primary CTA card ── */
+        .primary-card {
+            border-radius: 14px;
+            padding: 2rem 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            border: 1px solid transparent;
+            transition: transform 0.15s;
+        }
+        .primary-card:hover { transform: translateY(-2px); }
+
+        .primary-card.sponsor {
+            background: linear-gradient(135deg, rgba(91,164,229,0.12), rgba(124,92,255,0.12));
+            border-color: rgba(91,164,229,0.35);
+        }
+        .primary-card.media {
+            background: var(--card);
+            border-color: var(--border);
+        }
+
+        .card-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            width: fit-content;
+        }
+        .badge-sponsor { background: rgba(91,164,229,0.2); color: var(--blue); }
+        .badge-media   { background: rgba(124,92,255,0.2); color: #a991ff; }
+
+        .primary-card h2 { font-size: 1.3rem; font-weight: 700; }
+        .primary-card p  { font-size: 0.875rem; color: var(--muted); line-height: 1.55; flex: 1; }
+
+        .card-meta-row {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .tag {
+            background: rgba(255,255,255,0.07);
+            padding: 0.18rem 0.55rem;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            color: var(--muted);
+        }
+
+        .btn-dl {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+            padding: 0.6rem 1.25rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: opacity 0.2s;
+        }
+        .btn-dl:hover { opacity: 0.82; }
+        .btn-dl.primary { background: linear-gradient(135deg, var(--blue), var(--purple)); color: #fff; }
+        .btn-dl.secondary { background: var(--surface); color: var(--blue); border: 1px solid var(--border); }
+
+        /* ── Why sponsor ── */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .why-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+        }
+        .why-card .icon {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 0.75rem;
+        }
+        .why-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+        .why-card p  { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+        /* ── Logo section ── */
+        .logo-preview {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.25rem;
+        }
+        .logo-preview-item { text-align: center; }
+        .logo-preview-item img { display: block; margin: 0 auto 0.5rem; }
+        .logo-preview-item small { color: var(--muted); font-size: 0.72rem; }
+        .logo-dark-bg  { background: var(--dark); border-radius: 8px; padding: 0.75rem 1.25rem; }
+        .logo-light-bg { background: #f5f7fa;     border-radius: 8px; padding: 0.75rem 1.25rem; }
+
+        /* ── Small download cards ── */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+        .dl-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            transition: border-color 0.2s;
+        }
+        .dl-card:hover { border-color: var(--blue); }
+        .dl-card h3 { font-size: 0.88rem; font-weight: 700; }
+        .dl-card p  { font-size: 0.78rem; color: var(--muted); line-height: 1.5; flex: 1; }
+        .fmt-tag {
+            font-size: 0.68rem; font-weight: 700;
+            background: rgba(255,255,255,0.07);
+            border-radius: 4px; padding: 0.15rem 0.45rem;
+            color: var(--muted); width: fit-content;
+        }
+
+        /* ── Colours ── */
+        .colour-row { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .swatch { flex: 1; min-width: 130px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+        .swatch-colour { height: 52px; }
+        .swatch-info { background: var(--card); padding: 0.6rem 0.75rem; }
+        .swatch-info strong { font-size: 0.82rem; display: block; color: var(--text); }
+        .swatch-info code   { font-size: 0.72rem; color: var(--muted); }
+
+        /* ── Contact ── */
+        .contact-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem 2rem;
+        }
+        .contact-box p { color: var(--muted); font-size: 0.9rem; line-height: 1.75; }
+        .contact-box a { color: var(--blue); text-decoration: none; }
+        .contact-box a:hover { text-decoration: underline; }
+        .contact-box strong { color: var(--text); }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--muted);
+            font-size: 0.78rem;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ── Icons ── */
+        svg.ico { display: inline-block; vertical-align: middle; }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="../assets/appsecdayspt2026.png" alt="OWASP AppSec Days Portugal 2026">
+    <h1><span>AppSec Days PT</span> &mdash; Media Kit</h1>
+    <a href="../index.html" class="back-link">← Back to site</a>
+</header>
+
+<main>
+
+    <!-- ── Hero ── -->
+    <div class="hero">
+        <div class="hero-eyebrow">September 23–24, 2026 &middot; Porto, Portugal</div>
+        <h1>Media Kit &mdash; <em>Portugal's #1</em><br>AppSec Conference</h1>
+        <p>
+            Everything sponsors, press, and partners need: audience data, event overview,
+            sponsorship tiers, logo package, and brand guidelines.
+        </p>
+    </div>
+
+    <div class="accent-bar"></div>
+
+    <!-- ── Primary Download ── -->
+    <section>
+        <p class="sec-label">Download</p>
+        <div class="primary-card sponsor" style="max-width:560px;">
+            <span class="card-badge badge-sponsor">Sponsors &middot; Press &middot; Partners</span>
+            <h2>Media Kit 2026</h2>
+            <p>
+                Audience breakdown, event overview, programme highlights, sponsorship tiers,
+                brand guidelines, and contact info — everything in one document.
+            </p>
+            <div class="card-meta-row">
+                <span class="tag">PDF</span>
+            </div>
+            <a href="media-kit.pdf" download class="btn-dl primary">
+                <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download Media Kit
+            </a>
+        </div>
+    </section>
+
+    <!-- ── Why sponsor ── -->
+    <section>
+        <p class="sec-label">Why Sponsor</p>
+        <div class="why-grid">
+
+            <div class="why-card">
+                <div class="icon" style="background:rgba(91,164,229,0.12)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5BA4E5" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
+                <h3>Targeted audience</h3>
+                <p>400+ practitioners, buyers, and decision-makers in application security. No filler, no noise.</p>
+            </div>
+
+            <div class="why-card">
+                <div class="icon" style="background:rgba(124,92,255,0.12)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C5CFF" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <h3>OWASP credibility</h3>
+                <p>Official OWASP Foundation event. Association with the world's most trusted AppSec community elevates your brand.</p>
+            </div>
+
+            <div class="why-card">
+                <div class="icon" style="background:rgba(91,164,229,0.12)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5BA4E5" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h3>Real engagement</h3>
+                <p>Attendees choose to be here. They attend talks, compete in CTF, and actively seek solutions — creating genuine interactions.</p>
+            </div>
+
+            <div class="why-card">
+                <div class="icon" style="background:rgba(124,92,255,0.12)">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7C5CFF" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                </div>
+                <h3>Only one of its kind</h3>
+                <p>The only conference dedicated entirely to AppSec in Portugal. No comparable platform for reaching this concentrated community.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── Become a sponsor ── -->
+    <section>
+        <p class="sec-label">Become a Sponsor</p>
+        <div class="contact-box" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;">
+            <div>
+                <p style="color:var(--text);font-weight:600;font-size:1rem;margin-bottom:0.4rem;">Interested in sponsoring AppSec Days Portugal?</p>
+                <p>Reach out and we'll walk you through the options. Packages are tailored to your goals.</p>
+            </div>
+            <a href="mailto:appsecdayspt2026@owasp.org" class="btn-dl primary" style="white-space:nowrap;">
+                <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Get in touch
+            </a>
+        </div>
+    </section>
+
+    <div class="accent-bar"></div>
+
+    <!-- ── Press & social logos ── -->
+    <section>
+        <p class="sec-label">Logo Package</p>
+
+        <div class="logo-preview">
+            <div class="logo-preview-item">
+                <div class="logo-dark-bg">
+                    <img src="logos/appsecdayspt-logo-400w.png" width="200" alt="AppSec Days PT logo on dark">
+                </div>
+                <small>On dark</small>
+            </div>
+            <div class="logo-preview-item">
+                <div class="logo-light-bg">
+                    <img src="logos/appsecdayspt-logo-400w.png" width="200" alt="AppSec Days PT logo on light">
+                </div>
+                <small>On light</small>
+            </div>
+        </div>
+
+        <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem;">
+            Download all sizes at once or pick individually. All PNG files use transparent backgrounds.
+        </p>
+
+        <div style="margin-bottom:1rem;">
+            <a href="fonts.zip" download class="btn-dl secondary" style="margin-right:0.75rem;">
+                <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download Fonts (ZIP)
+            </a>
+            <a href="logos.zip" download class="btn-dl primary">
+                <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download All Logos (ZIP)
+            </a>
+        </div>
+
+        <div class="card-grid">
+            <div class="dl-card">
+                <span class="fmt-tag">PNG · 2933 px</span>
+                <h3>Original (full resolution)</h3>
+                <p>Source file for print and large-format use.</p>
+                <a href="logos/appsecdayspt-logo-original.png" download class="btn-dl secondary" style="font-size:0.78rem;padding:0.4rem 0.9rem;margin-top:0.25rem">Download</a>
+            </div>
+            <div class="dl-card">
+                <span class="fmt-tag">PNG · 1200 px</span>
+                <h3>Large</h3>
+                <p>Web headers, presentations, event listings.</p>
+                <a href="logos/appsecdayspt-logo-1200w.png" download class="btn-dl secondary" style="font-size:0.78rem;padding:0.4rem 0.9rem;margin-top:0.25rem">Download</a>
+            </div>
+            <div class="dl-card">
+                <span class="fmt-tag">PNG · 800 px</span>
+                <h3>Medium</h3>
+                <p>Blog posts, press articles, email headers.</p>
+                <a href="logos/appsecdayspt-logo-800w.png" download class="btn-dl secondary" style="font-size:0.78rem;padding:0.4rem 0.9rem;margin-top:0.25rem">Download</a>
+            </div>
+            <div class="dl-card">
+                <span class="fmt-tag">PNG · 400 px</span>
+                <h3>Small</h3>
+                <p>Social posts, inline use, sponsor pages.</p>
+                <a href="logos/appsecdayspt-logo-400w.png" download class="btn-dl secondary" style="font-size:0.78rem;padding:0.4rem 0.9rem;margin-top:0.25rem">Download</a>
+            </div>
+            <div class="dl-card">
+                <span class="fmt-tag">PNG · 200 px</span>
+                <h3>Thumbnail</h3>
+                <p>Small inline use, app icons, badges.</p>
+                <a href="logos/appsecdayspt-logo-200w.png" download class="btn-dl secondary" style="font-size:0.78rem;padding:0.4rem 0.9rem;margin-top:0.25rem">Download</a>
+            </div>
+            <div class="dl-card">
+                <span class="fmt-tag">SVG · Vector</span>
+                <h3>OWASP Logo</h3>
+                <p>Official OWASP vector logo, scalable to any size.</p>
+                <a href="logos/OWASP_logo.svg" download class="btn-dl secondary" style="font-size:0.78rem;padding:0.4rem 0.9rem;margin-top:0.25rem">Download</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Brand colours ── -->
+    <section>
+        <p class="sec-label">Brand Fonts &amp; Colours</p>
+        <div style="background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.5rem;margin-bottom:1.25rem;display:flex;flex-wrap:wrap;gap:1.5rem;">
+            <div><span style="font-size:0.72rem;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;display:block;margin-bottom:0.3rem;">Display</span><span style="font-size:0.88rem;color:var(--text);">Barlow Condensed &mdash; Black 900</span></div>
+            <div><span style="font-size:0.72rem;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;display:block;margin-bottom:0.3rem;">Body</span><span style="font-size:0.88rem;color:var(--text);">DM Sans &mdash; 300 / 400 / 500 / 700</span></div>
+            <div><span style="font-size:0.72rem;color:var(--blue);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;display:block;margin-bottom:0.3rem;">Mono</span><span style="font-size:0.88rem;color:var(--text);">JetBrains Mono &mdash; 400 / 500 / 600</span></div>
+        </div>
+
+        <div class="colour-row">
+            <div class="swatch">
+                <div class="swatch-colour" style="background:#5BA4E5;"></div>
+                <div class="swatch-info"><strong>Primary Blue</strong><code>#5BA4E5</code></div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-colour" style="background:#7C5CFF;"></div>
+                <div class="swatch-info"><strong>Accent Purple</strong><code>#7C5CFF</code></div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-colour" style="background:#0d1421; border:1px solid rgba(255,255,255,0.06);"></div>
+                <div class="swatch-info"><strong>Dark Background</strong><code>#0D1421</code></div>
+            </div>
+            <div class="swatch">
+                <div class="swatch-colour" style="background:#f5f7fa; border:1px solid rgba(0,0,0,0.06);"></div>
+                <div class="swatch-info"><strong>Light Background</strong><code>#F5F7FA</code></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Contact ── -->
+    <section>
+        <p class="sec-label">Contact</p>
+        <div class="contact-box">
+            <p>
+                <strong>Sponsorship enquiries:</strong>
+                <a href="mailto:appsecdayspt2026@owasp.org">appsecdayspt2026@owasp.org</a><br>
+                <strong>General / press:</strong>
+                <a href="mailto:info@appsecdays.pt">info@appsecdays.pt</a><br>
+                <strong>Website:</strong>
+                <a href="https://appsecdays.pt">appsecdays.pt</a><br>
+                <strong>LinkedIn:</strong>
+                <a href="https://www.linkedin.com/company/owasp-appsec-days-portugal" target="_blank" rel="noopener">linkedin.com/company/owasp-appsec-days-portugal</a>
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    &copy; 2026 OWASP AppSec Days Portugal &mdash; An official OWASP Foundation event.
+    OWASP&reg; is a registered trademark of The OWASP Foundation.
+</footer>
+
+</body>
+</html>
