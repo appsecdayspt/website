@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media Badge Creator — AppSec Days PT 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --cyan: #26d4ff; --blue: #2b8aff; --violet: #7b3fff; }
+
+    html, body {
+      min-height: 100%;
+      background: #0a0e1a;
+      color: #e5e5e5;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ──────────────────────────────────────── */
+    .header {
+      padding: 20px 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .header__brand { display: flex; flex-direction: column; gap: 2px; }
+    .header__event {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+    .header__title { font-size: 22px; font-weight: 600; color: #fff; }
+
+    .header__right { display: flex; align-items: center; gap: 16px; }
+
+    /* Language toggle */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .lang-btn {
+      padding: 7px 14px;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.4);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .lang-btn + .lang-btn { border-left: 1px solid rgba(255,255,255,0.12); }
+    .lang-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
+    .lang-btn.active { background: rgba(38,212,255,0.12); color: var(--cyan); }
+
+    .header__back {
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.15s;
+      white-space: nowrap;
+    }
+    .header__back:hover { color: #fff; }
+
+    /* ── Hero ────────────────────────────────────────── */
+    .hero { padding: 56px 40px 40px; text-align: center; }
+    .hero__eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+    .hero__heading {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 900;
+      font-size: clamp(56px, 8vw, 96px);
+      text-transform: uppercase;
+      line-height: 0.88;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    .hero__heading .cyan { color: var(--cyan); }
+    .hero__sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── Cards grid ──────────────────────────────────── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 56px;
+    }
+    .card-link {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: #0e1424;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .card-link:hover {
+      border-color: rgba(38,212,255,0.35);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px -20px rgba(38,212,255,0.2);
+    }
+    .card-preview {
+      aspect-ratio: 1;
+      position: relative;
+      overflow: hidden;
+      background: #060914;
+      pointer-events: none;
+    }
+    .card-preview__ink {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 12% 18%, rgba(123,63,255,0.45), transparent 60%),
+                  radial-gradient(ellipse 80% 70% at 88% 86%, rgba(43,138,255,0.45), transparent 60%),
+                  linear-gradient(135deg, #060914 0%, #0a0e1a 40%, #141a36 100%);
+    }
+    .card-preview__grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 24px 24px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+    .card-preview__content {
+      position: relative; z-index: 1; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; padding: 32px; text-align: center;
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900; text-transform: uppercase; color: #fff;
+    }
+    .card-preview__label { font-size: clamp(28px, 4vw, 48px); line-height: 0.88; color: var(--cyan); }
+    .card-preview__sub {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 400;
+      letter-spacing: 0.22em; color: rgba(255,255,255,0.4); text-transform: uppercase;
+    }
+    .card-preview__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 12px var(--cyan); }
+    .card-meta { padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; }
+    .card-meta__name { font-size: 14px; font-weight: 600; color: #fff; }
+    .card-meta__hint { font-size: 12px; color: rgba(255,255,255,0.35); }
+    .card-meta__arrow { color: var(--cyan); font-size: 18px; transition: transform 0.15s; }
+    .card-link:hover .card-meta__arrow { transform: translateX(4px); }
+
+    /* ── Privacy section ─────────────────────────────── */
+    .privacy-section {
+      max-width: 1100px;
+      margin: 0 auto 72px;
+      padding: 0 40px;
+    }
+    .privacy-bar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 15px 24px;
+      border: 1px solid rgba(38,212,255,0.15);
+      border-radius: 12px;
+      background: rgba(38,212,255,0.04);
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+    .privacy-bar svg { flex-shrink: 0; color: var(--cyan); }
+    .privacy-tags {
+      display: flex;
+      gap: 8px;
+      margin-left: auto;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .privacy-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid rgba(38,212,255,0.2);
+      border-radius: 999px;
+      color: rgba(38,212,255,0.65);
+      white-space: nowrap;
+    }
+
+    /* ── Responsive ──────────────────────────────────── */
+    @media (max-width: 768px) {
+      .header { padding: 14px 20px; }
+      .hero { padding: 40px 20px 32px; }
+      .cards { grid-template-columns: 1fr; padding: 0 20px 48px; max-width: 420px; }
+      .privacy-section { padding: 0 20px; }
+      .privacy-tags { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header__brand">
+      <span class="header__event">// OWASP AppSec Days Portugal</span>
+      <span class="header__title">Social Media Badge Creator</span>
+    </div>
+    <div class="header__right">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" data-lang="pt" onclick="setLang('pt')">PT</button>
+      </div>
+      <a href="../" class="header__back">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 11L5 7l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span data-en="Back to site" data-pt="Voltar ao site">Back to site</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <p class="hero__eyebrow">// 23–24 Sep 2026 · FACM · Porto</p>
+    <h1 class="hero__heading">
+      <span data-en="Pick your" data-pt="Escolhe o teu">Pick your</span><br>
+      <span class="cyan" data-en="template." data-pt="modelo.">template.</span>
+    </h1>
+    <p class="hero__sub" data-en="Choose a card, edit text directly on it, drop your photo in, then download at 1080×1080." data-pt="Escolhe um modelo, edita o texto diretamente, adiciona a tua foto e descarrega em 1080×1080.">Choose a card, edit text directly on it, drop your photo in, then download at 1080×1080.</p>
+  </section>
+
+  <div class="cards">
+
+    <a class="card-link" href="templates/Card - Square - Going.html">
+      <div class="card-preview">
+        <div class="card-preview__ink"></div>
+        <div class="card-preview__grid"></div>
+        <div class="card-preview__content">
+          <div class="card-preview__dot"></div>
+          <div style="font-size: clamp(20px,3vw,32px); color: rgba(255,255,255,0.6);" data-en="I'M" data-pt="EU">I'M</div>
+          <div class="card-preview__label" data-en="GOING." data-pt="VOU.">GOING.</div>
+          <div class="card-preview__sub">appsecdays.pt</div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div>
+          <div class="card-meta__name" data-en="I'm Going" data-pt="Eu Vou">I'm Going</div>
+          <div class="card-meta__hint">Square · 1080×1080</div>
+        </div>
+        <span class="card-meta__arrow">→</span>
+      </div>
+    </a>
+
+    <a class="card-link" href="templates/Card - Square - Speaking.html">
+      <div class="card-preview">
+        <div class="card-preview__ink"></div>
+        <div class="card-preview__grid"></div>
+        <div class="card-preview__content">
+          <div class="card-preview__dot"></div>
+          <div style="font-size: clamp(20px,3vw,32px); color: rgba(255,255,255,0.6);" data-en="I'M" data-pt="A MINHA">I'M</div>
+          <div class="card-preview__label" data-en="SPEAKING." data-pt="PALESTRA.">SPEAKING.</div>
+          <div class="card-preview__sub" data-en="with talk title" data-pt="com título de palestra">with talk title</div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div>
+          <div class="card-meta__name" data-en="I'm Speaking" data-pt="A Minha Palestra">I'm Speaking</div>
+          <div class="card-meta__hint">Square · 1080×1080</div>
+        </div>
+        <span class="card-meta__arrow">→</span>
+      </div>
+    </a>
+
+    <a class="card-link" href="templates/Card - Square - See You.html">
+      <div class="card-preview">
+        <div class="card-preview__ink"></div>
+        <div class="card-preview__grid"></div>
+        <div class="card-preview__content">
+          <div class="card-preview__dot"></div>
+          <div style="font-size: clamp(20px,3vw,32px); color: rgba(255,255,255,0.6);" data-en="SEE YOU" data-pt="VEMO-NOS">SEE YOU</div>
+          <div class="card-preview__label" data-en="IN PORTO." data-pt="NO PORTO.">IN PORTO.</div>
+          <div class="card-preview__sub">appsecdays.pt</div>
+        </div>
+      </div>
+      <div class="card-meta">
+        <div>
+          <div class="card-meta__name" data-en="See You in Porto" data-pt="Vemo-nos no Porto">See You in Porto</div>
+          <div class="card-meta__hint">Square · 1080×1080</div>
+        </div>
+        <span class="card-meta__arrow">→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- ── Privacy section ───────────────────────────── -->
+  <section class="privacy-section">
+    <div class="privacy-bar">
+      <svg width="16" height="16" viewBox="0 0 22 22" fill="none">
+        <path d="M11 2L3 5.5v5c0 4.7 3.4 9 8 10 4.6-1 8-5.3 8-10v-5L11 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M7.5 11l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span data-en="Your photo never leaves your browser — everything runs locally." data-pt="A tua foto nunca sai do teu browser — tudo corre localmente.">Your photo never leaves your browser — everything runs locally.</span>
+      <div class="privacy-tags">
+        <span class="privacy-tag" data-en="No uploads" data-pt="Sem uploads">No uploads</span>
+        <span class="privacy-tag" data-en="No tracking" data-pt="Sem recolha de dados">No tracking</span>
+        <span class="privacy-tag" data-en="No account" data-pt="Sem conta">No account</span>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const I18N = {
+      en: {},
+      pt: {}
+    };
+
+    function setLang(lang) {
+      localStorage.setItem('badge-lang', lang);
+      document.documentElement.lang = lang;
+
+      // Update toggle buttons
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      // Update all translatable elements
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const text = lang === 'pt' ? el.dataset.pt : el.dataset.en;
+        // Use innerHTML for elements that may contain HTML (privacy footer)
+        if (el.querySelector('strong') !== null || text.includes('<')) {
+          el.innerHTML = text;
+        } else {
+          el.textContent = text;
+        }
+      });
+    }
+
+    // Initialise on load
+    const savedLang = localStorage.getItem('badge-lang') || 'en';
+    setLang(savedLang);
+  </script>
+
+</body>
+</html>
