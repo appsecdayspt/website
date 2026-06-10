@@ -1478,6 +1478,19 @@ h4 {
     color: var(--color-text-light);
 }
 
+.sponsor-tier-alacarte .sponsor-tier-label {
+    background: linear-gradient(135deg, #4a3080, #7c5cff, #a07cf0);
+    color: var(--color-text-light);
+}
+
+.alacarte-role {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-dark-muted);
+    margin-top: var(--spacing-xs);
+    text-align: center;
+}
+
 .sponsor-community-tagline {
     font-size: 0.85rem;
     color: var(--color-text-dark-muted);
@@ -1564,6 +1577,12 @@ h4 {
     height: 60px;
     font-size: 0.65rem;
     padding: 0;
+}
+
+/* À la Carte - same as Silver */
+.sponsor-logo-alacarte {
+    width: 160px;
+    height: 80px;
 }
 
 @media (max-width: 600px) {
