@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Build a Successful Security Champions Program – OWASP AppSec Days Portugal 2026</title>
+    <meta name="description" content="Hands-on workshop on designing and launching a Security Champions Program. Trainers: Juliane Reimann &amp; Marisa Fagan (OWASP Board). September 23, 2026 in Porto.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#5BA4E5">
+    <link rel="canonical" href="https://appsecdays.pt/trainings/security-champions.html">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="../assets/appsecdayspt2026.png">
+    <style>
+        .t-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
+        .t-badge.builder { background: rgba(78,205,196,0.18); color: #6de6df; border: 1px solid rgba(78,205,196,0.35); }
+        .t-badge.intermediate { background: rgba(255,179,71,0.18); color: #ffc56b; border: 1px solid rgba(255,179,71,0.35); }
+        .training-meta-bar { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); margin-top: var(--spacing-lg); justify-content: center; }
+        .meta-pill { display: flex; align-items: center; gap: 7px; padding: 7px 16px; border-radius: 30px; font-size: 0.82rem; font-weight: 600; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
+        .meta-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+        .speakers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: var(--spacing-xl); }
+        .speaker-card { background: var(--color-light-surface); border: 1px solid rgba(0,0,0,0.07); border-radius: var(--radius-xl); padding: var(--spacing-xl); display: flex; gap: var(--spacing-lg); }
+        @media (max-width: 600px) { .speaker-card { flex-direction: column; } }
+        .speaker-photo-wrap { width: 110px; height: 110px; border-radius: var(--radius-lg); overflow: hidden; border: 3px solid rgba(78,205,196,0.3); flex-shrink: 0; }
+        .speaker-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+        .speaker-name { font-size: 1.1rem; font-weight: 900; color: var(--color-text-dark); margin-bottom: 2px; }
+        .speaker-tagline { font-size: 0.78rem; color: var(--color-text-dark-muted); margin-bottom: var(--spacing-sm); line-height: 1.4; }
+        .speaker-bio { color: var(--color-text-dark); line-height: 1.65; font-size: 0.875rem; margin-bottom: var(--spacing-sm); }
+        .speaker-links { display: flex; gap: 6px; flex-wrap: wrap; }
+        .speaker-link { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: var(--radius-md); font-size: 0.75rem; font-weight: 700; border: 1.5px solid rgba(78,205,196,0.4); color: #4ECDC4; transition: all var(--transition-fast); }
+        .speaker-link:hover { background: #4ECDC4; color: #fff; border-color: #4ECDC4; }
+        .speaker-link svg { width: 12px; height: 12px; }
+        .modules-grid { display: flex; flex-direction: column; gap: var(--spacing-md); }
+        .module-card { background: var(--color-dark-card); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-lg); padding: var(--spacing-lg) var(--spacing-xl); display: grid; grid-template-columns: auto 1fr; gap: var(--spacing-md); align-items: start; }
+        .module-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(78,205,196,0.15); border: 1.5px solid rgba(78,205,196,0.4); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 900; color: #6de6df; flex-shrink: 0; }
+        .module-content h4 { color: var(--color-text-light); font-size: 0.95rem; margin-bottom: 6px; }
+        .module-content ul { list-style: none; padding: 0; }
+        .module-content ul li { color: rgba(255,255,255,0.6); font-size: 0.85rem; padding: 2px 0; display: flex; gap: 8px; }
+        .module-content ul li::before { content: '—'; color: rgba(78,205,196,0.5); flex-shrink: 0; }
+        .hands-on-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #4ECDC4; background: rgba(78,205,196,0.12); border: 1px solid rgba(78,205,196,0.3); padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
+        .break-card { background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: var(--spacing-sm) var(--spacing-xl); text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); font-style: italic; }
+        .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+        .check-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.95rem; color: var(--color-text-dark); line-height: 1.5; }
+        .check-list li::before { content: '✓'; color: #4ECDC4; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+        .owasp-note { background: rgba(78,205,196,0.06); border: 1px solid rgba(78,205,196,0.2); border-radius: var(--radius-lg); padding: var(--spacing-lg); margin-top: var(--spacing-xl); }
+        .owasp-note p { color: rgba(255,255,255,0.65); font-size: 0.875rem; line-height: 1.6; }
+        .owasp-note a { color: #6de6df; text-decoration: underline; }
+        .ticket-cta { background: linear-gradient(135deg, #0d2626, #1a5c56); border-radius: var(--radius-xl); padding: var(--spacing-2xl) var(--spacing-xl); text-align: center; color: #fff; }
+        .ticket-cta h2 { color: #fff; margin-bottom: var(--spacing-sm); font-size: 1.75rem; }
+        .ticket-cta p { color: rgba(255,255,255,0.75); margin-bottom: var(--spacing-xl); }
+        .ticket-cta .btn-ticket-lg { display: inline-flex; align-items: center; gap: 10px; background: #4ECDC4; color: #0d2626; padding: 1rem 2.5rem; border-radius: var(--radius-md); font-weight: 900; font-size: 1.05rem; box-shadow: 0 8px 30px rgba(78,205,196,0.3); transition: all var(--transition-normal); }
+        .ticket-cta .btn-ticket-lg:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(78,205,196,0.4); opacity: 0.9; }
+        .ticket-cta .btn-ticket-lg svg { width: 18px; height: 18px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #4ECDC4; margin-bottom: var(--spacing-xl); }
+        .back-link:hover { text-decoration: underline; }
+        .back-link svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </symbol>
+    </svg>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../" class="nav-logo"><img src="../assets/appsecdayspt2026.png" alt="OWASP AppSec Days Portugal 2026"></a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../" data-en="Home" data-pt="Início">Home</a></li>
+                <li><a href="../program/" data-en="Program" data-pt="Programa">Program</a></li>
+                <li><a href="./" data-en="Trainings" data-pt="Formações">Trainings</a></li>
+                <li><a href="../#tickets" data-en="Tickets" data-pt="Bilhetes">Tickets</a></li>
+                <li><button class="lang-toggle" id="lang-toggle"><span class="lang-option active" data-lang="en">EN</span><span class="lang-separator">|</span><span class="lang-option" data-lang="pt">PT</span></button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="page-header-background"></div>
+        <div class="container">
+            <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom: var(--spacing-md);">
+                <span class="t-badge builder">Builder</span>
+                <span class="t-badge intermediate">Intermediate</span>
+            </div>
+            <h1 style="font-size: clamp(1.5rem, 3.5vw, 2.6rem);" data-en="How to Build a Successful Security Champions Program" data-pt="Como Construir um Programa de Campeões de Segurança">How to Build a Successful Security Champions Program</h1>
+            <div class="training-meta-bar">
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span data-en="September 23, 2026" data-pt="23 de Setembro, 2026">September 23, 2026</span></span>
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>14:00 – 18:00</span>
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Room B</span>
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span data-en="4 Hours · 2 Trainers · OWASP Guide" data-pt="4 Horas · 2 Formadores · Guia OWASP">4 Hours · 2 Trainers · OWASP Guide</span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container" style="max-width: 860px;">
+            <a href="./" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg><span data-en="All Trainings" data-pt="Todas as Formações">All Trainings</span></a>
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-lg);" data-en="About This Training" data-pt="Sobre Esta Formação">About This Training</h2>
+            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1.05rem; margin-bottom: var(--spacing-md);" data-en="Do you feel a disconnect between your cybersecurity efforts and engineering activities? A Security Champions Program bridges that gap — by involving engineers in security topics that align with their work, it enhances security awareness and fosters a culture of security across your entire organization." data-pt="Sente uma desconexão entre os seus esforços de cibersegurança e as atividades de engenharia? Um Programa de Campeões de Segurança preenche essa lacuna — ao envolver engenheiros em tópicos de segurança alinhados com o seu trabalho, melhora a consciência de segurança e fomenta uma cultura de segurança em toda a organização.">Do you feel a disconnect between your cybersecurity efforts and engineering activities? A Security Champions Program bridges that gap — by involving engineers in security topics that align with their work, it enhances security awareness and fosters a culture of security across your entire organization.</p>
+            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1.05rem; margin-bottom: var(--spacing-md);" data-en="This highly interactive training equips you with practical tools and actionable insights to design and launch a Security Champions Program that actually works. Through hands-on exercises and team-based activities you'll explore motivation theory, personality types, gamification, metrics, and — critically — how to keep the program running and growing long-term." data-pt="Esta formação altamente interativa equipa-o com ferramentas práticas e informações acionáveis para conceber e lançar um Programa de Campeões de Segurança que realmente funciona. Através de exercícios práticos e atividades em equipa, explorará teoria da motivação, tipos de personalidade, gamificação, métricas e — criticamente — como manter o programa a funcionar e crescer a longo prazo.">This highly interactive training equips you with practical tools and actionable insights to design and launch a Security Champions Program that actually works. Through hands-on exercises and team-based activities you'll explore motivation theory, personality types, gamification, metrics, and — critically — how to keep the program running and growing long-term.</p>
+            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1.05rem;" data-en="This training was developed as part of the OWASP Security Champions Guide project, authored by practitioners who have built these programs at scale across major organizations." data-pt="Esta formação foi desenvolvida como parte do projeto OWASP Security Champions Guide, elaborada por profissionais que construíram estes programas em escala em grandes organizações.">This training was developed as part of the OWASP Security Champions Guide project, authored by practitioners who have built these programs at scale across major organizations.</p>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Your Trainers" data-pt="Os Seus Formadores">Your Trainers</h2>
+            <div class="speakers-grid">
+                <div class="speaker-card">
+                    <div class="speaker-photo-wrap"><img src="https://sessionize.com/image/a1e9-0o0o0-hHG5AcfEQvLkFehwi53r7b.jpg" alt="Juliane Reimann"></div>
+                    <div>
+                        <div class="speaker-name">Juliane Reimann</div>
+                        <div class="speaker-tagline">Founder &amp; Security Community Expert @ Full Circle Security · OWASP Security Champions Guide</div>
+                        <p class="speaker-bio" data-en="Juliane works as a cybersecurity consultant for large companies since 2019 with focus on DevSecOps and Community Building. Her expertise includes building security communities of software developers and establishing developer-centric communication about secure software development. Since 2024 she is a core member of the OWASP Security Champions Guide Community." data-pt="Juliane trabalha como consultora de cibersegurança para grandes empresas desde 2019 com foco em DevSecOps e Construção de Comunidade. A sua experiência inclui construir comunidades de segurança de programadores de software e estabelecer comunicação centrada no programador sobre desenvolvimento de software seguro.">Juliane works as a cybersecurity consultant for large companies since 2019 with focus on DevSecOps and Community Building. Her expertise includes building security communities of software developers and establishing developer-centric communication about secure software development. Since 2024 she is a core member of the OWASP Security Champions Guide Community.</p>
+                        <div class="speaker-links">
+                            <a href="https://www.linkedin.com/in/juliane-reimann/" target="_blank" rel="noopener noreferrer" class="speaker-link"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#linkedin-icon"/></svg>LinkedIn</a>
+                            <a href="https://full-circle-security.com/" target="_blank" rel="noopener noreferrer" class="speaker-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Website</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="speaker-card">
+                    <div class="speaker-photo-wrap"><img src="https://sessionize.com/image/d1ae-0o0o0-huTUPt3585vJWAcjeQhydr.jpg" alt="Marisa Fagan"></div>
+                    <div>
+                        <div class="speaker-name">Marisa Fagan</div>
+                        <div class="speaker-tagline">Board of Directors @ OWASP · Managing Consultant @ Katilyst · 16 Years in Security Champion Communities</div>
+                        <p class="speaker-bio" data-en="Marisa is a managing consultant at Katilyst with 16 years experience building security champion communities. With a background at Atlassian, Synopsys, Salesforce, Meta, and Bugcrowd, she has been at the forefront of the security champions movement. In 2026, she was elected to serve on the Board of Directors for OWASP." data-pt="Marisa é consultora de gestão na Katilyst com 16 anos de experiência a construir comunidades de campeões de segurança. Com experiência na Atlassian, Synopsys, Salesforce, Meta e Bugcrowd, tem estado na vanguarda do movimento de campeões de segurança. Em 2026, foi eleita para o Conselho de Administração da OWASP.">Marisa is a managing consultant at Katilyst with 16 years experience building security champion communities. With a background at Atlassian, Synopsys, Salesforce, Meta, and Bugcrowd, she has been at the forefront of the security champions movement. In 2026, she was elected to serve on the Board of Directors for OWASP.</p>
+                        <div class="speaker-links">
+                            <a href="https://www.linkedin.com/in/marisafagan/" target="_blank" rel="noopener noreferrer" class="speaker-link"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#linkedin-icon"/></svg>LinkedIn</a>
+                            <a href="https://securitychampions.owasp.org" target="_blank" rel="noopener noreferrer" class="speaker-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>OWASP Guide</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Workshop Outline" data-pt="Programa do Workshop">Workshop Outline</h2>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-num">1</div>
+                    <div class="module-content">
+                        <h4 data-en="Introduction &amp; OWASP Security Champion Guide Principles" data-pt="Introdução &amp; Princípios do Guia OWASP Security Champion">Introduction &amp; OWASP Security Champion Guide Principles</h4>
+                        <ul>
+                            <li data-en="Session goals and overview" data-pt="Objetivos da sessão e visão geral">Session goals and overview</li>
+                            <li data-en="The OWASP Security Champion Guide 10 Principles" data-pt="Os 10 Princípios do Guia OWASP Security Champion">The OWASP Security Champion Guide 10 Principles</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">2</div>
+                    <div class="module-content">
+                        <h4 data-en="What is a Security Champions Program?" data-pt="O que é um Programa de Campeões de Segurança?">What is a Security Champions Program?</h4>
+                        <ul>
+                            <li data-en="Definition of the term and its scope" data-pt="Definição do termo e o seu âmbito">Definition of the term and its scope</li>
+                            <li data-en="The role of security culture for cyber resilient organizations" data-pt="O papel da cultura de segurança para organizações ciberresisilientes">The role of security culture for cyber resilient organizations</li>
+                            <li data-en="Key principles for building a Security Champions Program" data-pt="Princípios-chave para construir um Programa de Campeões de Segurança">Key principles for building a Security Champions Program</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">3</div>
+                    <div class="module-content">
+                        <h4 data-en="Personality Types &amp; Motivation Theory" data-pt="Tipos de Personalidade &amp; Teoria da Motivação">Personality Types &amp; Motivation Theory</h4>
+                        <ul>
+                            <li data-en="The role of motivation for fostering engagement" data-pt="O papel da motivação para fomentar o envolvimento">The role of motivation for fostering engagement</li>
+                            <li data-en="Theory of personality types in an organization" data-pt="Teoria dos tipos de personalidade numa organização">Theory of personality types in an organization</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">4</div>
+                    <div class="module-content">
+                        <h4 data-en="Dealing with Different Personality Types" data-pt="Lidar com Diferentes Tipos de Personalidade">Dealing with Different Personality Types <span class="hands-on-badge">🤝 Group Activity</span></h4>
+                        <ul>
+                            <li data-en="Group discussion: challenges people of different personality types face in security programs" data-pt="Discussão de grupo: desafios que pessoas de diferentes tipos de personalidade enfrentam em programas de segurança">Group discussion: challenges people of different personality types face in security programs</li>
+                            <li data-en="Strategies and tactics for each type" data-pt="Estratégias e táticas para cada tipo">Strategies and tactics for each type</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">5</div>
+                    <div class="module-content">
+                        <h4 data-en="Strategic Insights: Challenges of Building the Program" data-pt="Perspetivas Estratégicas: Desafios de Construir o Programa">Strategic Insights: Challenges of Building the Program</h4>
+                        <ul>
+                            <li data-en="Key questions before initiating a Security Champions Program" data-pt="Questões-chave antes de iniciar um Programa de Campeões de Segurança">Key questions before initiating a Security Champions Program</li>
+                            <li data-en="Key questions during the rollout phase" data-pt="Questões-chave durante a fase de implementação">Key questions during the rollout phase</li>
+                            <li data-en="Key questions after launch — sustaining momentum" data-pt="Questões-chave após o lançamento — sustentar o momentum">Key questions after launch — sustaining momentum</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="break-card" data-en="— Break —" data-pt="— Intervalo —">— Break —</div>
+                <div class="module-card">
+                    <div class="module-num">6</div>
+                    <div class="module-content">
+                        <h4 data-en="&ldquo;Levels, Points &amp; Gamification, OH MY!&rdquo;" data-pt="&ldquo;Níveis, Pontos &amp; Gamificação, OH MY!&rdquo;">"Levels, Points &amp; Gamification, OH MY!"</h4>
+                        <ul>
+                            <li data-en="How to improve engagement with gamification" data-pt="Como melhorar o envolvimento com gamificação">How to improve engagement with gamification</li>
+                            <li data-en="What gamification is — and what it is not" data-pt="O que é a gamificação — e o que não é">What gamification is — and what it is not</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">7</div>
+                    <div class="module-content">
+                        <h4 data-en="Metrics &amp; OKRs" data-pt="Métricas &amp; OKRs">Metrics &amp; OKRs</h4>
+                        <ul>
+                            <li data-en="What does success look like?" data-pt="Como é o sucesso?">What does success look like?</li>
+                            <li data-en="How to use metrics and automation to track participation" data-pt="Como usar métricas e automação para acompanhar a participação">How to use metrics and automation to track participation</li>
+                            <li data-en="Pro tips for what to track and when" data-pt="Dicas profissionais sobre o que acompanhar e quando">Pro tips for what to track and when</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">8</div>
+                    <div class="module-content">
+                        <h4 data-en="Practical Exercise: Build Your Own Program" data-pt="Exercício Prático: Construa o Seu Próprio Programa">Practical Exercise: Build Your Own Program <span class="hands-on-badge">📝 Worksheet</span></h4>
+                        <ul>
+                            <li data-en="Define goals, stakeholders, and a communication strategy for a fictional company" data-pt="Definir objetivos, partes interessadas e uma estratégia de comunicação para uma empresa fictícia">Define goals, stakeholders, and a communication strategy for a fictional company</li>
+                            <li data-en="Develop a strategic rollout plan for your Security Champions Program" data-pt="Desenvolver um plano de implementação estratégico para o seu Programa de Campeões de Segurança">Develop a strategic rollout plan for your Security Champions Program</li>
+                            <li data-en="Group presentations and discussion" data-pt="Apresentações de grupo e discussão">Group presentations and discussion</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">9</div>
+                    <div class="module-content">
+                        <h4 data-en="Wrap-up: Resources &amp; Community" data-pt="Conclusão: Recursos &amp; Comunidade">Wrap-up: Resources &amp; Community</h4>
+                        <ul>
+                            <li data-en="What's next after the workshop" data-pt="O que se segue após o workshop">What's next after the workshop</li>
+                            <li data-en="OWASP Security Champions Guide community and resources" data-pt="Comunidade e recursos do Guia OWASP Security Champions">OWASP Security Champions Guide community and resources</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Who Should Attend" data-pt="Quem Deve Participar">Who Should Attend</h2>
+            <ul class="check-list">
+                <li data-en="Security engineers, architects, and managers looking to bridge the gap between security and development" data-pt="Engenheiros, arquitetos e gestores de segurança que procuram colmatar a lacuna entre segurança e desenvolvimento">Security engineers, architects, and managers looking to bridge the gap between security and development</li>
+                <li data-en="DevSecOps practitioners who want a structured approach to security culture" data-pt="Profissionais DevSecOps que querem uma abordagem estruturada à cultura de segurança">DevSecOps practitioners who want a structured approach to security culture</li>
+                <li data-en="Anyone who has tried to build a Security Champions Program and hit obstacles" data-pt="Qualquer pessoa que tenha tentado construir um Programa de Campeões de Segurança e encontrou obstáculos">Anyone who has tried to build a Security Champions Program and hit obstacles</li>
+                <li data-en="Leaders who want to build a more security-aware engineering culture" data-pt="Líderes que querem construir uma cultura de engenharia mais consciente de segurança">Leaders who want to build a more security-aware engineering culture</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container" style="max-width: 700px;">
+            <div class="ticket-cta">
+                <h2 data-en="Ready to Build Your Champions?" data-pt="Pronto Para Construir os Seus Campeões?">Ready to Build Your Champions?</h2>
+                <p data-en="Seats are limited. Training ticket required — separate from the main conference ticket." data-pt="Os lugares são limitados. Bilhete de formação necessário — separado do bilhete principal da conferência.">Seats are limited. Training ticket required — separate from the main conference ticket.</p>
+                <a href="#" class="btn-ticket-lg">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                    <span data-en="Book Your Seat" data-pt="Reservar o Seu Lugar">Book Your Seat</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

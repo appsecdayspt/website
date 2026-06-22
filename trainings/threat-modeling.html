@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Becoming the Godfather of Threat Modeling – OWASP AppSec Days Portugal 2026</title>
+    <meta name="description" content="Half-day hands-on threat modeling workshop covering STRIDE and PASTA methodologies. Trainer: Mike van der Bijl. September 23, 2026 in Porto.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#5BA4E5">
+    <link rel="canonical" href="https://appsecdays.pt/trainings/threat-modeling.html">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="../assets/appsecdayspt2026.png">
+    <style>
+        .t-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
+        .t-badge.defender { background: rgba(91,164,229,0.18); color: #7fbfed; border: 1px solid rgba(91,164,229,0.35); }
+        .t-badge.beginner { background: rgba(124,92,255,0.18); color: #b8a6ff; border: 1px solid rgba(124,92,255,0.35); }
+        .training-meta-bar { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); margin-top: var(--spacing-lg); justify-content: center; }
+        .meta-pill { display: flex; align-items: center; gap: 7px; padding: 7px 16px; border-radius: 30px; font-size: 0.82rem; font-weight: 600; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
+        .meta-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+        .speaker-layout { display: grid; grid-template-columns: 200px 1fr; gap: var(--spacing-2xl); align-items: start; }
+        @media (max-width: 768px) { .speaker-layout { grid-template-columns: 1fr; } }
+        .speaker-photo-wrap { width: 200px; height: 200px; border-radius: var(--radius-xl); overflow: hidden; border: 3px solid rgba(91,164,229,0.3); flex-shrink: 0; }
+        @media (max-width: 768px) { .speaker-photo-wrap { width: 140px; height: 140px; } }
+        .speaker-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+        .speaker-name { font-size: 1.5rem; font-weight: 900; color: var(--color-text-dark); margin-bottom: 4px; }
+        .speaker-tagline { font-size: 0.95rem; color: var(--color-text-dark-muted); margin-bottom: var(--spacing-md); }
+        .speaker-bio { color: var(--color-text-dark); line-height: 1.75; font-size: 0.95rem; }
+        .speaker-links { display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-md); flex-wrap: wrap; }
+        .speaker-link { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: var(--radius-md); font-size: 0.8rem; font-weight: 700; border: 1.5px solid rgba(91,164,229,0.4); color: var(--color-primary); transition: all var(--transition-fast); }
+        .speaker-link:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+        .speaker-link svg { width: 14px; height: 14px; }
+        .modules-grid { display: flex; flex-direction: column; gap: var(--spacing-md); }
+        .module-card { background: var(--color-dark-card); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-lg); padding: var(--spacing-lg) var(--spacing-xl); display: grid; grid-template-columns: auto 1fr; gap: var(--spacing-md); align-items: start; }
+        .module-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(91,164,229,0.15); border: 1.5px solid rgba(91,164,229,0.4); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 900; color: #7fbfed; flex-shrink: 0; }
+        .module-content h4 { color: var(--color-text-light); font-size: 0.95rem; margin-bottom: 6px; }
+        .module-content ul { list-style: none; padding: 0; }
+        .module-content ul li { color: rgba(255,255,255,0.6); font-size: 0.85rem; padding: 2px 0; display: flex; gap: 8px; }
+        .module-content ul li::before { content: '—'; color: rgba(91,164,229,0.5); flex-shrink: 0; }
+        .lab-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #4ECDC4; background: rgba(78,205,196,0.12); border: 1px solid rgba(78,205,196,0.3); padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
+        .break-card { background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: var(--spacing-sm) var(--spacing-xl); text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); font-style: italic; }
+        .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+        .check-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.95rem; color: var(--color-text-dark); line-height: 1.5; }
+        .check-list li::before { content: '✓'; color: var(--color-primary); font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+        .ticket-cta { background: var(--gradient-cta); border-radius: var(--radius-xl); padding: var(--spacing-2xl) var(--spacing-xl); text-align: center; color: #fff; }
+        .ticket-cta h2 { color: #fff; margin-bottom: var(--spacing-sm); font-size: 1.75rem; }
+        .ticket-cta p { color: rgba(255,255,255,0.75); margin-bottom: var(--spacing-xl); }
+        .ticket-cta .btn-ticket-lg { display: inline-flex; align-items: center; gap: 10px; background: #fff; color: var(--color-accent); padding: 1rem 2.5rem; border-radius: var(--radius-md); font-weight: 900; font-size: 1.05rem; box-shadow: 0 8px 30px rgba(0,0,0,0.2); transition: all var(--transition-normal); }
+        .ticket-cta .btn-ticket-lg:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+        .ticket-cta .btn-ticket-lg svg { width: 18px; height: 18px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; color: var(--color-primary); margin-bottom: var(--spacing-xl); }
+        .back-link:hover { text-decoration: underline; }
+        .back-link svg { width: 14px; height: 14px; }
+        .principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-lg); }
+        .principle-card { background: var(--color-dark-card); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-lg); padding: var(--spacing-lg); }
+        .principle-card .num { font-size: 2rem; font-weight: 900; color: rgba(91,164,229,0.3); line-height: 1; margin-bottom: 6px; }
+        .principle-card h4 { color: var(--color-text-light); font-size: 0.88rem; font-weight: 700; margin-bottom: 6px; }
+        .principle-card p { color: rgba(255,255,255,0.5); font-size: 0.78rem; line-height: 1.5; }
+    </style>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </symbol>
+    </svg>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../" class="nav-logo"><img src="../assets/appsecdayspt2026.png" alt="OWASP AppSec Days Portugal 2026"></a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../" data-en="Home" data-pt="Início">Home</a></li>
+                <li><a href="../program/" data-en="Program" data-pt="Programa">Program</a></li>
+                <li><a href="./" data-en="Trainings" data-pt="Formações">Trainings</a></li>
+                <li><a href="../#tickets" data-en="Tickets" data-pt="Bilhetes">Tickets</a></li>
+                <li><button class="lang-toggle" id="lang-toggle"><span class="lang-option active" data-lang="en">EN</span><span class="lang-separator">|</span><span class="lang-option" data-lang="pt">PT</span></button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="page-header-background"></div>
+        <div class="container">
+            <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom: var(--spacing-md);">
+                <span class="t-badge defender">Defender</span>
+                <span class="t-badge beginner">Beginner</span>
+            </div>
+            <h1 style="font-size: clamp(1.6rem, 4vw, 2.8rem);" data-en="Becoming the Godfather of Threat Modeling" data-pt="Tornar-se o Padrinho da Modelação de Ameaças">Becoming the Godfather of Threat Modeling</h1>
+            <div class="training-meta-bar">
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span data-en="September 23, 2026" data-pt="23 de Setembro, 2026">September 23, 2026</span></span>
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>09:00 – 13:00</span>
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Room C</span>
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><span data-en="4 Hours · STRIDE &amp; PASTA Labs" data-pt="4 Horas · Labs STRIDE &amp; PASTA">4 Hours · STRIDE &amp; PASTA Labs</span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container" style="max-width: 860px;">
+            <a href="./" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg><span data-en="All Trainings" data-pt="Todas as Formações">All Trainings</span></a>
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-lg);" data-en="About This Training" data-pt="Sobre Esta Formação">About This Training</h2>
+            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1.05rem; margin-bottom: var(--spacing-md);" data-en="In the world of cybersecurity there is always a threat lurking — waiting in the shadows for the perfect moment to strike. You can sit back and hope for the best, or you can take control and see everything coming from miles away." data-pt="No mundo da cibersegurança há sempre uma ameaça à espreita — esperando nas sombras pelo momento perfeito para atacar. Pode aguardar e esperar pelo melhor, ou pode tomar o controlo e ver tudo vir de longe.">In the world of cybersecurity there is always a threat lurking — waiting in the shadows for the perfect moment to strike. You can sit back and hope for the best, or you can take control and see everything coming from miles away.</p>
+            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1.05rem; margin-bottom: var(--spacing-md);" data-en="In this session, you'll dive deep into the art of threat modeling — an essential skill that allows you to anticipate risks, identify vulnerabilities, and develop a proactive defense strategy. Mike will guide you through the process and show you why threat modeling is an offer you simply can't refuse." data-pt="Nesta sessão, vai mergulhar profundamente na arte da modelação de ameaças — uma competência essencial que lhe permite antecipar riscos, identificar vulnerabilidades e desenvolver uma estratégia de defesa proativa.">In this session, you'll dive deep into the art of threat modeling — an essential skill that allows you to anticipate risks, identify vulnerabilities, and develop a proactive defense strategy. Mike will guide you through the process and show you why threat modeling is an offer you simply can't refuse.</p>
+            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1.05rem;" data-en="You'll learn how to analyze threats with precision, build effective threat scenarios, and develop a mindset that stays one step ahead of attackers. Ultimately you won't only understand threat modeling — you'll lead it with confidence." data-pt="Aprenderá a analisar ameaças com precisão, construir cenários de ameaça eficazes e desenvolver uma mentalidade que se mantém um passo à frente dos atacantes.">You'll learn how to analyze threats with precision, build effective threat scenarios, and develop a mindset that stays one step ahead of attackers. Ultimately you won't only understand threat modeling — you'll lead it with confidence.</p>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Your Trainer" data-pt="O Seu Formador">Your Trainer</h2>
+            <div class="speaker-layout">
+                <div class="speaker-photo-wrap"><img src="https://sessionize.com/image/cbb9-0o0o0-KpPDodGy1RB8z1r4yzWUS8.jpg" alt="Mike van der Bijl"></div>
+                <div>
+                    <div class="speaker-name">Mike van der Bijl</div>
+                    <div class="speaker-tagline" data-en="DevSecOps Expert · Full-stack Developer turned Security Specialist" data-pt="Especialista DevSecOps · Programador Full-stack convertido em Especialista de Segurança">DevSecOps Expert · Full-stack Developer turned Security Specialist</div>
+                    <p class="speaker-bio" data-en="Mike's career has taken him through a diverse journey, spanning roles that include full-stack developer, business analyst, IT manager, and now thriving in cybersecurity. For him, security resembles solving a 10,000-piece puzzle turned upside down. He approaches his work with a focus on people first, processes second, and technology third — ensuring that security changes are seamlessly integrated and embraced by teams and organizations." data-pt="A carreira de Mike percorreu uma jornada diversificada, abrangendo funções de programador full-stack, analista de negócios, gestor de TI e agora a prosperar em cibersegurança. Para ele, a segurança assemelha-se a resolver um puzzle de 10.000 peças virado ao contrário.">Mike's career has taken him through a diverse journey, spanning roles that include full-stack developer, business analyst, IT manager, and now thriving in cybersecurity. For him, security resembles solving a 10,000-piece puzzle turned upside down. He approaches his work with a focus on people first, processes second, and technology third — ensuring that security changes are seamlessly integrated and embraced by teams and organizations.</p>
+                    <div class="speaker-links">
+                        <a href="https://www.linkedin.com/in/mike-van-der-bijl/" target="_blank" rel="noopener noreferrer" class="speaker-link"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#linkedin-icon"/></svg>LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-md);" data-en="Workshop Outline" data-pt="Programa do Workshop">Workshop Outline</h2>
+            <p style="color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: var(--spacing-xl);" data-en="Structured around five key principles: theoretical knowledge, practical application, critical reflection, additional resources, and storytelling-based delivery." data-pt="Estruturado em cinco princípios-chave: conhecimento teórico, aplicação prática, reflexão crítica, recursos adicionais e entrega baseada em storytelling.">Structured around five key principles: theoretical knowledge, practical application, critical reflection, additional resources, and storytelling-based delivery.</p>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-num">1</div>
+                    <div class="module-content">
+                        <h4 data-en="Introduction to Threat Modeling" data-pt="Introdução à Modelação de Ameaças">Introduction to Threat Modeling</h4>
+                        <ul>
+                            <li data-en="What is threat modeling and why it matters" data-pt="O que é a modelação de ameaças e porque é importante">What is threat modeling and why it matters</li>
+                            <li data-en="Key concepts, goals, and terminology" data-pt="Conceitos-chave, objetivos e terminologia">Key concepts, goals, and terminology</li>
+                            <li data-en="The role of threat modeling in modern development and security" data-pt="O papel da modelação de ameaças no desenvolvimento e segurança modernos">The role of threat modeling in modern development and security</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">2</div>
+                    <div class="module-content">
+                        <h4 data-en="Why and When to Use Threat Modeling" data-pt="Quando e Porquê Usar a Modelação de Ameaças">Why and When to Use Threat Modeling</h4>
+                        <ul>
+                            <li data-en="The importance of proactive versus reactive security" data-pt="A importância da segurança proativa versus reativa">The importance of proactive versus reactive security</li>
+                            <li data-en="Business and technical benefits" data-pt="Benefícios de negócio e técnicos">Business and technical benefits</li>
+                            <li data-en="When to apply threat modeling in a project lifecycle" data-pt="Quando aplicar a modelação de ameaças no ciclo de vida de um projeto">When to apply threat modeling in a project lifecycle</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">3</div>
+                    <div class="module-content">
+                        <h4 data-en="Threat Modeling in Agile Environments" data-pt="Modelação de Ameaças em Ambientes Ágeis">Threat Modeling in Agile Environments</h4>
+                        <ul>
+                            <li data-en="Integrating threat modeling into agile workflows" data-pt="Integrar a modelação de ameaças em fluxos de trabalho ágeis">Integrating threat modeling into agile workflows</li>
+                            <li data-en="Balancing speed and security" data-pt="Equilibrar velocidade e segurança">Balancing speed and security</li>
+                            <li data-en="Best practices for iterative threat assessments" data-pt="Melhores práticas para avaliações iterativas de ameaças">Best practices for iterative threat assessments</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">4</div>
+                    <div class="module-content">
+                        <h4 data-en="Requirements for Effective Threat Modeling" data-pt="Requisitos para uma Modelação de Ameaças Eficaz">Requirements for Effective Threat Modeling</h4>
+                        <ul>
+                            <li data-en="Prerequisites for successful implementation" data-pt="Pré-requisitos para uma implementação bem-sucedida">Prerequisites for successful implementation</li>
+                            <li data-en="Tools and frameworks overview" data-pt="Visão geral de ferramentas e frameworks">Tools and frameworks overview</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">5</div>
+                    <div class="module-content">
+                        <h4>Deep Dive: STRIDE <span class="lab-badge">🔬 Hands-on</span></h4>
+                        <ul>
+                            <li data-en="Understanding the STRIDE methodology (Spoofing, Tampering, Repudiation, Information Disclosure, DoS, Elevation)" data-pt="Compreender a metodologia STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, DoS, Elevation)">Understanding the STRIDE methodology</li>
+                            <li data-en="Applying STRIDE to real-world scenarios" data-pt="Aplicar STRIDE a cenários do mundo real">Applying STRIDE to real-world scenarios</li>
+                            <li data-en="Group exercise: threat identification using STRIDE" data-pt="Exercício de grupo: identificação de ameaças usando STRIDE">Group exercise: threat identification using STRIDE</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">6</div>
+                    <div class="module-content">
+                        <h4>Deep Dive: PASTA <span class="lab-badge">🔬 Hands-on</span></h4>
+                        <ul>
+                            <li data-en="Understanding the PASTA methodology (Process for Attack Simulation and Threat Analysis)" data-pt="Compreender a metodologia PASTA (Process for Attack Simulation and Threat Analysis)">Understanding the PASTA methodology</li>
+                            <li data-en="Applying PASTA to real-world scenarios" data-pt="Aplicar PASTA a cenários do mundo real">Applying PASTA to real-world scenarios</li>
+                            <li data-en="Group exercise: threat analysis using PASTA" data-pt="Exercício de grupo: análise de ameaças usando PASTA">Group exercise: threat analysis using PASTA</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">7</div>
+                    <div class="module-content">
+                        <h4 data-en="Practical Threat Modeling You Can Start Today" data-pt="Modelação de Ameaças Prática que Pode Iniciar Hoje">Practical Threat Modeling You Can Start Today</h4>
+                        <ul>
+                            <li data-en="Simple strategies to start threat modeling immediately" data-pt="Estratégias simples para iniciar a modelação de ameaças imediatamente">Simple strategies to start threat modeling immediately</li>
+                            <li data-en="Lightweight approaches for quick security wins" data-pt="Abordagens leves para ganhos rápidos de segurança">Lightweight approaches for quick security wins</li>
+                            <li data-en="Tips for small teams or limited resources" data-pt="Dicas para equipas pequenas ou recursos limitados">Tips for small teams or limited resources</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="break-card" data-en="— Q&amp;A and Closing Remarks —" data-pt="— Q&amp;A e Observações Finais —">— Q&amp;A and Closing Remarks —</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Who Should Attend" data-pt="Quem Deve Participar">Who Should Attend</h2>
+            <ul class="check-list">
+                <li data-en="Security engineers and architects looking to add threat modeling to their toolkit" data-pt="Engenheiros e arquitetos de segurança que procuram adicionar a modelação de ameaças ao seu conjunto de ferramentas">Security engineers and architects looking to add threat modeling to their toolkit</li>
+                <li data-en="Developers who want to think like attackers and build more resilient systems" data-pt="Programadores que querem pensar como atacantes e construir sistemas mais resilientes">Developers who want to think like attackers and build more resilient systems</li>
+                <li data-en="Security managers seeking a structured approach to proactive risk management" data-pt="Gestores de segurança que procuram uma abordagem estruturada para a gestão proativa de riscos">Security managers seeking a structured approach to proactive risk management</li>
+                <li data-en="Anyone new to threat modeling — no prior experience required" data-pt="Qualquer pessoa nova na modelação de ameaças — não é necessária experiência prévia">Anyone new to threat modeling — no prior experience required</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container" style="max-width: 700px;">
+            <div class="ticket-cta">
+                <h2 data-en="Make Them an Offer They Can't Refuse" data-pt="Faça-lhes Uma Oferta que Não Podem Recusar">Make Them an Offer They Can't Refuse</h2>
+                <p data-en="Seats are limited. Training ticket required — separate from the main conference ticket." data-pt="Os lugares são limitados. Bilhete de formação necessário — separado do bilhete principal da conferência.">Seats are limited. Training ticket required — separate from the main conference ticket.</p>
+                <a href="#" class="btn-ticket-lg">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                    <span data-en="Book Your Seat" data-pt="Reservar o Seu Lugar">Book Your Seat</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

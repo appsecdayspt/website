@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hands-on Workshop: OWASP Juice Shop for Beginners – OWASP AppSec Days Portugal 2026</title>
+    <meta name="description" content="Hack the OWASP Juice Shop and go behind the scenes with its creator Björn Kimminich. Half-day beginners workshop, September 23, 2026 in Porto.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#5BA4E5">
+    <link rel="canonical" href="https://appsecdays.pt/trainings/juice-shop.html">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="../assets/appsecdayspt2026.png">
+    <style>
+        .t-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
+        .t-badge.breaker { background: rgba(255,107,107,0.18); color: #ff9090; border: 1px solid rgba(255,107,107,0.35); }
+        .t-badge.beginner { background: rgba(124,92,255,0.18); color: #b8a6ff; border: 1px solid rgba(124,92,255,0.35); }
+        .training-meta-bar { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); margin-top: var(--spacing-lg); justify-content: center; }
+        .meta-pill { display: flex; align-items: center; gap: 7px; padding: 7px 16px; border-radius: 30px; font-size: 0.82rem; font-weight: 600; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
+        .meta-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+        .speaker-layout { display: grid; grid-template-columns: 200px 1fr; gap: var(--spacing-2xl); align-items: start; }
+        @media (max-width: 768px) { .speaker-layout { grid-template-columns: 1fr; } }
+        .speaker-photo-wrap { width: 200px; height: 200px; border-radius: var(--radius-xl); overflow: hidden; border: 3px solid rgba(255,107,107,0.3); flex-shrink: 0; }
+        @media (max-width: 768px) { .speaker-photo-wrap { width: 140px; height: 140px; } }
+        .speaker-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+        .speaker-name { font-size: 1.5rem; font-weight: 900; color: var(--color-text-dark); margin-bottom: 4px; }
+        .speaker-tagline { font-size: 0.95rem; color: var(--color-text-dark-muted); margin-bottom: var(--spacing-md); }
+        .speaker-bio { color: var(--color-text-dark); line-height: 1.75; font-size: 0.95rem; }
+        .speaker-links { display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-md); flex-wrap: wrap; }
+        .speaker-link { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: var(--radius-md); font-size: 0.8rem; font-weight: 700; border: 1.5px solid rgba(255,107,107,0.4); color: #FF6B6B; transition: all var(--transition-fast); }
+        .speaker-link:hover { background: #FF6B6B; color: #fff; border-color: #FF6B6B; }
+        .speaker-link svg { width: 14px; height: 14px; }
+        .modules-grid { display: flex; flex-direction: column; gap: var(--spacing-md); }
+        .module-card { background: var(--color-dark-card); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-lg); padding: var(--spacing-lg) var(--spacing-xl); display: grid; grid-template-columns: auto 1fr; gap: var(--spacing-md); align-items: start; }
+        .module-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,107,107,0.15); border: 1.5px solid rgba(255,107,107,0.4); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 900; color: #ff9090; flex-shrink: 0; }
+        .module-content h4 { color: var(--color-text-light); font-size: 0.95rem; margin-bottom: 6px; }
+        .module-content ul { list-style: none; padding: 0; }
+        .module-content ul li { color: rgba(255,255,255,0.6); font-size: 0.85rem; padding: 2px 0; display: flex; gap: 8px; }
+        .module-content ul li::before { content: '—'; color: rgba(255,107,107,0.5); flex-shrink: 0; }
+        .chapter-zero { background: rgba(255,107,107,0.05); border-color: rgba(255,107,107,0.15); }
+        .chapter-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #ff9090; background: rgba(255,107,107,0.12); border: 1px solid rgba(255,107,107,0.3); padding: 2px 8px; border-radius: 10px; display: inline-block; margin-bottom: 6px; }
+        .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+        .check-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.95rem; color: var(--color-text-dark); line-height: 1.5; }
+        .check-list li::before { content: '✓'; color: #FF6B6B; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+        .quote-block { background: rgba(255,107,107,0.05); border-left: 4px solid #FF6B6B; border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: var(--spacing-lg); margin: var(--spacing-xl) 0; }
+        .quote-block p { color: rgba(255,255,255,0.75); font-style: italic; font-size: 1rem; line-height: 1.7; }
+        .ticket-cta { background: linear-gradient(135deg, #3d1a1a, #7a2020); border-radius: var(--radius-xl); padding: var(--spacing-2xl) var(--spacing-xl); text-align: center; color: #fff; }
+        .ticket-cta h2 { color: #fff; margin-bottom: var(--spacing-sm); font-size: 1.75rem; }
+        .ticket-cta p { color: rgba(255,255,255,0.75); margin-bottom: var(--spacing-xl); }
+        .ticket-cta .btn-ticket-lg { display: inline-flex; align-items: center; gap: 10px; background: #FF6B6B; color: #fff; padding: 1rem 2.5rem; border-radius: var(--radius-md); font-weight: 900; font-size: 1.05rem; box-shadow: 0 8px 30px rgba(255,107,107,0.3); transition: all var(--transition-normal); }
+        .ticket-cta .btn-ticket-lg:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,107,107,0.4); opacity: 0.9; }
+        .ticket-cta .btn-ticket-lg svg { width: 18px; height: 18px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #FF6B6B; margin-bottom: var(--spacing-xl); }
+        .back-link:hover { text-decoration: underline; }
+        .back-link svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </symbol>
+    </svg>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../" class="nav-logo"><img src="../assets/appsecdayspt2026.png" alt="OWASP AppSec Days Portugal 2026"></a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../" data-en="Home" data-pt="Início">Home</a></li>
+                <li><a href="../program/" data-en="Program" data-pt="Programa">Program</a></li>
+                <li><a href="./" data-en="Trainings" data-pt="Formações">Trainings</a></li>
+                <li><a href="../#tickets" data-en="Tickets" data-pt="Bilhetes">Tickets</a></li>
+                <li><button class="lang-toggle" id="lang-toggle"><span class="lang-option active" data-lang="en">EN</span><span class="lang-separator">|</span><span class="lang-option" data-lang="pt">PT</span></button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="page-header-background"></div>
+        <div class="container">
+            <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom: var(--spacing-md);">
+                <span class="t-badge breaker">Breaker</span>
+                <span class="t-badge beginner">Beginner</span>
+            </div>
+            <h1 style="font-size: clamp(1.6rem, 4vw, 2.8rem);" data-en="Hands-on Workshop: OWASP Juice Shop for Beginners" data-pt="Workshop Prático: OWASP Juice Shop para Principiantes">Hands-on Workshop: OWASP Juice Shop for Beginners</h1>
+            <div class="training-meta-bar">
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span data-en="September 23, 2026" data-pt="23 de Setembro, 2026">September 23, 2026</span></span>
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>09:00 – 13:00</span>
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Room B</span>
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><span data-en="4 Hours · 3 Chapters · Live Hacking" data-pt="4 Horas · 3 Capítulos · Hacking ao Vivo">4 Hours · 3 Chapters · Live Hacking</span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container" style="max-width: 860px;">
+            <a href="./" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg><span data-en="All Trainings" data-pt="Todas as Formações">All Trainings</span></a>
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-lg);" data-en="About This Workshop" data-pt="Sobre Este Workshop">About This Workshop</h2>
+            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1.05rem; margin-bottom: var(--spacing-md);" data-en="The OWASP Juice Shop is the world's most widely used deliberately insecure web application — and this is your chance to learn from the person who built it. In this workshop you'll get to use it, break it, and then go behind the scenes to understand how it's developed, tested, and maintained as a thriving open source project." data-pt="O OWASP Juice Shop é a aplicação web deliberadamente insegura mais utilizada do mundo — e esta é a sua oportunidade de aprender com a pessoa que a construiu. Neste workshop vai usá-la, quebrá-la, e depois ir aos bastidores para entender como é desenvolvida, testada e mantida como um projeto open source próspero.">The OWASP Juice Shop is the world's most widely used deliberately insecure web application — and this is your chance to learn from the person who built it. In this workshop you'll get to use it, break it, and then go behind the scenes to understand how it's developed, tested, and maintained as a thriving open source project.</p>
+            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1.05rem; margin-bottom: var(--spacing-md);" data-en="You'll get hands-on time hacking real vulnerabilities — Broken Access Control, Injection, XSS, Sensitive Data Exposure and more — with guided demos and mob hacking sessions to make sure everyone keeps up. Then Björn flips the script to show you what's running under the hood: the GitHub org, CI/CD pipelines, contributor guidelines, and how the project handles AI-generated spam and slop." data-pt="Terá tempo prático a fazer hacking a vulnerabilidades reais — Controlo de Acesso Quebrado, Injeção, XSS, Exposição de Dados Sensíveis e muito mais — com demos guiadas e sessões de mob hacking para garantir que todos acompanham. Depois o Björn mostra o que corre por baixo: a org GitHub, os pipelines CI/CD e como o projeto lida com spam gerado por IA.">You'll get hands-on time hacking real vulnerabilities — Broken Access Control, Injection, XSS, Sensitive Data Exposure and more — with guided demos and mob hacking sessions to make sure everyone keeps up. Then Björn flips the script to show you what's running under the hood: the GitHub org, CI/CD pipelines, contributor guidelines, and how the project handles AI-generated spam and slop.</p>
+            <div class="quote-block">
+                <p data-en="&ldquo;The runtime of each chapter will be determined by the participants of the workshop, so that you get the most out of the available time. It's your workshop, so you should have the last word about the prioritization and approach!&rdquo;" data-pt="&ldquo;O tempo de cada capítulo será determinado pelos participantes do workshop, para que tirem o máximo proveito do tempo disponível. É o seu workshop, por isso devem ter a última palavra sobre a priorização e abordagem!&rdquo;">"The runtime of each chapter will be determined by the participants of the workshop, so that you get the most out of the available time. It's your workshop, so you should have the last word about the prioritization and approach!"</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Your Trainer" data-pt="O Seu Formador">Your Trainer</h2>
+            <div class="speaker-layout">
+                <div class="speaker-photo-wrap"><img src="https://sessionize.com/image/8d95-0o0o0-BjR3YR5j9XPfV2jBVbfaT4.jpg" alt="Björn Kimminich"></div>
+                <div>
+                    <div class="speaker-name">Björn Kimminich</div>
+                    <div class="speaker-tagline">Project Leader OWASP Juice Shop · Product Group Lead at Kuehne+Nagel · OWASP Lifetime Member</div>
+                    <p class="speaker-bio" data-en="Björn works as Product Group Lead Application Ecosystem at Kuehne+Nagel, responsible — among other things — for the Application Security program in the global IT. He is an OWASP Lifetime Member, project leader of the OWASP Juice Shop, and a co-chapter leader for the OWASP Germany Chapter. Björn also currently chairs the OWASP Project Committee." data-pt="Björn trabalha como Product Group Lead Application Ecosystem na Kuehne+Nagel, responsável — entre outras coisas — pelo programa de Segurança de Aplicações em TI global. É Membro Vitalício da OWASP, líder do projeto OWASP Juice Shop e co-líder do Capítulo OWASP Alemanha. Björn também preside atualmente ao Comité de Projetos OWASP.">Björn works as Product Group Lead Application Ecosystem at Kuehne+Nagel, responsible — among other things — for the Application Security program in the global IT. He is an OWASP Lifetime Member, project leader of the OWASP Juice Shop, and a co-chapter leader for the OWASP Germany Chapter. Björn also currently chairs the OWASP Project Committee.</p>
+                    <div class="speaker-links">
+                        <a href="https://www.linkedin.com/in/bkimminich" target="_blank" rel="noopener noreferrer" class="speaker-link"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#linkedin-icon"/></svg>LinkedIn</a>
+                        <a href="https://github.com/bkimminich" target="_blank" rel="noopener noreferrer" class="speaker-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>GitHub</a>
+                        <a href="https://kimminich.de" target="_blank" rel="noopener noreferrer" class="speaker-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Blog</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Workshop Chapters" data-pt="Capítulos do Workshop">Workshop Chapters</h2>
+            <div class="modules-grid">
+                <div class="module-card chapter-zero">
+                    <div class="module-num">0</div>
+                    <div class="module-content">
+                        <div class="chapter-label" data-en="Chapter Zero" data-pt="Capítulo Zero">Chapter Zero</div>
+                        <h4 data-en="Running the Juice Shop" data-pt="Executar o Juice Shop">Running the Juice Shop</h4>
+                        <ul>
+                            <li data-en="What the project is and what it offers" data-pt="O que é o projeto e o que oferece">What the project is and what it offers</li>
+                            <li data-en="Registering for an instance on the MultiJuicer cluster for the workshop" data-pt="Registar-se numa instância no cluster MultiJuicer para o workshop">Registering for an instance on the MultiJuicer cluster for the workshop</li>
+                            <li data-en="How you can run Juice Shop at home after the event" data-pt="Como pode executar o Juice Shop em casa após o evento">How you can run Juice Shop at home after the event</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">1</div>
+                    <div class="module-content">
+                        <div class="chapter-label" data-en="Chapter One" data-pt="Capítulo Um">Chapter One</div>
+                        <h4 data-en="Hacking the Juice Shop" data-pt="Hackar o Juice Shop">Hacking the Juice Shop</h4>
+                        <ul>
+                            <li data-en="Learning the basics of common application vulnerabilities (Broken Access Control, Injection, XSS, Sensitive Data Exposure…)" data-pt="Aprender os básicos de vulnerabilidades comuns em aplicações (Controlo de Acesso Quebrado, Injeção, XSS, Exposição de Dados Sensíveis…)">Learning the basics of common application vulnerabilities (Broken Access Control, Injection, XSS, Sensitive Data Exposure…)</li>
+                            <li data-en="Individual hacking time to try solving related challenges" data-pt="Tempo individual de hacking para tentar resolver desafios relacionados">Individual hacking time to try solving related challenges</li>
+                            <li data-en="Demo walkthroughs so everyone has a chance to catch up" data-pt="Demonstrações guiadas para que todos tenham oportunidade de acompanhar">Demo walkthroughs so everyone has a chance to catch up</li>
+                            <li data-en="Mob hacking sessions to tackle the more difficult challenges together" data-pt="Sessões de mob hacking para resolver os desafios mais difíceis juntos">Mob hacking sessions to tackle the more difficult challenges together</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">2</div>
+                    <div class="module-content">
+                        <div class="chapter-label" data-en="Chapter Two" data-pt="Capítulo Dois">Chapter Two</div>
+                        <h4 data-en="Building the Juice Shop" data-pt="Construir o Juice Shop">Building the Juice Shop</h4>
+                        <ul>
+                            <li data-en="Overview of the Juice Shop's GitHub org and main repositories" data-pt="Visão geral da org GitHub do Juice Shop e principais repositórios">Overview of the Juice Shop's GitHub org and main repositories</li>
+                            <li data-en="Learning about test automation and CI/CD workflows of the project" data-pt="Aprender sobre automação de testes e fluxos CI/CD do projeto">Learning about test automation and CI/CD workflows of the project</li>
+                            <li data-en="Guidance and rules for contributors and their AI agents" data-pt="Orientações e regras para contribuidores e os seus agentes de IA">Guidance and rules for contributors and their AI agents</li>
+                            <li data-en="How Juice Shop handles the very real problem of AI slop and spam contributions" data-pt="Como o Juice Shop lida com o problema real de contribuições de spam e slop gerados por IA">How Juice Shop handles the very real problem of AI slop and spam contributions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Who Should Attend" data-pt="Quem Deve Participar">Who Should Attend</h2>
+            <ul class="check-list">
+                <li data-en="Developers curious about web security who want to see real vulnerabilities in action" data-pt="Programadores curiosos sobre segurança web que querem ver vulnerabilidades reais em ação">Developers curious about web security who want to see real vulnerabilities in action</li>
+                <li data-en="Security beginners looking for a fun, hands-on introduction to application hacking" data-pt="Iniciantes em segurança que procuram uma introdução divertida e prática ao hacking de aplicações">Security beginners looking for a fun, hands-on introduction to application hacking</li>
+                <li data-en="Open source enthusiasts interested in how a major security project is maintained at scale" data-pt="Entusiastas de open source interessados em como um projeto de segurança importante é mantido em escala">Open source enthusiasts interested in how a major security project is maintained at scale</li>
+                <li data-en="Anyone who wants to contribute to OWASP Juice Shop and needs a starting point" data-pt="Qualquer pessoa que queira contribuir para o OWASP Juice Shop e precise de um ponto de partida">Anyone who wants to contribute to OWASP Juice Shop and needs a starting point</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container" style="max-width: 700px;">
+            <div class="ticket-cta">
+                <h2 data-en="Ready to Hack the Shop?" data-pt="Pronto Para Hackar a Loja?">Ready to Hack the Shop?</h2>
+                <p data-en="Seats are limited. Training ticket required — separate from the main conference ticket." data-pt="Os lugares são limitados. Bilhete de formação necessário — separado do bilhete principal da conferência.">Seats are limited. Training ticket required — separate from the main conference ticket.</p>
+                <a href="#" class="btn-ticket-lg">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                    <span data-en="Book Your Seat" data-pt="Reservar o Seu Lugar">Book Your Seat</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

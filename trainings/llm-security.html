@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Coding for LLM Applications – OWASP AppSec Days Portugal 2026</title>
+    <meta name="description" content="Half-day hands-on workshop on securing AI/LLM applications. Covers OWASP Top 10 for LLMs: Prompt Injection, Data Disclosure, Excessive Agency, and more. Trainer: Fabio Cerullo.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#5BA4E5">
+    <link rel="canonical" href="https://appsecdays.pt/trainings/llm-security.html">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="../assets/appsecdayspt2026.png">
+    <style>
+        /* shared training detail styles */
+        .t-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
+        .t-badge.defender { background: rgba(91,164,229,0.18); color: #7fbfed; border: 1px solid rgba(91,164,229,0.35); }
+        .t-badge.intermediate { background: rgba(255,179,71,0.18); color: #ffc56b; border: 1px solid rgba(255,179,71,0.35); }
+
+        .training-meta-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+            justify-content: center;
+        }
+        .meta-pill {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 16px;
+            border-radius: 30px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.8);
+        }
+        .meta-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+        /* speaker */
+        .speaker-layout {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: var(--spacing-2xl);
+            align-items: start;
+        }
+        @media (max-width: 768px) { .speaker-layout { grid-template-columns: 1fr; } }
+        .speaker-photo-wrap {
+            width: 200px;
+            height: 200px;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            border: 3px solid rgba(91,164,229,0.3);
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) { .speaker-photo-wrap { width: 140px; height: 140px; } }
+        .speaker-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+        .speaker-name { font-size: 1.5rem; font-weight: 900; color: var(--color-text-dark); margin-bottom: 4px; }
+        .speaker-tagline { font-size: 0.95rem; color: var(--color-text-dark-muted); margin-bottom: var(--spacing-md); }
+        .speaker-bio { color: var(--color-text-dark); line-height: 1.75; font-size: 0.95rem; }
+        .speaker-links { display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-md); flex-wrap: wrap; }
+        .speaker-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 14px; border-radius: var(--radius-md);
+            font-size: 0.8rem; font-weight: 700;
+            border: 1.5px solid rgba(91,164,229,0.4);
+            color: var(--color-primary);
+            transition: all var(--transition-fast);
+        }
+        .speaker-link:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+        .speaker-link svg { width: 14px; height: 14px; }
+
+        /* outline */
+        .modules-grid { display: flex; flex-direction: column; gap: var(--spacing-md); }
+        .module-card {
+            background: var(--color-dark-card);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-lg) var(--spacing-xl);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: var(--spacing-md);
+            align-items: start;
+        }
+        .module-num {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: rgba(91,164,229,0.15);
+            border: 1.5px solid rgba(91,164,229,0.4);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; font-weight: 900; color: #7fbfed;
+            flex-shrink: 0;
+        }
+        .module-content h4 { color: var(--color-text-light); font-size: 0.95rem; margin-bottom: 6px; }
+        .module-content ul { list-style: none; padding: 0; }
+        .module-content ul li { color: rgba(255,255,255,0.6); font-size: 0.85rem; padding: 2px 0; display: flex; gap: 8px; }
+        .module-content ul li::before { content: '—'; color: rgba(91,164,229,0.5); flex-shrink: 0; }
+        .module-time { font-size: 0.72rem; font-weight: 700; color: #7fbfed; background: rgba(91,164,229,0.1); padding: 2px 8px; border-radius: 10px; display: inline-block; margin-bottom: 6px; }
+        .lab-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #4ECDC4; background: rgba(78,205,196,0.12); border: 1px solid rgba(78,205,196,0.3); padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
+        .break-card { background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: var(--spacing-sm) var(--spacing-xl); text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); font-style: italic; }
+
+        /* prereqs / deliverables */
+        .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+        .check-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.95rem; color: var(--color-text-dark); line-height: 1.5; }
+        .check-list li::before { content: '✓'; color: var(--color-primary); font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+
+        .deliverables-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--spacing-md); }
+        .deliverable-card { background: var(--color-light-surface); border: 1px solid rgba(0,0,0,0.07); border-radius: var(--radius-lg); padding: var(--spacing-lg); display: flex; flex-direction: column; gap: 8px; }
+        .deliverable-icon { font-size: 1.5rem; }
+        .deliverable-title { font-weight: 700; font-size: 0.9rem; color: var(--color-text-dark); }
+        .deliverable-desc { font-size: 0.82rem; color: var(--color-text-dark-muted); line-height: 1.5; }
+
+        /* CTA */
+        .ticket-cta {
+            background: var(--gradient-cta);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-2xl) var(--spacing-xl);
+            text-align: center;
+            color: #fff;
+        }
+        .ticket-cta h2 { color: #fff; margin-bottom: var(--spacing-sm); font-size: 1.75rem; }
+        .ticket-cta p { color: rgba(255,255,255,0.75); margin-bottom: var(--spacing-xl); }
+        .ticket-cta .btn-ticket-lg {
+            display: inline-flex; align-items: center; gap: 10px;
+            background: #fff; color: var(--color-accent);
+            padding: 1rem 2.5rem; border-radius: var(--radius-md);
+            font-weight: 900; font-size: 1.05rem;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            transition: all var(--transition-normal);
+        }
+        .ticket-cta .btn-ticket-lg:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+        .ticket-cta .btn-ticket-lg svg { width: 18px; height: 18px; }
+
+        .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; color: var(--color-primary); margin-bottom: var(--spacing-xl); }
+        .back-link:hover { text-decoration: underline; }
+        .back-link svg { width: 14px; height: 14px; }
+    </style>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </symbol>
+    </svg>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../" class="nav-logo">
+                <img src="../assets/appsecdayspt2026.png" alt="OWASP AppSec Days Portugal 2026">
+            </a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../" data-en="Home" data-pt="Início">Home</a></li>
+                <li><a href="../program/" data-en="Program" data-pt="Programa">Program</a></li>
+                <li><a href="./" data-en="Trainings" data-pt="Formações">Trainings</a></li>
+                <li><a href="../#tickets" data-en="Tickets" data-pt="Bilhetes">Tickets</a></li>
+                <li>
+                    <button class="lang-toggle" id="lang-toggle">
+                        <span class="lang-option active" data-lang="en">EN</span>
+                        <span class="lang-separator">|</span>
+                        <span class="lang-option" data-lang="pt">PT</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-background"></div>
+        <div class="container">
+            <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom: var(--spacing-md);">
+                <span class="t-badge defender">Defender</span>
+                <span class="t-badge intermediate">Intermediate</span>
+            </div>
+            <h1 style="font-size: clamp(1.6rem, 4vw, 2.8rem);" data-en="Secure Coding for Large Language Model Applications" data-pt="Código Seguro para Aplicações de Modelos de Linguagem">Secure Coding for Large Language Model Applications</h1>
+            <div class="training-meta-bar">
+                <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    <span data-en="September 23, 2026" data-pt="23 de Setembro, 2026">September 23, 2026</span>
+                </span>
+                <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    09:00 – 13:00
+                </span>
+                <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Auditorium 2
+                </span>
+                <span class="meta-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    <span data-en="4 Hours · 6 Modules · 4 Labs" data-pt="4 Horas · 6 Módulos · 4 Labs">4 Hours · 6 Modules · 4 Labs</span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Description -->
+    <section class="section section-dark">
+        <div class="container" style="max-width: 860px;">
+            <a href="./" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                <span data-en="All Trainings" data-pt="Todas as Formações">All Trainings</span>
+            </a>
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-lg);" data-en="About This Training" data-pt="Sobre Esta Formação">About This Training</h2>
+            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1.05rem; margin-bottom: var(--spacing-md);" data-en="AI-driven applications powered by Large Language Models are rapidly transforming products, developer workflows, and customer experiences. But these systems introduce unique security risks that traditional AppSec practices simply don't address." data-pt="As aplicações baseadas em IA impulsionadas por Modelos de Linguagem estão a transformar rapidamente produtos, fluxos de trabalho e experiências dos clientes. Mas estes sistemas introduzem riscos de segurança únicos que as práticas tradicionais de AppSec simplesmente não abordam.">AI-driven applications powered by Large Language Models are rapidly transforming products, developer workflows, and customer experiences. But these systems introduce unique security risks that traditional AppSec practices simply don't address.</p>
+            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1.05rem; margin-bottom: var(--spacing-md);" data-en="This half-day hands-on course teaches developers, AppSec engineers, and architects how to design and build secure AI/LLM applications, with a focused deep-dive into five critical vulnerability areas from the OWASP Top 10 for LLM Applications 2025: Prompt Injection, Sensitive Information Disclosure, Excessive Agency, Improper Output Handling, and RAG/Data Poisoning." data-pt="Este curso prático de meio-dia ensina programadores, engenheiros de AppSec e arquitetos a conceber e construir aplicações AI/LLM seguras, com uma análise aprofundada em cinco áreas críticas de vulnerabilidade do OWASP Top 10 para Aplicações LLM 2025.">This half-day hands-on course teaches developers, AppSec engineers, and architects how to design and build secure AI/LLM applications, with a focused deep-dive into five critical vulnerability areas from the OWASP Top 10 for LLM Applications 2025: Prompt Injection, Sensitive Information Disclosure, Excessive Agency, Improper Output Handling, and RAG/Data Poisoning.</p>
+            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1.05rem;" data-en="Through hands-on labs and real-world case studies, attendees gain practical skills for deploying safe, trustworthy, and compliant AI capabilities at scale." data-pt="Através de laboratórios práticos e estudos de caso do mundo real, os participantes adquirem competências práticas para implementar capacidades de AI seguras, confiáveis e conformes em escala.">Through hands-on labs and real-world case studies, attendees gain practical skills for deploying safe, trustworthy, and compliant AI capabilities at scale.</p>
+        </div>
+    </section>
+
+    <!-- Speaker -->
+    <section class="section section-light">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Your Trainer" data-pt="O Seu Formador">Your Trainer</h2>
+            <div class="speaker-layout">
+                <div class="speaker-photo-wrap">
+                    <img src="https://sessionize.com/image/f157-400o400o1-a4qzDHaaMUBwQ8d87cKegi.png" alt="Fabio Cerullo">
+                </div>
+                <div>
+                    <div class="speaker-name">Fabio Cerullo</div>
+                    <div class="speaker-tagline">Cycubix LTD · ISC2 Certified Instructor · CISSP, CSSLP, CCSP</div>
+                    <p class="speaker-bio" data-en="Fabio Cerullo is a seasoned cybersecurity trainer and consultant with over 15 years of industry experience across financial services, government, startups, and software companies. He has delivered training to thousands of developers and security professionals worldwide, with a focus on application security, cloud security, and information security. Fabio is an official certified instructor for ISC2 and a Champion AWS Authorized Instructor, regularly teaching cloud architecture and security topics. He is a frequent speaker at international events hosted by ISC2, OWASP, and ISACA." data-pt="Fabio Cerullo é um formador e consultor de cibersegurança experiente com mais de 15 anos de experiência na indústria em serviços financeiros, governo, startups e empresas de software. Já formou milhares de programadores e profissionais de segurança em todo o mundo, com foco em segurança de aplicações, segurança na cloud e segurança da informação.">Fabio Cerullo is a seasoned cybersecurity trainer and consultant with over 15 years of industry experience across financial services, government, startups, and software companies. He has delivered training to thousands of developers and security professionals worldwide, with a focus on application security, cloud security, and information security. Fabio is an official certified instructor for ISC2 and a Champion AWS Authorized Instructor, regularly teaching cloud architecture and security topics. He is a frequent speaker at international events hosted by ISC2, OWASP, and ISACA.</p>
+                    <div class="speaker-links">
+                        <a href="https://www.linkedin.com/in/fcerullo" target="_blank" rel="noopener noreferrer" class="speaker-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><use href="#linkedin-icon"/></svg>
+                            LinkedIn
+                        </a>
+                        <a href="https://cycubix.com" target="_blank" rel="noopener noreferrer" class="speaker-link">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                            cycubix.com
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Outline -->
+    <section class="section section-dark">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Course Outline" data-pt="Programa do Curso">Course Outline</h2>
+            <div class="modules-grid">
+
+                <div class="module-card">
+                    <div class="module-num">1</div>
+                    <div class="module-content">
+                        <div class="module-time">30 min</div>
+                        <h4 data-en="Foundations of AI &amp; LLM Security" data-pt="Fundamentos de Segurança em AI &amp; LLM">Foundations of AI &amp; LLM Security</h4>
+                        <ul>
+                            <li data-en="Modern AI system architectures and threat surfaces" data-pt="Arquiteturas modernas de sistemas AI e superfícies de ameaça">Modern AI system architectures and threat surfaces</li>
+                            <li data-en="Why traditional AppSec models fail for AI" data-pt="Porque os modelos tradicionais de AppSec falham para AI">Why traditional AppSec models fail for AI</li>
+                            <li data-en="Key attack surfaces: model, context, tools, retrieval layers" data-pt="Superfícies de ataque principais: modelo, contexto, ferramentas, camadas de recuperação">Key attack surfaces: model, context, tools, retrieval layers</li>
+                            <li data-en="Introduction to the OWASP Top 10 for LLM Applications 2025" data-pt="Introdução ao OWASP Top 10 para Aplicações LLM 2025">Introduction to the OWASP Top 10 for LLM Applications 2025</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-num">2</div>
+                    <div class="module-content">
+                        <div class="module-time">45 min</div>
+                        <h4>Prompt Injection — LLM01:2025 <span class="lab-badge">🔬 Lab</span></h4>
+                        <ul>
+                            <li data-en="Direct vs indirect prompt injection attack patterns" data-pt="Padrões de ataque de injeção de prompt direta vs indireta">Direct vs indirect prompt injection attack patterns</li>
+                            <li data-en="Jailbreaking techniques and adversarial prompts" data-pt="Técnicas de jailbreaking e prompts adversariais">Jailbreaking techniques and adversarial prompts</li>
+                            <li data-en="Defenses: input validation, prompt hardening, sandboxing" data-pt="Defesas: validação de input, endurecimento de prompt, sandboxing">Defenses: input validation, prompt hardening, sandboxing</li>
+                            <li data-en="Lab: Prompt Injection Leading to Sensitive Data Leakage" data-pt="Lab: Injeção de Prompt Levando a Fuga de Dados Sensíveis"><strong>Lab:</strong> Prompt Injection Leading to Sensitive Data Leakage</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-num">3</div>
+                    <div class="module-content">
+                        <div class="module-time">30 min</div>
+                        <h4>Sensitive Information Disclosure — LLM02:2025 <span class="lab-badge">🔬 Lab</span></h4>
+                        <ul>
+                            <li data-en="How LLMs leak training data, system prompts, and user PII" data-pt="Como os LLMs vazam dados de treino, prompts de sistema e PII">How LLMs leak training data, system prompts, and user PII</li>
+                            <li data-en="System prompt extraction and output probing attacks" data-pt="Extração de prompt de sistema e ataques de sondagem de output">System prompt extraction and output probing attacks</li>
+                            <li data-en="Data minimization and output filtering strategies" data-pt="Minimização de dados e estratégias de filtragem de output">Data minimization and output filtering strategies</li>
+                            <li data-en="Lab: Client Data Leaks in Model" data-pt="Lab: Fuga de Dados de Clientes no Modelo"><strong>Lab:</strong> Client Data Leaks in Model</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="break-card" data-en="— Break (15 min) —" data-pt="— Intervalo (15 min) —">— Break (15 min) —</div>
+
+                <div class="module-card">
+                    <div class="module-num">4</div>
+                    <div class="module-content">
+                        <div class="module-time">30 min</div>
+                        <h4>Excessive Agency — LLM06:2025 <span class="lab-badge">🔬 Lab</span></h4>
+                        <ul>
+                            <li data-en="Risks of autonomous decision-making and over-permissioned agents" data-pt="Riscos de tomada de decisão autónoma e agentes com permissões excessivas">Risks of autonomous decision-making and over-permissioned agents</li>
+                            <li data-en="Principle of least privilege for AI agents" data-pt="Princípio do mínimo privilégio para agentes AI">Principle of least privilege for AI agents</li>
+                            <li data-en="Human-in-the-loop controls and action confirmation patterns" data-pt="Controlos humanos no circuito e padrões de confirmação de ações">Human-in-the-loop controls and action confirmation patterns</li>
+                            <li data-en="Lab: Unrestricted Agent Functionality Leads to Command Injection" data-pt="Lab: Funcionalidade de Agente Irrestrita Leva a Injeção de Comandos"><strong>Lab:</strong> Unrestricted Agent Functionality Leads to Command Injection</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-num">5</div>
+                    <div class="module-content">
+                        <div class="module-time">30 min</div>
+                        <h4>Improper Output Handling — LLM05:2025 <span class="lab-badge">🔬 Lab</span></h4>
+                        <ul>
+                            <li data-en="Downstream injection via LLM-generated content (XSS, SQLi, RCE)" data-pt="Injeção a jusante via conteúdo gerado por LLM (XSS, SQLi, RCE)">Downstream injection via LLM-generated content (XSS, SQLi, RCE)</li>
+                            <li data-en="Output encoding, sanitization, and context isolation" data-pt="Codificação de output, sanitização e isolamento de contexto">Output encoding, sanitization, and context isolation</li>
+                            <li data-en="Lab: Insecure HTML Handling Leading to XSS" data-pt="Lab: Tratamento Inseguro de HTML Levando a XSS"><strong>Lab:</strong> Insecure HTML Handling Leading to XSS</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-num">6</div>
+                    <div class="module-content">
+                        <div class="module-time">30 min</div>
+                        <h4>RAG Security &amp; Data Poisoning — LLM04:2025</h4>
+                        <ul>
+                            <li data-en="RAG architecture attack surfaces and retrieval poisoning" data-pt="Superfícies de ataque de arquitetura RAG e envenenamento de recuperação">RAG architecture attack surfaces and retrieval poisoning</li>
+                            <li data-en="Embedding manipulation and semantic privilege escalation" data-pt="Manipulação de embeddings e escalada de privilégios semântica">Embedding manipulation and semantic privilege escalation</li>
+                            <li data-en="Indirect prompt injection via poisoned documents" data-pt="Injeção de prompt indireta via documentos envenenados">Indirect prompt injection via poisoned documents</li>
+                            <li data-en="Securing retrieval pipelines and knowledge base integrity" data-pt="Securização de pipelines de recuperação e integridade da base de conhecimento">Securing retrieval pipelines and knowledge base integrity</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="break-card" data-en="— Wrap-up &amp; Q&amp;A (15 min) —" data-pt="— Conclusão &amp; Q&amp;A (15 min) —">— Wrap-up &amp; Q&amp;A (15 min) —</div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Prerequisites -->
+    <section class="section section-light">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Prerequisites" data-pt="Pré-requisitos">Prerequisites</h2>
+            <ul class="check-list">
+                <li data-en="Basic understanding of software development and web technologies" data-pt="Compreensão básica de desenvolvimento de software e tecnologias web">Basic understanding of software development and web technologies</li>
+                <li data-en="Familiarity with Python and JavaScript — no expert level required" data-pt="Familiaridade com Python e JavaScript — não é necessário nível de especialista">Familiarity with Python and JavaScript — no expert level required</li>
+                <li data-en="General grasp of application security concepts (input validation, injection attacks, authentication)" data-pt="Conhecimento geral de conceitos de segurança de aplicações (validação de input, ataques de injeção, autenticação)">General grasp of application security concepts (input validation, injection attacks, authentication)</li>
+                <li data-en="Interest in AI and LLM systems — no prior machine learning experience required" data-pt="Interesse em sistemas AI e LLM — não é necessária experiência prévia em machine learning">Interest in AI and LLM systems — no prior machine learning experience required</li>
+            </ul>
+
+            <h2 class="section-title" style="text-align:left; margin-top: var(--spacing-2xl); margin-bottom: var(--spacing-xl);" data-en="What You'll Take Home" data-pt="O Que Vai Levar Para Casa">What You'll Take Home</h2>
+            <div class="deliverables-grid">
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">📚</div>
+                    <div class="deliverable-title" data-en="Digital Course Materials" data-pt="Materiais Digitais do Curso">Digital Course Materials</div>
+                    <div class="deliverable-desc" data-en="Complimentary access to all materials via the Cycubix Academy" data-pt="Acesso gratuito a todos os materiais via Cycubix Academy">Complimentary access to all materials via the Cycubix Academy</div>
+                </div>
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">🏅</div>
+                    <div class="deliverable-title" data-en="Certificate of Participation" data-pt="Certificado de Participação">Certificate of Participation</div>
+                    <div class="deliverable-desc" data-en="Issued upon successful completion of the workshop" data-pt="Emitido após conclusão bem-sucedida do workshop">Issued upon successful completion of the workshop</div>
+                </div>
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">📖</div>
+                    <div class="deliverable-title" data-en="Exclusive eBook" data-pt="eBook Exclusivo">Exclusive eBook</div>
+                    <div class="deliverable-desc" data-en="The Developer's Playbook for Large Language Model Security by Steve Wilson" data-pt="The Developer's Playbook for Large Language Model Security por Steve Wilson">The Developer's Playbook for Large Language Model Security by Steve Wilson</div>
+                </div>
+                <div class="deliverable-card">
+                    <div class="deliverable-icon">🔬</div>
+                    <div class="deliverable-title" data-en="Lab Environment Access" data-pt="Acesso ao Ambiente de Laboratório">Lab Environment Access</div>
+                    <div class="deliverable-desc" data-en="Secure AI/LLM lab environment provided during the workshop" data-pt="Ambiente de laboratório AI/LLM seguro fornecido durante o workshop">Secure AI/LLM lab environment provided during the workshop</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ticket CTA -->
+    <section class="section section-dark">
+        <div class="container" style="max-width: 700px;">
+            <div class="ticket-cta">
+                <h2 data-en="Ready to Secure AI?" data-pt="Pronto Para Securizar AI?">Ready to Secure AI?</h2>
+                <p data-en="Seats are limited. Training ticket required — separate from the main conference ticket." data-pt="Os lugares são limitados. Bilhete de formação necessário — separado do bilhete principal da conferência.">Seats are limited. Training ticket required — separate from the main conference ticket.</p>
+                <a href="#" class="btn-ticket-lg">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                    <span data-en="Book Your Seat" data-pt="Reservar o Seu Lugar">Book Your Seat</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

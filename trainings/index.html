@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trainings – OWASP AppSec Days Portugal 2026</title>
+    <meta name="description" content="Six hands-on security training workshops at OWASP AppSec Days Portugal 2026. Half-day sessions covering LLM security, threat modeling, BLE hacking, mobile app attacks, and more. Porto, September 23, 2026.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#5BA4E5">
+    <link rel="canonical" href="https://appsecdays.pt/trainings/">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="../assets/appsecdayspt2026.png">
+    <style>
+        /* ── Badge system ── */
+        .t-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            white-space: nowrap;
+        }
+        .t-badge.defender { background: rgba(91,164,229,0.18); color: #7fbfed; border: 1px solid rgba(91,164,229,0.35); }
+        .t-badge.breaker  { background: rgba(255,107,107,0.18); color: #ff9090; border: 1px solid rgba(255,107,107,0.35); }
+        .t-badge.builder  { background: rgba(78,205,196,0.18);  color: #6de6df; border: 1px solid rgba(78,205,196,0.35); }
+        .t-badge.beginner     { background: rgba(124,92,255,0.18);  color: #b8a6ff; border: 1px solid rgba(124,92,255,0.35); }
+        .t-badge.intermediate { background: rgba(255,179,71,0.18);  color: #ffc56b; border: 1px solid rgba(255,179,71,0.35); }
+
+        /* ── Slot header ── */
+        .slot-header {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+        .slot-time-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: var(--color-dark-card);
+            border: 1px solid rgba(91,164,229,0.3);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            white-space: nowrap;
+        }
+        .slot-time-pill svg { width: 14px; height: 14px; }
+        .slot-label {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-text-light);
+        }
+        .slot-divider {
+            flex: 1;
+            height: 1px;
+            background: rgba(255,255,255,0.08);
+        }
+
+        /* ── Training card ── */
+        .trainings-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+        @media (max-width: 991px) { .trainings-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px)  { .trainings-grid { grid-template-columns: 1fr; } }
+
+        .training-card {
+            background: var(--color-dark-card);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-xl);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            transition: border-color var(--transition-normal), transform var(--transition-normal), box-shadow var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+        }
+        .training-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        }
+        .training-card.defender::before { background: linear-gradient(90deg, #5BA4E5, #7C5CFF); }
+        .training-card.breaker::before  { background: linear-gradient(90deg, #FF6B6B, #FF9A9E); }
+        .training-card.builder::before  { background: linear-gradient(90deg, #4ECDC4, #45B7AA); }
+        .training-card:hover {
+            border-color: rgba(91,164,229,0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+        }
+        .training-card .badge-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .training-card .speaker-row {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+        .training-card .speaker-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+        .training-card .speaker-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+        .training-card .speaker-info .name {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--color-text-light);
+            line-height: 1.2;
+        }
+        .training-card .speaker-info .company {
+            font-size: 0.75rem;
+            color: var(--color-text-light-muted);
+        }
+        .training-card h3 {
+            font-size: 1.1rem;
+            color: var(--color-text-light);
+            line-height: 1.35;
+            margin: 0;
+        }
+        .training-card .excerpt {
+            font-size: 0.875rem;
+            color: var(--color-text-light-muted);
+            line-height: 1.6;
+            flex: 1;
+        }
+        .training-card .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 0.78rem;
+            color: var(--color-text-light-muted);
+        }
+        .training-card .meta-chip {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255,255,255,0.05);
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .training-card .meta-chip svg { width: 12px; height: 12px; }
+        .training-card .card-actions {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+        .training-card .card-actions .btn {
+            flex: 1;
+            font-size: 0.82rem;
+            padding: 0.55rem 1rem;
+            min-width: 0;
+        }
+        .btn-outline-light {
+            border: 1.5px solid rgba(255,255,255,0.2);
+            color: var(--color-text-light);
+            background: transparent;
+        }
+        .btn-outline-light:hover {
+            border-color: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.05);
+        }
+        .btn-ticket {
+            background: linear-gradient(135deg, #5BA4E5, #7C5CFF);
+            color: #fff;
+            border: none;
+        }
+        .btn-ticket:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(91,164,229,0.4);
+        }
+
+        /* ── Intro block ── */
+        .trainings-intro {
+            max-width: 720px;
+            margin: 0 auto var(--spacing-3xl);
+            text-align: center;
+        }
+        .trainings-intro p {
+            color: var(--color-text-light-muted);
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .format-chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+        .format-chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--color-text-light-muted);
+        }
+        .format-chip svg { width: 13px; height: 13px; }
+
+        /* ── Legend ── */
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+            justify-content: center;
+            margin-bottom: var(--spacing-2xl);
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.78rem;
+            color: var(--color-text-light-muted);
+        }
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </symbol>
+    </svg>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../" class="nav-logo">
+                <img src="../assets/appsecdayspt2026.png" alt="OWASP AppSec Days Portugal 2026">
+            </a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../" data-en="Home" data-pt="Início">Home</a></li>
+                <li><a href="../program/" data-en="Program" data-pt="Programa">Program</a></li>
+                <li><a href="./" class="active" data-en="Trainings" data-pt="Formações">Trainings</a></li>
+                <li><a href="../#tickets" data-en="Tickets" data-pt="Bilhetes">Tickets</a></li>
+                <li>
+                    <button class="lang-toggle" id="lang-toggle">
+                        <span class="lang-option active" data-lang="en">EN</span>
+                        <span class="lang-separator">|</span>
+                        <span class="lang-option" data-lang="pt">PT</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-background"></div>
+        <div class="container">
+            <h1 data-en="Training Workshops" data-pt="Workshops de Formação">Training Workshops</h1>
+            <p data-en="Wednesday, September 23, 2026 · Porto, Portugal · 6 half-day sessions" data-pt="Quarta-feira, 23 de Setembro, 2026 · Porto, Portugal · 6 sessões de meio-dia">Wednesday, September 23, 2026 · Porto, Portugal · 6 half-day sessions</p>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="section section-dark">
+        <div class="container">
+
+            <!-- Intro -->
+            <div class="trainings-intro">
+                <p data-en="Kick off AppSec Days Portugal with a full day of hands-on security training. Six expert-led workshops run in parallel across two time slots, covering offensive techniques, defensive strategies, and security program building. Each session is four hours of focused, practical learning." data-pt="Comece o AppSec Days Portugal com um dia completo de formação prática em segurança. Seis workshops liderados por especialistas decorrem em paralelo em dois blocos horários, abordando técnicas ofensivas, estratégias defensivas e construção de programas de segurança. Cada sessão tem quatro horas de aprendizagem focada e prática.">
+                    Kick off AppSec Days Portugal with a full day of hands-on security training. Six expert-led workshops run in parallel across two time slots, covering offensive techniques, defensive strategies, and security program building. Each session is four hours of focused, practical learning.
+                </p>
+                <div class="format-chips">
+                    <span class="format-chip">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <span data-en="4 hours each" data-pt="4 horas cada">4 hours each</span>
+                    </span>
+                    <span class="format-chip">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        <span data-en="Hands-on labs" data-pt="Laboratórios práticos">Hands-on labs</span>
+                    </span>
+                    <span class="format-chip">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        <span data-en="Separate ticket required" data-pt="Bilhete separado necessário">Separate ticket required</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="legend">
+                <span class="legend-item"><span class="legend-dot" style="background:#5BA4E5"></span> <span data-en="Defender — build secure systems" data-pt="Defender — construir sistemas seguros">Defender — build secure systems</span></span>
+                <span class="legend-item"><span class="legend-dot" style="background:#FF6B6B"></span> <span data-en="Breaker — offensive &amp; exploitation" data-pt="Breaker — ofensivo &amp; exploração">Breaker — offensive &amp; exploitation</span></span>
+                <span class="legend-item"><span class="legend-dot" style="background:#4ECDC4"></span> <span data-en="Builder — programs &amp; processes" data-pt="Builder — programas &amp; processos">Builder — programs &amp; processes</span></span>
+            </div>
+
+            <!-- Morning Slot -->
+            <div class="slot-header">
+                <div class="slot-time-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    09:00 – 13:00
+                </div>
+                <span class="slot-label" data-en="Morning Sessions" data-pt="Sessões da Manhã">Morning Sessions</span>
+                <div class="slot-divider"></div>
+            </div>
+
+            <div class="trainings-grid">
+
+                <!-- LLM Security -->
+                <div class="training-card defender">
+                    <div class="badge-row">
+                        <span class="t-badge defender" data-en="Defender" data-pt="Defender">Defender</span>
+                        <span class="t-badge intermediate" data-en="Intermediate" data-pt="Intermédio">Intermediate</span>
+                    </div>
+                    <div class="speaker-row">
+                        <div class="speaker-avatar">
+                            <img src="https://sessionize.com/image/f157-400o400o1-a4qzDHaaMUBwQ8d87cKegi.png" alt="Fabio Cerullo" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <div class="name">Fabio Cerullo</div>
+                            <div class="company">Cycubix LTD</div>
+                        </div>
+                    </div>
+                    <h3 data-en="Secure Coding for Large Language Model Applications" data-pt="Código Seguro para Aplicações de Modelos de Linguagem">Secure Coding for Large Language Model Applications</h3>
+                    <p class="excerpt" data-en="Deep-dive into the OWASP Top 10 for LLMs with hands-on labs covering Prompt Injection, Sensitive Data Disclosure, Excessive Agency, Improper Output Handling, and RAG Poisoning." data-pt="Mergulho profundo no OWASP Top 10 para LLMs com laboratórios práticos cobrindo Injeção de Prompt, Divulgação de Dados Sensíveis, Agência Excessiva, Tratamento Impróprio de Output e Envenenamento RAG.">Deep-dive into the OWASP Top 10 for LLMs with hands-on labs covering Prompt Injection, Sensitive Data Disclosure, Excessive Agency, Improper Output Handling, and RAG Poisoning.</p>
+                    <div class="meta-row">
+                        <span class="meta-chip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Auditorium 2
+                        </span>
+                        <span class="meta-chip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            4 hours
+                        </span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="llm-security.html" class="btn btn-outline-light" data-en="Learn More" data-pt="Saber Mais">Learn More</a>
+                        <a href="#" class="btn btn-ticket" data-en="Book Your Seat" data-pt="Reservar Lugar">Book Your Seat</a>
+                    </div>
+                </div>
+
+                <!-- Threat Modeling -->
+                <div class="training-card defender">
+                    <div class="badge-row">
+                        <span class="t-badge defender" data-en="Defender" data-pt="Defender">Defender</span>
+                        <span class="t-badge beginner" data-en="Beginner" data-pt="Iniciante">Beginner</span>
+                    </div>
+                    <div class="speaker-row">
+                        <div class="speaker-avatar">
+                            <img src="https://sessionize.com/image/cbb9-0o0o0-KpPDodGy1RB8z1r4yzWUS8.jpg" alt="Mike van der Bijl" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <div class="name">Mike van der Bijl</div>
+                            <div class="company" data-en="DevSecOps Expert" data-pt="Especialista DevSecOps">DevSecOps Expert</div>
+                        </div>
+                    </div>
+                    <h3 data-en="Becoming the Godfather of Threat Modeling" data-pt="Tornar-se o Padrinho da Modelação de Ameaças">Becoming the Godfather of Threat Modeling</h3>
+                    <p class="excerpt" data-en="Master the art of anticipating threats before attackers do. Hands-on STRIDE and PASTA exercises, storytelling-based delivery, and practical tools you can apply the moment you leave the room." data-pt="Domine a arte de antecipar ameaças antes dos atacantes. Exercícios práticos de STRIDE e PASTA, entrega baseada em storytelling e ferramentas práticas aplicáveis imediatamente.">Master the art of anticipating threats before attackers do. Hands-on STRIDE and PASTA exercises, storytelling-based delivery, and practical tools you can apply the moment you leave the room.</p>
+                    <div class="meta-row">
+                        <span class="meta-chip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Room C
+                        </span>
+                        <span class="meta-chip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            4 hours
+                        </span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="threat-modeling.html" class="btn btn-outline-light" data-en="Learn More" data-pt="Saber Mais">Learn More</a>
+                        <a href="#" class="btn btn-ticket" data-en="Book Your Seat" data-pt="Reservar Lugar">Book Your Seat</a>
+                    </div>
+                </div>
+
+                <!-- Juice Shop -->
+                <div class="training-card breaker">
+                    <div class="badge-row">
+                        <span class="t-badge breaker" data-en="Breaker" data-pt="Breaker">Breaker</span>
+                        <span class="t-badge beginner" data-en="Beginner" data-pt="Iniciante">Beginner</span>
+                    </div>
+                    <div class="speaker-row">
+                        <div class="speaker-avatar">
+                            <img src="https://sessionize.com/image/8d95-0o0o0-BjR3YR5j9XPfV2jBVbfaT4.jpg" alt="Björn Kimminich" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <div class="name">Björn Kimminich</div>
+                            <div class="company">OWASP Juice Shop</div>
+                        </div>
+                    </div>
+                    <h3 data-en="Hands-on Workshop: OWASP Juice Shop for Beginners" data-pt="Workshop Prático: OWASP Juice Shop para Principiantes">Hands-on Workshop: OWASP Juice Shop for Beginners</h3>
+                    <p class="excerpt" data-en="Hack the world's most beginner-friendly vulnerable app, then go behind the scenes to see how it's built, tested, and maintained as an open source project. Led by the creator himself." data-pt="Hacking à aplicação vulnerável mais amigável para iniciantes do mundo, depois veja os bastidores de como é construída e mantida como projeto open source. Liderado pelo criador.">Hack the world's most beginner-friendly vulnerable app, then go behind the scenes to see how it's built, tested, and maintained as an open source project. Led by the creator himself.</p>
+                    <div class="meta-row">
+                        <span class="meta-chip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Room B
+                        </span>
+                        <span class="meta-chip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            4 hours
+                        </span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="juice-shop.html" class="btn btn-outline-light" data-en="Learn More" data-pt="Saber Mais">Learn More</a>
+                        <a href="#" class="btn btn-ticket" data-en="Book Your Seat" data-pt="Reservar Lugar">Book Your Seat</a>
+                    </div>
+                </div>
+
+            </div><!-- /morning grid -->
+
+            <!-- Afternoon Slot -->
+            <div class="slot-header">
+                <div class="slot-time-pill">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    14:00 – 18:00
+                </div>
+                <span class="slot-label" data-en="Afternoon Sessions" data-pt="Sessões da Tarde">Afternoon Sessions</span>
+                <div class="slot-divider"></div>
+            </div>
+
+            <div class="trainings-grid">
+
+                <!-- Hacking BLE -->
+                <div class="training-card breaker">
+                    <div class="badge-row">
+                        <span class="t-badge breaker" data-en="Breaker" data-pt="Breaker">Breaker</span>
+                        <span class="t-badge beginner" data-en="Beginner" data-pt="Iniciante">Beginner</span>
+                    </div>
+                    <div class="speaker-row">
+                        <div class="speaker-avatar">
+                            <img src="https://sessionize.com/image/cd2b-0o0o0-DaKen8JxKUU8n9LVtk5VAZ.jpg" alt="David Sopas" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <div class="name">David Sopas</div>
+                            <div class="company">Char49</div>
+                        </div>
+                    </div>
+                    <h3 data-en="Hacking BLE 101" data-pt="Hacking BLE 101">Hacking BLE 101</h3>
+                    <p class="excerpt" data-en="From BLE protocol fundamentals to real-world attacks — sniffing, GATT enumeration, replay attacks, MitM, and downgrade exploits. Get hands-on with the tools used by professional IoT security researchers." data-pt="Dos fundamentos do protocolo BLE a ataques reais — sniffing, enumeração GATT, ataques de replay, MitM e exploits de downgrade. Pratique com as ferramentas usadas por investigadores de segurança IoT.">From BLE protocol fundamentals to real-world attacks — sniffing, GATT enumeration, replay attacks, MitM, and downgrade exploits. Get hands-on with the tools used by professional IoT security researchers.</p>
+                    <div class="meta-row">
+                        <span class="meta-chip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Auditorium 2
+                        </span>
+                        <span class="meta-chip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            4 hours
+                        </span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="hacking-ble.html" class="btn btn-outline-light" data-en="Learn More" data-pt="Saber Mais">Learn More</a>
+                        <a href="#" class="btn btn-ticket" data-en="Book Your Seat" data-pt="Reservar Lugar">Book Your Seat</a>
+                    </div>
+                </div>
+
+                <!-- Security Champions -->
+                <div class="training-card builder">
+                    <div class="badge-row">
+                        <span class="t-badge builder" data-en="Builder" data-pt="Builder">Builder</span>
+                        <span class="t-badge intermediate" data-en="Intermediate" data-pt="Intermédio">Intermediate</span>
+                    </div>
+                    <div class="speaker-row">
+                        <div class="speaker-avatar">
+                            <img src="https://sessionize.com/image/a1e9-0o0o0-hHG5AcfEQvLkFehwi53r7b.jpg" alt="Juliane Reimann" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <div class="name">Juliane Reimann &amp; Marisa Fagan</div>
+                            <div class="company" data-en="Full Circle Security / OWASP" data-pt="Full Circle Security / OWASP">Full Circle Security / OWASP</div>
+                        </div>
+                    </div>
+                    <h3 data-en="How to Build a Successful Security Champions Program" data-pt="Como Construir um Programa de Campeões de Segurança">How to Build a Successful Security Champions Program</h3>
+                    <p class="excerpt" data-en="Design and launch a Security Champions Program that actually sticks. Covers motivation theory, personality types, gamification, OKRs, and a practical exercise where you build your own program." data-pt="Conceba e lance um Programa de Campeões de Segurança que resulte na prática. Abrange teoria da motivação, tipos de personalidade, gamificação, OKRs e um exercício prático onde constrói o seu próprio programa.">Design and launch a Security Champions Program that actually sticks. Covers motivation theory, personality types, gamification, OKRs, and a practical exercise where you build your own program.</p>
+                    <div class="meta-row">
+                        <span class="meta-chip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Room B
+                        </span>
+                        <span class="meta-chip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            4 hours
+                        </span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="security-champions.html" class="btn btn-outline-light" data-en="Learn More" data-pt="Saber Mais">Learn More</a>
+                        <a href="#" class="btn btn-ticket" data-en="Book Your Seat" data-pt="Reservar Lugar">Book Your Seat</a>
+                    </div>
+                </div>
+
+                <!-- Mobile App Attacks -->
+                <div class="training-card builder">
+                    <div class="badge-row">
+                        <span class="t-badge builder" data-en="Builder" data-pt="Builder">Builder</span>
+                        <span class="t-badge intermediate" data-en="Intermediate" data-pt="Intermédio">Intermediate</span>
+                    </div>
+                    <div class="speaker-row">
+                        <div class="speaker-avatar">
+                            <img src="https://sessionize.com/image/1710-0o0o0-huHhCxyJ5h2CbGtue7Kuib.png" alt="Abraham Aranguren" loading="lazy">
+                        </div>
+                        <div class="speaker-info">
+                            <div class="name">Abraham Aranguren</div>
+                            <div class="company">7ASecurity</div>
+                        </div>
+                    </div>
+                    <h3 data-en="Practical Mobile App Attacks By Example" data-pt="Ataques Práticos a Aplicações Móveis Com Exemplos">Practical Mobile App Attacks By Example</h3>
+                    <p class="excerpt" data-en="Real-world Android and iOS security flaws from years of pentesting. Vulnerability chains, mobile API attacks, XSS, SQLi, RCE — all with case studies from real engagements. All action, no fluff." data-pt="Falhas de segurança reais em Android e iOS de anos de pentesting. Cadeias de vulnerabilidades, ataques a APIs móveis, XSS, SQLi, RCE — tudo com casos de estudo de projetos reais. Tudo prático.">Real-world Android and iOS security flaws from years of pentesting. Vulnerability chains, mobile API attacks, XSS, SQLi, RCE — all with case studies from real engagements. All action, no fluff.</p>
+                    <div class="meta-row">
+                        <span class="meta-chip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Room C
+                        </span>
+                        <span class="meta-chip">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            4 hours
+                        </span>
+                    </div>
+                    <div class="card-actions">
+                        <a href="mobile-app-attacks.html" class="btn btn-outline-light" data-en="Learn More" data-pt="Saber Mais">Learn More</a>
+                        <a href="#" class="btn btn-ticket" data-en="Book Your Seat" data-pt="Reservar Lugar">Book Your Seat</a>
+                    </div>
+                </div>
+
+            </div><!-- /afternoon grid -->
+
+        </div>
+    </section>
+
+    <!-- CTA footer -->
+    <section class="section" style="background: var(--gradient-cta); text-align: center;">
+        <div class="container" style="max-width: 640px;">
+            <h2 style="color: #fff; margin-bottom: var(--spacing-md);" data-en="Questions about the trainings?" data-pt="Questões sobre as formações?">Questions about the trainings?</h2>
+            <p style="color: rgba(255,255,255,0.75); margin-bottom: var(--spacing-xl);" data-en="Each workshop is limited in capacity. Training tickets are separate from the main conference ticket." data-pt="Cada workshop tem capacidade limitada. Os bilhetes de formação são separados do bilhete principal da conferência.">Each workshop is limited in capacity. Training tickets are separate from the main conference ticket.</p>
+            <a href="../#about" class="btn btn-primary btn-lg" data-en="Contact the Team" data-pt="Contactar a Equipa">Contact the Team</a>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

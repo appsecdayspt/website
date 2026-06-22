@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical Mobile App Attacks By Example – OWASP AppSec Days Portugal 2026</title>
+    <meta name="description" content="Real-world Android &amp; iOS security flaws from years of pentesting. Abraham Aranguren (7ASecurity, Black Hat USA instructor). September 23, 2026 in Porto.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#5BA4E5">
+    <link rel="canonical" href="https://appsecdays.pt/trainings/mobile-app-attacks.html">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="icon" type="image/png" href="../assets/appsecdayspt2026.png">
+    <style>
+        .t-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
+        .t-badge.builder { background: rgba(78,205,196,0.18); color: #6de6df; border: 1px solid rgba(78,205,196,0.35); }
+        .t-badge.intermediate { background: rgba(255,179,71,0.18); color: #ffc56b; border: 1px solid rgba(255,179,71,0.35); }
+        .training-meta-bar { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); margin-top: var(--spacing-lg); justify-content: center; }
+        .meta-pill { display: flex; align-items: center; gap: 7px; padding: 7px 16px; border-radius: 30px; font-size: 0.82rem; font-weight: 600; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
+        .meta-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+        .speaker-layout { display: grid; grid-template-columns: 200px 1fr; gap: var(--spacing-2xl); align-items: start; }
+        @media (max-width: 768px) { .speaker-layout { grid-template-columns: 1fr; } }
+        .speaker-photo-wrap { width: 200px; height: 200px; border-radius: var(--radius-xl); overflow: hidden; border: 3px solid rgba(78,205,196,0.3); flex-shrink: 0; }
+        @media (max-width: 768px) { .speaker-photo-wrap { width: 140px; height: 140px; } }
+        .speaker-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+        .speaker-name { font-size: 1.5rem; font-weight: 900; color: var(--color-text-dark); margin-bottom: 4px; }
+        .speaker-tagline { font-size: 0.95rem; color: var(--color-text-dark-muted); margin-bottom: var(--spacing-md); }
+        .speaker-bio { color: var(--color-text-dark); line-height: 1.75; font-size: 0.95rem; }
+        .speaker-links { display: flex; gap: var(--spacing-sm); margin-top: var(--spacing-md); flex-wrap: wrap; }
+        .speaker-link { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: var(--radius-md); font-size: 0.8rem; font-weight: 700; border: 1.5px solid rgba(78,205,196,0.4); color: #4ECDC4; transition: all var(--transition-fast); }
+        .speaker-link:hover { background: #4ECDC4; color: #0d2626; border-color: #4ECDC4; }
+        .speaker-link svg { width: 14px; height: 14px; }
+        .conferences-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-top: var(--spacing-md); }
+        .conf-chip { background: rgba(78,205,196,0.06); border: 1px solid rgba(78,205,196,0.15); border-radius: var(--radius-md); padding: 8px 12px; font-size: 0.78rem; font-weight: 600; color: #6de6df; text-align: center; }
+        .modules-grid { display: flex; flex-direction: column; gap: var(--spacing-md); }
+        .module-card { background: var(--color-dark-card); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-lg); padding: var(--spacing-lg) var(--spacing-xl); display: grid; grid-template-columns: auto 1fr; gap: var(--spacing-md); align-items: start; }
+        .module-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(78,205,196,0.15); border: 1.5px solid rgba(78,205,196,0.4); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 900; color: #6de6df; flex-shrink: 0; }
+        .module-content h4 { color: var(--color-text-light); font-size: 0.95rem; margin-bottom: 6px; }
+        .module-content ul { list-style: none; padding: 0; }
+        .module-content ul li { color: rgba(255,255,255,0.6); font-size: 0.85rem; padding: 2px 0; display: flex; gap: 8px; }
+        .module-content ul li::before { content: '—'; color: rgba(78,205,196,0.5); flex-shrink: 0; }
+        .vulnerability-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; margin-top: var(--spacing-lg); }
+        .vuln-chip { background: rgba(78,205,196,0.06); border: 1px solid rgba(78,205,196,0.15); border-radius: var(--radius-md); padding: 8px 12px; font-size: 0.78rem; font-weight: 600; color: #6de6df; }
+        .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+        .check-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.95rem; color: var(--color-text-dark); line-height: 1.5; }
+        .check-list li::before { content: '✓'; color: #4ECDC4; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+        .quote-block { background: rgba(78,205,196,0.05); border-left: 4px solid #4ECDC4; border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: var(--spacing-lg); margin: var(--spacing-xl) 0; }
+        .quote-block p { color: rgba(255,255,255,0.75); font-style: italic; font-size: 1rem; line-height: 1.7; }
+        .ticket-cta { background: linear-gradient(135deg, #0d2626, #1a5c56); border-radius: var(--radius-xl); padding: var(--spacing-2xl) var(--spacing-xl); text-align: center; color: #fff; }
+        .ticket-cta h2 { color: #fff; margin-bottom: var(--spacing-sm); font-size: 1.75rem; }
+        .ticket-cta p { color: rgba(255,255,255,0.75); margin-bottom: var(--spacing-xl); }
+        .ticket-cta .btn-ticket-lg { display: inline-flex; align-items: center; gap: 10px; background: #4ECDC4; color: #0d2626; padding: 1rem 2.5rem; border-radius: var(--radius-md); font-weight: 900; font-size: 1.05rem; box-shadow: 0 8px 30px rgba(78,205,196,0.3); transition: all var(--transition-normal); }
+        .ticket-cta .btn-ticket-lg:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(78,205,196,0.4); opacity: 0.9; }
+        .ticket-cta .btn-ticket-lg svg { width: 18px; height: 18px; }
+        .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #4ECDC4; margin-bottom: var(--spacing-xl); }
+        .back-link:hover { text-decoration: underline; }
+        .back-link svg { width: 14px; height: 14px; }
+        .free-access-banner { display: flex; align-items: flex-start; gap: var(--spacing-md); background: rgba(78,205,196,0.08); border: 1px solid rgba(78,205,196,0.25); border-radius: var(--radius-lg); padding: var(--spacing-lg); margin-bottom: var(--spacing-xl); }
+        .free-access-banner svg { width: 22px; height: 22px; color: #4ECDC4; flex-shrink: 0; margin-top: 2px; }
+        .free-access-banner p { color: rgba(255,255,255,0.75); font-size: 0.9rem; line-height: 1.6; }
+        .free-access-banner a { color: #6de6df; text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </symbol>
+    </svg>
+
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="../" class="nav-logo"><img src="../assets/appsecdayspt2026.png" alt="OWASP AppSec Days Portugal 2026"></a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="../" data-en="Home" data-pt="Início">Home</a></li>
+                <li><a href="../program/" data-en="Program" data-pt="Programa">Program</a></li>
+                <li><a href="./" data-en="Trainings" data-pt="Formações">Trainings</a></li>
+                <li><a href="../#tickets" data-en="Tickets" data-pt="Bilhetes">Tickets</a></li>
+                <li><button class="lang-toggle" id="lang-toggle"><span class="lang-option active" data-lang="en">EN</span><span class="lang-separator">|</span><span class="lang-option" data-lang="pt">PT</span></button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="page-header-background"></div>
+        <div class="container">
+            <div style="display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom: var(--spacing-md);">
+                <span class="t-badge builder">Builder</span>
+                <span class="t-badge intermediate">Intermediate</span>
+            </div>
+            <h1 style="font-size: clamp(1.6rem, 4vw, 2.8rem);" data-en="Practical Mobile App Attacks By Example" data-pt="Ataques Práticos a Aplicações Móveis Com Exemplos">Practical Mobile App Attacks By Example</h1>
+            <div class="training-meta-bar">
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span data-en="September 23, 2026" data-pt="23 de Setembro, 2026">September 23, 2026</span></span>
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>14:00 – 18:00</span>
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Room C</span>
+                <span class="meta-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><span data-en="4 Hours · Android &amp; iOS · Real Case Studies" data-pt="4 Horas · Android &amp; iOS · Casos de Estudo Reais">4 Hours · Android &amp; iOS · Real Case Studies</span></span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container" style="max-width: 860px;">
+            <a href="./" class="back-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg><span data-en="All Trainings" data-pt="Todas as Formações">All Trainings</span></a>
+
+            <div class="free-access-banner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <p data-en="Get FREE access to the slides, recording and vulnerable apps to practice after the event at <a href='https://7asecurity.com/free-workshop-mobile-practical' target='_blank' rel='noopener noreferrer'>7asecurity.com/free-workshop-mobile-practical</a>" data-pt="Obtenha acesso GRATUITO aos slides, gravação e apps vulneráveis para praticar após o evento em <a href='https://7asecurity.com/free-workshop-mobile-practical' target='_blank' rel='noopener noreferrer'>7asecurity.com/free-workshop-mobile-practical</a>">Get FREE access to the slides, recording and vulnerable apps to practice after the event at <a href="https://7asecurity.com/free-workshop-mobile-practical" target="_blank" rel="noopener noreferrer">7asecurity.com/free-workshop-mobile-practical</a></p>
+            </div>
+
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-lg);" data-en="About This Workshop" data-pt="Sobre Este Workshop">About This Workshop</h2>
+            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1.05rem; margin-bottom: var(--spacing-md);" data-en="A significant amount of confusion exists about what kind of damage is possible when vulnerabilities are found in mobile apps. This workshop solves that problem with a comprehensive, entirely practical walkthrough of Android and iOS security flaws identified over multiple years of penetration testing." data-pt="Existe muita confusão sobre que tipo de dano é possível quando se encontram vulnerabilidades em aplicações móveis. Este workshop resolve esse problema com um percurso abrangente e totalmente prático de falhas de segurança Android e iOS identificadas ao longo de múltiplos anos de testes de penetração.">A significant amount of confusion exists about what kind of damage is possible when vulnerabilities are found in mobile apps. This workshop solves that problem with a comprehensive, entirely practical walkthrough of Android and iOS security flaws identified over multiple years of penetration testing.</p>
+            <p style="color: rgba(255,255,255,0.75); line-height: 1.8; font-size: 1.05rem; margin-bottom: var(--spacing-md);" data-en="Attendees get training portal access to practice attack vectors — including multiple mobile app attack surfaces, deep links, and mobile app data exfiltration with XSS — with lifetime access to vulnerable apps, guided exercise PDFs, and video recordings." data-pt="Os participantes obtêm acesso ao portal de formação para praticar vetores de ataque — incluindo múltiplas superfícies de ataque de aplicações móveis, deep links e exfiltração de dados de aplicações móveis com XSS — com acesso vitalício a aplicações vulneráveis, PDFs de exercícios guiados e gravações de vídeo.">Attendees get training portal access to practice attack vectors — including multiple mobile app attack surfaces, deep links, and mobile app data exfiltration with XSS — with lifetime access to vulnerable apps, guided exercise PDFs, and video recordings.</p>
+
+            <div class="quote-block">
+                <p data-en="&ldquo;Please come caffeinated — the audience will be challenged to spot vulnerabilities at any moment.&rdquo;" data-pt="&ldquo;Por favor venha com cafeína — o público será desafiado a detetar vulnerabilidades a qualquer momento.&rdquo;">"Please come caffeinated — the audience will be challenged to spot vulnerabilities at any moment."</p>
+            </div>
+
+            <p style="color: rgba(255,255,255,0.5); font-size: 0.82rem; margin-top: var(--spacing-sm);" data-en="Topics covered include (not limited to):" data-pt="Tópicos abordados incluem (não limitado a):">Topics covered include (not limited to):</p>
+            <div class="vulnerability-grid">
+                <div class="vuln-chip">Copy-paste attacks</div>
+                <div class="vuln-chip">Premium number dialing</div>
+                <div class="vuln-chip">Custom URLs &amp; Deep Links</div>
+                <div class="vuln-chip">XSS</div>
+                <div class="vuln-chip">SQLi</div>
+                <div class="vuln-chip">RCE</div>
+                <div class="vuln-chip">MitM attacks</div>
+                <div class="vuln-chip">Path traversals</div>
+                <div class="vuln-chip">Data leaks</div>
+                <div class="vuln-chip">Persistent XSS</div>
+                <div class="vuln-chip">Data exfiltration</div>
+                <div class="vuln-chip">Mobile API attacks</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Your Trainer" data-pt="O Seu Formador">Your Trainer</h2>
+            <div class="speaker-layout">
+                <div class="speaker-photo-wrap"><img src="https://sessionize.com/image/1710-0o0o0-huHhCxyJ5h2CbGtue7Kuib.png" alt="Abraham Aranguren"></div>
+                <div>
+                    <div class="speaker-name">Abraham Aranguren</div>
+                    <div class="speaker-tagline">Founder &amp; CEO, 7ASecurity · OWASP OWTF Project Leader · CISSP, OSCP, GWEB</div>
+                    <p class="speaker-bio" data-en="Abraham is the founder and CEO of 7ASecurity, an ISO 27001 and SOC 2–certified cybersecurity consultancy and OWASP Platinum Supporter. With more than 24 years of IT experience and over 17 years in information security, he has led engagements for the Linux Foundation, Mozilla, the Tor Project, The Guardian, and many others." data-pt="Abraham é o fundador e CEO da 7ASecurity, uma consultora de cibersegurança certificada ISO 27001 e SOC 2 e Apoiante Platinum da OWASP. Com mais de 24 anos de experiência em TI e mais de 17 anos em segurança da informação, liderou projetos para a Linux Foundation, Mozilla, Tor Project, The Guardian e muitos outros.">Abraham is the founder and CEO of 7ASecurity, an ISO 27001 and SOC 2–certified cybersecurity consultancy and OWASP Platinum Supporter. With more than 24 years of IT experience and over 17 years in information security, he has led engagements for the Linux Foundation, Mozilla, the Tor Project, The Guardian, and many others.</p>
+                    <p class="speaker-bio" style="margin-top: var(--spacing-sm);" data-en="He is the lead author and primary instructor for 7ASecurity's Mobile, Web, and Desktop (Electron) application security courses, delivered at:" data-pt="É o autor principal e instrutor principal dos cursos de segurança de aplicações Móveis, Web e Desktop (Electron) da 7ASecurity, ministrados em:">He is the lead author and primary instructor for 7ASecurity's Mobile, Web, and Desktop (Electron) application security courses, delivered at:</p>
+                    <div class="conferences-grid">
+                        <div class="conf-chip">Black Hat USA</div>
+                        <div class="conf-chip">DEF CON</div>
+                        <div class="conf-chip">OWASP Global AppSec</div>
+                        <div class="conf-chip">LASCON</div>
+                        <div class="conf-chip">BruCON</div>
+                        <div class="conf-chip">NorthSec</div>
+                        <div class="conf-chip">Nullcon</div>
+                        <div class="conf-chip">CODE BLUE Tokyo</div>
+                    </div>
+                    <div class="speaker-links" style="margin-top: var(--spacing-md);">
+                        <a href="https://www.linkedin.com/in/abrahamaranguren/" target="_blank" rel="noopener noreferrer" class="speaker-link"><svg viewBox="0 0 24 24" fill="currentColor"><use href="#linkedin-icon"/></svg>LinkedIn</a>
+                        <a href="https://7asecurity.com/blog/" target="_blank" rel="noopener noreferrer" class="speaker-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Blog</a>
+                        <a href="https://7asecurity.com/" target="_blank" rel="noopener noreferrer" class="speaker-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>7ASecurity</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Workshop Structure" data-pt="Estrutura do Workshop">Workshop Structure</h2>
+            <div class="modules-grid">
+                <div class="module-card">
+                    <div class="module-num">1</div>
+                    <div class="module-content">
+                        <h4 data-en="Warm-up: Easy Vulnerabilities" data-pt="Aquecimento: Vulnerabilidades Fáceis">Warm-up: Easy Vulnerabilities</h4>
+                        <ul>
+                            <li data-en="Starting with relatively straightforward findings from real-world apps" data-pt="Começar com descobertas relativamente simples de aplicações reais">Starting with relatively straightforward findings from real-world apps</li>
+                            <li data-en="Copy-paste attacks, premium number dialing, and insecure data storage" data-pt="Ataques copy-paste, discagem de números premium e armazenamento inseguro de dados">Copy-paste attacks, premium number dialing, and insecure data storage</li>
+                            <li data-en="Audience challenge: spot the vulnerability before it's revealed" data-pt="Desafio para o público: identificar a vulnerabilidade antes de ser revelada">Audience challenge: spot the vulnerability before it's revealed</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">2</div>
+                    <div class="module-content">
+                        <h4 data-en="Intermediate Attack Vectors" data-pt="Vetores de Ataque Intermédios">Intermediate Attack Vectors</h4>
+                        <ul>
+                            <li data-en="Deep Links and custom URL scheme abuse" data-pt="Deep Links e abuso de esquemas de URL personalizados">Deep Links and custom URL scheme abuse</li>
+                            <li data-en="XSS in mobile apps: persistent and reflected" data-pt="XSS em aplicações móveis: persistente e refletido">XSS in mobile apps: persistent and reflected</li>
+                            <li data-en="SQLi, path traversals, and insecure API communication" data-pt="SQLi, path traversals e comunicação API insegura">SQLi, path traversals, and insecure API communication</li>
+                            <li data-en="Case study: apps that report human rights abuse — security as life or death" data-pt="Estudo de caso: aplicações que relatam abuso de direitos humanos — segurança como questão de vida ou morte">Case study: apps that report human rights abuse — security as life or death</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">3</div>
+                    <div class="module-content">
+                        <h4 data-en="Vulnerability Chaining &amp; Impact Demonstration" data-pt="Encadeamento de Vulnerabilidades &amp; Demonstração de Impacto">Vulnerability Chaining &amp; Impact Demonstration</h4>
+                        <ul>
+                            <li data-en="Chaining multiple vulnerabilities to maximize impact: RCE via SQLi, data exfiltration via XSS" data-pt="Encadear múltiplas vulnerabilidades para maximizar o impacto: RCE via SQLi, exfiltração de dados via XSS">Chaining multiple vulnerabilities to maximize impact: RCE via SQLi, data exfiltration via XSS</li>
+                            <li data-en="Why mobile findings are often downplayed — and how to demonstrate real impact" data-pt="Porque as descobertas móveis são frequentemente subestimadas — e como demonstrar impacto real">Why mobile findings are often downplayed — and how to demonstrate real impact</li>
+                            <li data-en="Case studies from high-profile open source security audits (password vaults, privacy browsers)" data-pt="Estudos de caso de auditorias de segurança open source de alto perfil (cofres de senhas, browsers de privacidade)">Case studies from high-profile open source security audits (password vaults, privacy browsers)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">4</div>
+                    <div class="module-content">
+                        <h4 data-en="Mobile API Security" data-pt="Segurança de APIs Móveis">Mobile API Security</h4>
+                        <ul>
+                            <li data-en="Attacks against the APIs behind mobile apps" data-pt="Ataques contra as APIs por detrás das aplicações móveis">Attacks against the APIs behind mobile apps</li>
+                            <li data-en="MitM attacks against mobile API traffic" data-pt="Ataques MitM contra tráfego de API móvel">MitM attacks against mobile API traffic</li>
+                            <li data-en="Common API security issues found in real-world mobile pentests" data-pt="Problemas comuns de segurança de API encontrados em pentests móveis reais">Common API security issues found in real-world mobile pentests</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="module-card">
+                    <div class="module-num">5</div>
+                    <div class="module-content">
+                        <h4 data-en="Hands-on Practice" data-pt="Prática Prática">Hands-on Practice</h4>
+                        <ul>
+                            <li data-en="Training portal access with vulnerable apps to practice attack vectors" data-pt="Acesso ao portal de formação com aplicações vulneráveis para praticar vetores de ataque">Training portal access with vulnerable apps to practice attack vectors</li>
+                            <li data-en="Guided exercises with step-by-step PDFs" data-pt="Exercícios guiados com PDFs passo a passo">Guided exercises with step-by-step PDFs</li>
+                            <li data-en="Lifetime access to all materials after the workshop" data-pt="Acesso vitalício a todos os materiais após o workshop">Lifetime access to all materials after the workshop</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light">
+        <div class="container" style="max-width: 860px;">
+            <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="What You'll Take Home" data-pt="O Que Vai Levar Para Casa">What You'll Take Home</h2>
+            <ul class="check-list">
+                <li data-en="A deep dive into years of mobile security experience in only a few hours" data-pt="Uma imersão profunda em anos de experiência de segurança móvel em apenas algumas horas">A deep dive into years of mobile security experience in only a few hours</li>
+                <li data-en="Hands-on skills to get started with mobile app penetration testing and defense" data-pt="Competências práticas para começar com testes de penetração e defesa de aplicações móveis">Hands-on skills to get started with mobile app penetration testing and defense</li>
+                <li data-en="Knowledge of multiple interesting attack vectors and how to chain them" data-pt="Conhecimento de múltiplos vetores de ataque interessantes e como encadeá-los">Knowledge of multiple interesting attack vectors and how to chain them</li>
+                <li data-en="100% case studies from the field — no theoretical nonsense" data-pt="100% estudos de caso do campo — sem non-sense teórico">100% case studies from the field — no theoretical nonsense</li>
+                <li data-en="Lifetime access to vulnerable apps, slides and recordings via the 7ASecurity training portal" data-pt="Acesso vitalício a aplicações vulneráveis, slides e gravações via o portal de formação 7ASecurity">Lifetime access to vulnerable apps, slides and recordings via the 7ASecurity training portal</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section section-dark">
+        <div class="container" style="max-width: 700px;">
+            <div class="ticket-cta">
+                <h2 data-en="All Action, No Fluff." data-pt="Tudo Prático, Sem Fluff.">All Action, No Fluff.</h2>
+                <p data-en="Seats are limited. Training ticket required — separate from the main conference ticket." data-pt="Os lugares são limitados. Bilhete de formação necessário — separado do bilhete principal da conferência.">Seats are limited. Training ticket required — separate from the main conference ticket.</p>
+                <a href="#" class="btn-ticket-lg">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/></svg>
+                    <span data-en="Book Your Seat" data-pt="Reservar o Seu Lugar">Book Your Seat</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
