@@ -10,52 +10,8 @@
     <link rel="canonical" href="https://appsecdays.pt/trainings/security-champions.html">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="icon" type="image/png" href="../assets/appsecdayspt2026.png">
-    <style>
-        .t-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 20px; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
-        .t-badge.builder { background: rgba(78,205,196,0.18); color: #6de6df; border: 1px solid rgba(78,205,196,0.35); }
-        .t-badge.intermediate { background: rgba(255,179,71,0.18); color: #ffc56b; border: 1px solid rgba(255,179,71,0.35); }
-        .training-meta-bar { display: flex; flex-wrap: wrap; gap: var(--spacing-sm); margin-top: var(--spacing-lg); justify-content: center; }
-        .meta-pill { display: flex; align-items: center; gap: 7px; padding: 7px 16px; border-radius: 30px; font-size: 0.82rem; font-weight: 600; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
-        .meta-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
-        .speakers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: var(--spacing-xl); }
-        .speaker-card { background: var(--color-light-surface); border: 1px solid rgba(0,0,0,0.07); border-radius: var(--radius-xl); padding: var(--spacing-xl); display: flex; gap: var(--spacing-lg); }
-        @media (max-width: 600px) { .speaker-card { flex-direction: column; } }
-        .speaker-photo-wrap { width: 110px; height: 110px; border-radius: var(--radius-lg); overflow: hidden; border: 3px solid rgba(78,205,196,0.3); flex-shrink: 0; }
-        .speaker-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
-        .speaker-name { font-size: 1.1rem; font-weight: 900; color: var(--color-text-dark); margin-bottom: 2px; }
-        .speaker-tagline { font-size: 0.78rem; color: var(--color-text-dark-muted); margin-bottom: var(--spacing-sm); line-height: 1.4; }
-        .speaker-bio { color: var(--color-text-dark); line-height: 1.65; font-size: 0.875rem; margin-bottom: var(--spacing-sm); }
-        .speaker-links { display: flex; gap: 6px; flex-wrap: wrap; }
-        .speaker-link { display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px; border-radius: var(--radius-md); font-size: 0.75rem; font-weight: 700; border: 1.5px solid rgba(78,205,196,0.4); color: #4ECDC4; transition: all var(--transition-fast); }
-        .speaker-link:hover { background: #4ECDC4; color: #fff; border-color: #4ECDC4; }
-        .speaker-link svg { width: 12px; height: 12px; }
-        .modules-grid { display: flex; flex-direction: column; gap: var(--spacing-md); }
-        .module-card { background: var(--color-dark-card); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-lg); padding: var(--spacing-lg) var(--spacing-xl); display: grid; grid-template-columns: auto 1fr; gap: var(--spacing-md); align-items: start; }
-        .module-num { width: 36px; height: 36px; border-radius: 50%; background: rgba(78,205,196,0.15); border: 1.5px solid rgba(78,205,196,0.4); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 900; color: #6de6df; flex-shrink: 0; }
-        .module-content h4 { color: var(--color-text-light); font-size: 0.95rem; margin-bottom: 6px; }
-        .module-content ul { list-style: none; padding: 0; }
-        .module-content ul li { color: rgba(255,255,255,0.6); font-size: 0.85rem; padding: 2px 0; display: flex; gap: 8px; }
-        .module-content ul li::before { content: '—'; color: rgba(78,205,196,0.5); flex-shrink: 0; }
-        .hands-on-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #4ECDC4; background: rgba(78,205,196,0.12); border: 1px solid rgba(78,205,196,0.3); padding: 2px 8px; border-radius: 10px; margin-left: 8px; }
-        .break-card { background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: var(--spacing-sm) var(--spacing-xl); text-align: center; font-size: 0.8rem; color: rgba(255,255,255,0.3); font-style: italic; }
-        .check-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-        .check-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 0.95rem; color: var(--color-text-dark); line-height: 1.5; }
-        .check-list li::before { content: '✓'; color: #4ECDC4; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
-        .owasp-note { background: rgba(78,205,196,0.06); border: 1px solid rgba(78,205,196,0.2); border-radius: var(--radius-lg); padding: var(--spacing-lg); margin-top: var(--spacing-xl); }
-        .owasp-note p { color: rgba(255,255,255,0.65); font-size: 0.875rem; line-height: 1.6; }
-        .owasp-note a { color: #6de6df; text-decoration: underline; }
-        .ticket-cta { background: linear-gradient(135deg, #0d2626, #1a5c56); border-radius: var(--radius-xl); padding: var(--spacing-2xl) var(--spacing-xl); text-align: center; color: #fff; }
-        .ticket-cta h2 { color: #fff; margin-bottom: var(--spacing-sm); font-size: 1.75rem; }
-        .ticket-cta p { color: rgba(255,255,255,0.75); margin-bottom: var(--spacing-xl); }
-        .ticket-cta .btn-ticket-lg { display: inline-flex; align-items: center; gap: 10px; background: #4ECDC4; color: #0d2626; padding: 1rem 2.5rem; border-radius: var(--radius-md); font-weight: 900; font-size: 1.05rem; box-shadow: 0 8px 30px rgba(78,205,196,0.3); transition: all var(--transition-normal); }
-        .ticket-cta .btn-ticket-lg:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(78,205,196,0.4); opacity: 0.9; }
-        .ticket-cta .btn-ticket-lg svg { width: 18px; height: 18px; }
-        .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #4ECDC4; margin-bottom: var(--spacing-xl); }
-        .back-link:hover { text-decoration: underline; }
-        .back-link svg { width: 14px; height: 14px; }
-    </style>
 </head>
-<body>
+<body class="training-builder">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="linkedin-icon" viewBox="0 0 24 24" fill="currentColor">
             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -106,8 +62,8 @@
     <section class="section section-light">
         <div class="container" style="max-width: 860px;">
             <h2 class="section-title" style="text-align:left; margin-bottom: var(--spacing-xl);" data-en="Your Trainers" data-pt="Os Seus Formadores">Your Trainers</h2>
-            <div class="speakers-grid">
-                <div class="speaker-card">
+            <div class="trainers-grid">
+                <div class="trainer-card">
                     <div class="speaker-photo-wrap"><img src="https://sessionize.com/image/a1e9-0o0o0-hHG5AcfEQvLkFehwi53r7b.jpg" alt="Juliane Reimann"></div>
                     <div>
                         <div class="speaker-name">Juliane Reimann</div>
@@ -119,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="speaker-card">
+                <div class="trainer-card">
                     <div class="speaker-photo-wrap"><img src="https://sessionize.com/image/d1ae-0o0o0-huTUPt3585vJWAcjeQhydr.jpg" alt="Marisa Fagan"></div>
                     <div>
                         <div class="speaker-name">Marisa Fagan</div>
@@ -173,7 +129,7 @@
                 <div class="module-card">
                     <div class="module-num">4</div>
                     <div class="module-content">
-                        <h4 data-en="Dealing with Different Personality Types" data-pt="Lidar com Diferentes Tipos de Personalidade">Dealing with Different Personality Types <span class="hands-on-badge">🤝 Group Activity</span></h4>
+                        <h4 data-en="Dealing with Different Personality Types" data-pt="Lidar com Diferentes Tipos de Personalidade">Dealing with Different Personality Types <span class="lab-badge">🤝 Group Activity</span></h4>
                         <ul>
                             <li data-en="Group discussion: challenges people of different personality types face in security programs" data-pt="Discussão de grupo: desafios que pessoas de diferentes tipos de personalidade enfrentam em programas de segurança">Group discussion: challenges people of different personality types face in security programs</li>
                             <li data-en="Strategies and tactics for each type" data-pt="Estratégias e táticas para cada tipo">Strategies and tactics for each type</li>
@@ -216,7 +172,7 @@
                 <div class="module-card">
                     <div class="module-num">8</div>
                     <div class="module-content">
-                        <h4 data-en="Practical Exercise: Build Your Own Program" data-pt="Exercício Prático: Construa o Seu Próprio Programa">Practical Exercise: Build Your Own Program <span class="hands-on-badge">📝 Worksheet</span></h4>
+                        <h4 data-en="Practical Exercise: Build Your Own Program" data-pt="Exercício Prático: Construa o Seu Próprio Programa">Practical Exercise: Build Your Own Program <span class="lab-badge">📝 Worksheet</span></h4>
                         <ul>
                             <li data-en="Define goals, stakeholders, and a communication strategy for a fictional company" data-pt="Definir objetivos, partes interessadas e uma estratégia de comunicação para uma empresa fictícia">Define goals, stakeholders, and a communication strategy for a fictional company</li>
                             <li data-en="Develop a strategic rollout plan for your Security Champions Program" data-pt="Desenvolver um plano de implementação estratégico para o seu Programa de Campeões de Segurança">Develop a strategic rollout plan for your Security Champions Program</li>
