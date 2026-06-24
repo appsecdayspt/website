@@ -695,6 +695,9 @@ h4 {
 }
 
 .program-day-cta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
     padding: 0 var(--spacing-lg) var(--spacing-lg);
 }
 
