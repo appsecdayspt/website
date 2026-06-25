@@ -1859,6 +1859,7 @@ h4 {
 
 .committee-member h4 {
     margin-bottom: var(--spacing-xs);
+    color: var(--color-text-dark);
 }
 
 .committee-member p {
