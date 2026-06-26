@@ -32,7 +32,7 @@
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="../" data-en="Home" data-pt="Início">Home</a></li>
                 <li><a href="./" data-en="Program" data-pt="Programa">Program</a></li>
-                <li><a href="../trainings/" data-en="Trainings" data-pt="Formações">Trainings</a></li>
+                <!-- <li><a href="../trainings/" data-en="Trainings" data-pt="Formações">Trainings</a></li> -->
                 <li><a href="#keynotes" data-en="Speakers" data-pt="Oradores">Speakers</a></li>
                 <li>
                     <button class="lang-toggle" id="lang-toggle">
@@ -91,7 +91,13 @@
                         </li>
                     </ul>
                     <div class="program-day-cta">
-                        <a href="../trainings/" class="btn btn-primary" data-en="View Training Workshops" data-pt="Ver Workshops de Formação">View Training Workshops</a>
+                        <!-- <a href="../trainings/" class="btn btn-primary" style="gap: 0.5rem;">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                            </svg>
+                            <span data-en="View Training Workshops" data-pt="Ver Workshops de Formação">View Training Workshops</span>
+                        </a> -->
                     </div>
                 </div>
 
@@ -126,7 +132,13 @@
                         </li>
                     </ul>
                     <div class="program-day-cta">
-                        <a href="../ctf/" class="btn btn-primary" data-en="Learn about the CTF" data-pt="Saber mais sobre o CTF">Learn about the CTF</a>
+                        <a href="../ctf/" class="btn btn-primary" style="gap: 0.5rem;">
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                                <line x1="4" y1="22" x2="4" y2="15"></line>
+                            </svg>
+                            <span data-en="Learn about the CTF" data-pt="Saber mais sobre o CTF">Learn about the CTF</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -139,9 +151,37 @@
             <h2 class="section-title" data-en="Day 2: Thursday, September 24" data-pt="Dia 2: Quinta-feira, 24 de Setembro">Day 2: Thursday, September 24</h2>
             <p class="section-subtitle" data-en="Full Conference Day · 9:00 AM – 6:00 PM" data-pt="Dia Completo de Conferência · 9:00 – 18:00">Full Conference Day · 9:00 AM – 6:00 PM</p>
             <script type="text/javascript" src="https://sessionize.com/api/v2/31ww3lzh/view/GridSmart"></script>
-            <div class="program-cta" style="margin-top: var(--spacing-xl)">
-                <a href="talks/" class="btn btn-primary btn-lg" data-en="View All Talks" data-pt="Ver Todas as Talks">View All Talks</a>
-                <a href="speakers/" class="btn btn-secondary btn-lg" data-en="View All Speakers" data-pt="Ver Todos os Oradores">View All Speakers</a>
+            <div class="program-cta" style="margin-top: var(--spacing-xl); display: flex; flex-direction: column; align-items: center; gap: var(--spacing-md);">
+                <a href="https://b9f3108bfdfe4cbdae8b26e3418d05fd.sessionize.com/" target="_blank" rel="noopener" class="btn btn-primary" style="font-size: 1.25rem; padding: 1.1rem 2.5rem; gap: 0.6rem;">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                        <polyline points="9 16 11 18 15 14"></polyline>
+                    </svg>
+                    <span data-en="Build Your Schedule" data-pt="Crie o Seu Programa">Build Your Schedule</span>
+                </a>
+                <div style="display: flex; gap: var(--spacing-md); flex-wrap: wrap; justify-content: center;">
+                    <a href="talks/" class="btn btn-secondary" style="gap: 0.5rem; font-size: 0.9rem;">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                            <line x1="12" y1="19" x2="12" y2="23"></line>
+                            <line x1="8" y1="23" x2="16" y2="23"></line>
+                        </svg>
+                        <span data-en="View All Talks" data-pt="Ver Todas as Talks">View All Talks</span>
+                    </a>
+                    <a href="speakers/" class="btn btn-secondary" style="gap: 0.5rem; font-size: 0.9rem;">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                        <span data-en="View All Speakers" data-pt="Ver Todos os Oradores">View All Speakers</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
