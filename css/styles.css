@@ -1386,23 +1386,14 @@ h4 {
 }
 
 .alacarte-grid {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: var(--spacing-md);
 }
 
-@media (min-width: 600px) {
-    .alacarte-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 900px) {
-    .alacarte-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
 .alacarte-item {
+    width: 220px;
     background: var(--color-light-surface);
     padding: var(--spacing-lg);
     border-radius: var(--radius-md);
