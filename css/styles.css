@@ -2428,6 +2428,23 @@ body.training-builder {
 .ticket-cta .btn-ticket-lg:hover { transform: translateY(-2px); box-shadow: 0 12px 40px var(--training-cta-shadow); opacity: 0.9; }
 .ticket-cta .btn-ticket-lg svg { width: 18px; height: 18px; }
 
+.ticket-hint {
+    display: block;
+    margin-top: var(--spacing-md);
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+}
+.ticket-hint strong { color: #fff; font-weight: 700; }
+
+.training-card .ticket-hint {
+    margin-top: 8px;
+    font-size: 0.72rem;
+    text-align: center;
+    color: var(--color-text-light-muted);
+}
+.training-card .ticket-hint strong { color: var(--color-text-light); }
+
 /* ── Detail: pull quote ── */
 .quote-block {
     background: rgba(var(--training-accent-rgb), 0.05);
