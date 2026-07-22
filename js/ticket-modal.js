@@ -27,20 +27,13 @@
         en: 'You will be redirected to Eventbrite to complete your order.',
         pt: 'Será redirecionado para o Eventbrite para concluir a sua compra.'
     };
-    const PT_RESIDENT_STEP = {
-        icon: 'person',
-        heading: { en: "If you're resident in Portugal", pt: 'Se for residente em Portugal' },
-        desc: { en: 'Choose the "PT Resident" tickets.', pt: 'Escolha os bilhetes "PT Resident".' }
-    };
-
     function ticketSteps(ticketName) {
         return [
             {
                 icon: 'ticket',
                 heading: { en: `Buy the "${ticketName}" ticket`, pt: `Compre o bilhete "${ticketName}"` },
                 desc: { en: `On Eventbrite, select the "${ticketName}" ticket.`, pt: `No Eventbrite, selecione o bilhete "${ticketName}".` }
-            },
-            PT_RESIDENT_STEP
+            }
         ];
     }
 
@@ -108,11 +101,6 @@
                     icon: 'plus',
                     heading: { en: 'Add the "Training:OWASP Juice Shop for Beginners" free ticket', pt: 'Adicione o bilhete gratuito "Training:OWASP Juice Shop for Beginners"' },
                     desc: { en: "On Eventbrite, add the \"Training:OWASP Juice Shop for Beginners\" free ticket to your order. You'll need the order ID from your conference ticket purchase.", pt: 'No Eventbrite, adicione o bilhete gratuito "Training:OWASP Juice Shop for Beginners" à sua encomenda. Vai precisar do ID da encomenda do seu bilhete da conferência.' }
-                },
-                {
-                    icon: 'person',
-                    heading: { en: "If you're resident in Portugal", pt: 'Se for residente em Portugal' },
-                    desc: { en: 'Choose the "PT Resident" tickets and provide your VAT number.', pt: 'Escolha os bilhetes "PT Resident" e forneça o seu número de contribuinte.' }
                 }
             ]
         }
