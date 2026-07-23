@@ -2493,6 +2493,32 @@ body.training-builder {
 .free-callout-text strong { display: block; font-size: 1rem; color: #4ade80; font-weight: 800; margin-bottom: 3px; }
 .free-callout-text span  { font-size: 0.875rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
 
+/* ── Training-accent info callout (hardware, challenges, etc.) ── */
+.info-callout {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    background: rgba(var(--training-accent-rgb), 0.08);
+    border: 1px solid rgba(var(--training-accent-rgb), 0.3);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg) var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+}
+.info-callout-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(var(--training-accent-rgb), 0.15);
+    border: 1.5px solid rgba(var(--training-accent-rgb), 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.info-callout-icon svg { width: 20px; height: 20px; color: var(--training-accent-muted); }
+.info-callout-text strong { display: block; font-size: 1rem; color: var(--training-accent-muted); font-weight: 800; margin-bottom: 3px; }
+.info-callout-text span  { font-size: 0.875rem; color: rgba(255,255,255,0.65); line-height: 1.5; }
+
 /* ── Threat Modeling: principles grid ── */
 .principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-md); margin-top: var(--spacing-lg); }
 .principle-card { background: var(--color-dark-card); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-lg); padding: var(--spacing-lg); }
