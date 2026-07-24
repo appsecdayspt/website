@@ -190,10 +190,41 @@
             });
 
             // Observe cards
-            document.querySelectorAll('.tier-card, .benefit-card, .speaker-card, .committee-member').forEach(card => {
+            document.querySelectorAll('.tier-card, .benefit-card, .speaker-card, .committee-member, .intro-pillar').forEach(card => {
                 card.classList.add('animate-ready');
                 observer.observe(card);
             });
+        }
+    };
+
+    // ==========================================================================
+    // Countdown to event start (September 23, 2026, 9:00 Lisbon time)
+    // ==========================================================================
+    const Countdown = {
+        init() {
+            this.daysEl = document.getElementById('countdown-days');
+            this.hoursEl = document.getElementById('countdown-hours');
+            this.minutesEl = document.getElementById('countdown-minutes');
+
+            if (!this.daysEl || !this.hoursEl || !this.minutesEl) return;
+
+            this.targetDate = new Date('2026-09-23T09:00:00+01:00');
+            this.update();
+            setInterval(() => this.update(), 60000);
+        },
+
+        update() {
+            const now = new Date();
+            let diff = this.targetDate - now;
+            if (diff < 0) diff = 0;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+            this.daysEl.textContent = days;
+            this.hoursEl.textContent = hours;
+            this.minutesEl.textContent = minutes;
         }
     };
 
@@ -229,6 +260,7 @@
         Navigation.init();
         Animations.init();
         Analytics.init();
+        Countdown.init();
     });
 
     // Add some CSS for animations

@@ -208,6 +208,35 @@ h4 {
     color: var(--color-text-light);
 }
 
+#pillars.section {
+    padding-top: var(--spacing-lg);
+}
+
+@media (min-width: 768px) {
+    #pillars.section {
+        padding-top: var(--spacing-xl);
+    }
+}
+
+.section-gradient {
+    background: linear-gradient(135deg, #1a3a5c 0%, #2d5a7b 45%, #0d1421 100%);
+    color: var(--color-text-light);
+}
+
+.section-gradient .section-subtitle {
+    color: var(--color-text-light-muted);
+}
+
+.section-gradient .intro-pillar {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(4px);
+}
+
+.section-gradient .intro-pillar p {
+    color: var(--color-text-light-muted);
+}
+
 .section-title {
     text-align: center;
     margin-bottom: var(--spacing-md);
@@ -500,7 +529,7 @@ h4 {
     content: '';
     position: absolute;
     inset: 0;
-    background: url('../assets/background.png') center center / cover no-repeat;
+    background: url('../assets/porto-bridge.jpg') center center / cover no-repeat;
     opacity: 0.3;
 }
 
@@ -575,6 +604,15 @@ h4 {
     max-width: 700px;
     margin: 0 auto var(--spacing-2xl);
     line-height: 1.8;
+}
+
+.hero-title {
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-text-light);
+    max-width: 750px;
+    margin: 0 auto var(--spacing-2xl);
+    line-height: 1.4;
 }
 
 .hero-cta {
@@ -1187,21 +1225,25 @@ h4 {
    -------------------------------------------------------------------------- */
 .tickets-coming-soon {
     text-align: center;
-    padding: var(--spacing-3xl) var(--spacing-lg);
+    padding: var(--spacing-lg);
     max-width: 500px;
     margin: 0 auto;
 }
 
 .tickets-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto var(--spacing-lg);
+    width: 56px;
+    height: 56px;
+    margin: 0 auto var(--spacing-md);
     color: var(--color-primary);
 }
 
 .tickets-icon svg {
     width: 100%;
     height: 100%;
+}
+
+#tickets .section-subtitle {
+    margin-bottom: var(--spacing-lg);
 }
 
 .tickets-coming-soon h3 {
@@ -1737,8 +1779,321 @@ h4 {
 }
 
 /* --------------------------------------------------------------------------
-   About Section
+   Intro Section (image + text rows)
    -------------------------------------------------------------------------- */
+.intro-row {
+    display: grid;
+    gap: var(--spacing-xl);
+    align-items: center;
+    margin-top: var(--spacing-3xl);
+}
+
+@media (min-width: 768px) {
+    .intro-row {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-2xl);
+    }
+
+    .intro-row-reverse .intro-row-image {
+        order: 2;
+    }
+
+    .intro-row-reverse .intro-row-text {
+        order: 1;
+    }
+}
+
+.intro-row-image img {
+    width: 100%;
+    height: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: var(--radius-lg, 12px);
+}
+
+.intro-row-text p {
+    color: var(--color-text-dark-muted);
+    margin-bottom: var(--spacing-md);
+}
+
+.intro-row-heading {
+    font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-dark);
+}
+
+.intro-row-text p:last-child {
+    margin-bottom: 0;
+}
+
+.intro-topics {
+    margin-top: var(--spacing-md);
+}
+
+.intro-topics li {
+    padding: var(--spacing-sm) 0;
+    padding-left: var(--spacing-lg);
+    position: relative;
+    color: var(--color-text-dark-muted);
+}
+
+.intro-topics li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: 50%;
+}
+
+.intro-pillars {
+    display: grid;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-3xl);
+}
+
+@media (min-width: 768px) {
+    .intro-pillars {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-xl);
+    }
+}
+
+.intro-pillar {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    border: 1px solid var(--color-border, #e2e8f0);
+    border-radius: var(--radius-lg);
+}
+
+.intro-pillar h3 {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--spacing-sm);
+}
+
+.intro-pillar p {
+    color: var(--color-text-dark-muted);
+    margin: 0;
+}
+
+.section-dark .intro-pillar {
+    border-color: rgba(255, 255, 255, 0.15);
+    background: var(--color-dark-card);
+}
+
+.section-dark .intro-pillar p {
+    color: var(--color-text-light-muted);
+}
+
+.countdown-number {
+    font-size: clamp(2.25rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Slide-up entrance animation for pillar cards */
+.intro-pillar.animate-ready {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.intro-pillar.animate-ready.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.intro-pillar:nth-child(1) { transition-delay: 0s; }
+.intro-pillar:nth-child(2) { transition-delay: 0.15s; }
+.intro-pillar:nth-child(3) { transition-delay: 0.3s; }
+
+/* --------------------------------------------------------------------------
+   Why Attend Section
+   -------------------------------------------------------------------------- */
+.why-attend {
+    max-width: 600px;
+    margin: var(--spacing-3xl) auto 0;
+    text-align: center;
+}
+
+.why-attend-title {
+    margin-bottom: var(--spacing-xl);
+}
+
+.why-attend-list {
+    text-align: left;
+    display: inline-block;
+    margin: 0 auto var(--spacing-xl);
+}
+
+.why-attend-list li {
+    padding: var(--spacing-sm) 0;
+    padding-left: var(--spacing-xl);
+    position: relative;
+    font-size: 1.0625rem;
+}
+
+.why-attend-list li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.why-attend-cta {
+    text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   Tickets Page
+   -------------------------------------------------------------------------- */
+.ticket-price-block {
+    margin: var(--spacing-md) 0;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.training-card .ticket-price-block {
+    border-top-color: var(--color-light-bg);
+}
+
+.training-card .ticket-price-fees {
+    color: var(--color-text-light-muted);
+}
+
+.ticket-price-main {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+}
+
+.ticket-price-fees {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-dark-muted);
+    margin-top: 2px;
+}
+
+.training-card .card-actions .btn-ticket-link {
+    flex: 1;
+}
+
+.day2-grid {
+    display: grid;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+@media (min-width: 700px) {
+    .day2-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1100px) {
+    .day2-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.day2-tier-card {
+    background: var(--color-light-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-normal);
+}
+
+.day2-tier-card:hover {
+    transform: translateY(-5px);
+}
+
+.day2-tier-badges {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+}
+
+.day2-tier-badges svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.lunch-icon-img {
+    height: 1.5rem;
+    width: auto;
+}
+
+.day2-tier-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-primary);
+}
+
+.day2-tier-price {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--color-text-dark);
+}
+
+.day2-tier-fees {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-dark-muted);
+    margin-bottom: var(--spacing-md);
+}
+
+.day2-tier-features {
+    flex: 1;
+    margin-bottom: var(--spacing-lg);
+}
+
+.day2-tier-features li {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 6px 0;
+    font-size: 0.9rem;
+    color: var(--color-text-dark-muted);
+}
+
+.day2-tier-features li.feature-no {
+    opacity: 0.55;
+}
+
+.day2-tier-features li svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    color: var(--color-primary);
+}
+
+.day2-tier-features li.feature-no svg {
+    color: #b0b0b0;
+}
+
+.tickets-note {
+    max-width: 700px;
+    margin: var(--spacing-2xl) auto 0;
+    text-align: center;
+    color: var(--color-text-dark-muted);
+    font-size: 0.9375rem;
+}
 .about-content {
     display: grid;
     gap: var(--spacing-2xl);
