@@ -207,6 +207,8 @@
         .logo-preview-item small { color: var(--muted); font-size: 0.72rem; }
         .logo-dark-bg  { background: var(--dark); border-radius: 8px; padding: 0.75rem 1.25rem; }
         .logo-light-bg { background: #f5f7fa;     border-radius: 8px; padding: 0.75rem 1.25rem; }
+        .dl-pair { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.25rem; }
+        .dl-pair a { font-size: 0.78rem; padding: 0.4rem 0.9rem; }
 
         /* ── Small download cards ── */
         .card-grid {
@@ -372,20 +374,22 @@
         <div class="logo-preview">
             <div class="logo-preview-item">
                 <div class="logo-dark-bg">
-                    <img src="logos/appsecdayspt-logo-400w.png" width="200" alt="AppSec Days PT logo on dark">
+                    <img src="logos/appsecdayspt2026-dark-400w.png" width="200" alt="AppSec Days PT logo on dark">
                 </div>
-                <small>On dark</small>
+                <small>Dark version &mdash; for dark backgrounds</small>
             </div>
             <div class="logo-preview-item">
                 <div class="logo-light-bg">
-                    <img src="logos/appsecdayspt-logo-400w.png" width="200" alt="AppSec Days PT logo on light" style="filter:invert(1);">
+                    <img src="logos/appsecdayspt2026-light-400w.png" width="200" alt="AppSec Days PT logo on light">
                 </div>
-                <small>On light</small>
+                <small>Light version &mdash; for light backgrounds</small>
             </div>
         </div>
 
         <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem;">
-            Logos for sponsor pages, co-marketing, press articles, and social posts. All PNG files use transparent backgrounds.
+            Logos for sponsor pages, co-marketing, press articles, and social posts. Every size comes in two
+            versions &mdash; <strong style="color:var(--text);">dark</strong> (white artwork, for dark backgrounds) and
+            <strong style="color:var(--text);">light</strong> (black artwork, for light backgrounds). All PNG files use transparent backgrounds.
         </p>
 
         <div style="margin-bottom:1rem;">
@@ -401,40 +405,154 @@
 
         <div class="card-grid">
             <div class="dl-card">
-                <span class="fmt-tag">PNG · 2933 px</span>
+                <span class="fmt-tag">PNG · 15221 px</span>
                 <h3>Original (full resolution)</h3>
                 <p>Source file for print and large-format use.</p>
-                <a href="logos/appsecdayspt-logo-original.png" download class="btn-dl secondary" style="font-size:0.78rem;padding:0.4rem 0.9rem;margin-top:0.25rem">Download</a>
+                <div class="dl-pair">
+                    <a href="logos/appsecdayspt2026-dark-original.png" download class="btn-dl secondary">Dark</a>
+                    <a href="logos/appsecdayspt2026-light-original.png" download class="btn-dl secondary">Light</a>
+                </div>
             </div>
             <div class="dl-card">
                 <span class="fmt-tag">PNG · 1200 px</span>
                 <h3>Large</h3>
                 <p>Web headers, presentations, event listings.</p>
-                <a href="logos/appsecdayspt-logo-1200w.png" download class="btn-dl secondary" style="font-size:0.78rem;padding:0.4rem 0.9rem;margin-top:0.25rem">Download</a>
+                <div class="dl-pair">
+                    <a href="logos/appsecdayspt2026-dark-1200w.png" download class="btn-dl secondary">Dark</a>
+                    <a href="logos/appsecdayspt2026-light-1200w.png" download class="btn-dl secondary">Light</a>
+                </div>
             </div>
             <div class="dl-card">
                 <span class="fmt-tag">PNG · 800 px</span>
                 <h3>Medium</h3>
                 <p>Blog posts, press articles, email headers.</p>
-                <a href="logos/appsecdayspt-logo-800w.png" download class="btn-dl secondary" style="font-size:0.78rem;padding:0.4rem 0.9rem;margin-top:0.25rem">Download</a>
+                <div class="dl-pair">
+                    <a href="logos/appsecdayspt2026-dark-800w.png" download class="btn-dl secondary">Dark</a>
+                    <a href="logos/appsecdayspt2026-light-800w.png" download class="btn-dl secondary">Light</a>
+                </div>
             </div>
             <div class="dl-card">
                 <span class="fmt-tag">PNG · 400 px</span>
                 <h3>Small</h3>
                 <p>Social posts, inline use, sponsor pages.</p>
-                <a href="logos/appsecdayspt-logo-400w.png" download class="btn-dl secondary" style="font-size:0.78rem;padding:0.4rem 0.9rem;margin-top:0.25rem">Download</a>
+                <div class="dl-pair">
+                    <a href="logos/appsecdayspt2026-dark-400w.png" download class="btn-dl secondary">Dark</a>
+                    <a href="logos/appsecdayspt2026-light-400w.png" download class="btn-dl secondary">Light</a>
+                </div>
             </div>
             <div class="dl-card">
                 <span class="fmt-tag">PNG · 200 px</span>
                 <h3>Thumbnail</h3>
                 <p>Small inline use, app icons, badges.</p>
-                <a href="logos/appsecdayspt-logo-200w.png" download class="btn-dl secondary" style="font-size:0.78rem;padding:0.4rem 0.9rem;margin-top:0.25rem">Download</a>
+                <div class="dl-pair">
+                    <a href="logos/appsecdayspt2026-dark-200w.png" download class="btn-dl secondary">Dark</a>
+                    <a href="logos/appsecdayspt2026-light-200w.png" download class="btn-dl secondary">Light</a>
+                </div>
             </div>
             <div class="dl-card">
                 <span class="fmt-tag">SVG · Vector</span>
                 <h3>OWASP Logo</h3>
                 <p>Official OWASP vector logo, scalable to any size.</p>
-                <a href="logos/OWASP_logo.svg" download class="btn-dl secondary" style="font-size:0.78rem;padding:0.4rem 0.9rem;margin-top:0.25rem">Download</a>
+                <div class="dl-pair">
+                    <a href="logos/OWASP_logo.svg" download class="btn-dl secondary">Download</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="accent-bar"></div>
+
+    <!-- ── Social media assets ── -->
+    <section>
+        <p class="sec-label">Social Media Assets</p>
+
+        <p style="color:var(--muted);font-size:0.85rem;margin-bottom:1rem;">
+            Profile pictures and banners pre-sized for each platform, composed with the brand gradient
+            and the white logo &mdash; the same treatment as the link preview card. Ready to upload as-is:
+            the artwork sits well inside each platform's safe area, so nothing is clipped by circular
+            profile crops or mobile banner cropping.
+        </p>
+
+        <div style="margin-bottom:1rem;">
+            <a href="social.zip" download class="btn-dl primary">
+                <svg class="ico" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Download All Social Assets (ZIP)
+            </a>
+        </div>
+
+        <div class="card-grid">
+            <div class="dl-card">
+                <span class="fmt-tag">400×400 · 1500×500</span>
+                <h3>X / Twitter</h3>
+                <p>Profile picture and header.</p>
+                <div class="dl-pair">
+                    <a href="social/x-avatar-400x400.png" download class="btn-dl secondary">Avatar</a>
+                    <a href="social/x-header-1500x500.png" download class="btn-dl secondary">Header</a>
+                </div>
+            </div>
+            <div class="dl-card">
+                <span class="fmt-tag">400×400 · 1128×191 · 1584×396</span>
+                <h3>LinkedIn</h3>
+                <p>Page logo, page cover, personal background.</p>
+                <div class="dl-pair">
+                    <a href="social/linkedin-logo-400x400.png" download class="btn-dl secondary">Logo</a>
+                    <a href="social/linkedin-page-cover-1128x191.png" download class="btn-dl secondary">Cover</a>
+                    <a href="social/linkedin-personal-cover-1584x396.png" download class="btn-dl secondary">Background</a>
+                </div>
+            </div>
+            <div class="dl-card">
+                <span class="fmt-tag">500×500 · 820×312</span>
+                <h3>Facebook</h3>
+                <p>Page profile picture and cover photo.</p>
+                <div class="dl-pair">
+                    <a href="social/facebook-profile-500x500.png" download class="btn-dl secondary">Profile</a>
+                    <a href="social/facebook-cover-820x312.png" download class="btn-dl secondary">Cover</a>
+                </div>
+            </div>
+            <div class="dl-card">
+                <span class="fmt-tag">640×640 · 1080×1080 · 1080×1920</span>
+                <h3>Instagram</h3>
+                <p>Profile picture, square post, story.</p>
+                <div class="dl-pair">
+                    <a href="social/instagram-profile-640x640.png" download class="btn-dl secondary">Profile</a>
+                    <a href="social/instagram-post-1080x1080.png" download class="btn-dl secondary">Post</a>
+                    <a href="social/instagram-story-1080x1920.png" download class="btn-dl secondary">Story</a>
+                </div>
+            </div>
+            <div class="dl-card">
+                <span class="fmt-tag">800×800 · 2560×1440</span>
+                <h3>YouTube</h3>
+                <p>Channel avatar and banner (artwork stays inside the 1546×423 safe area).</p>
+                <div class="dl-pair">
+                    <a href="social/youtube-avatar-800x800.png" download class="btn-dl secondary">Avatar</a>
+                    <a href="social/youtube-banner-2560x1440.png" download class="btn-dl secondary">Banner</a>
+                </div>
+            </div>
+            <div class="dl-card">
+                <span class="fmt-tag">1000×1000 · 1500×500</span>
+                <h3>Bluesky</h3>
+                <p>Profile picture and banner.</p>
+                <div class="dl-pair">
+                    <a href="social/bluesky-avatar-1000x1000.png" download class="btn-dl secondary">Avatar</a>
+                    <a href="social/bluesky-banner-1500x500.png" download class="btn-dl secondary">Banner</a>
+                </div>
+            </div>
+            <div class="dl-card">
+                <span class="fmt-tag">400×400 · 1500×500</span>
+                <h3>Mastodon</h3>
+                <p>Avatar and profile header.</p>
+                <div class="dl-pair">
+                    <a href="social/mastodon-avatar-400x400.png" download class="btn-dl secondary">Avatar</a>
+                    <a href="social/mastodon-header-1500x500.png" download class="btn-dl secondary">Header</a>
+                </div>
+            </div>
+            <div class="dl-card">
+                <span class="fmt-tag">1200×630</span>
+                <h3>Link preview card</h3>
+                <p>Open Graph / Twitter Card image for shared links, newsletters, and event listings.</p>
+                <div class="dl-pair">
+                    <a href="social/opengraph-card-1200x630.png" download class="btn-dl secondary">Download</a>
+                </div>
             </div>
         </div>
     </section>
