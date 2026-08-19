@@ -2319,6 +2319,35 @@ h4 {
     color: var(--color-text-light-muted);
 }
 
+.footer-social {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.footer-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light-muted);
+    transition: color var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer-social a:visited {
+    color: var(--color-text-light-muted);
+}
+
+.footer-social a:hover {
+    color: var(--color-primary);
+    transform: translateY(-2px);
+}
+
+.footer-social svg {
+    width: 22px;
+    height: 22px;
+}
+
 .footer-links {
     display: grid;
     gap: var(--spacing-xl);
