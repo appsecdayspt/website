@@ -11,9 +11,11 @@ Files included:
   appsecdayspt2026-{dark,light}-800w.png      — Medium (800 px wide)
   appsecdayspt2026-{dark,light}-400w.png      — Small (400 px wide)
   appsecdayspt2026-{dark,light}-200w.png      — Thumbnail (200 px wide)
-  OWASP_logo.svg                              — OWASP vector logo
+  appsecdayspt2026-{dark,light}.pdf           — Vector, print-ready (PDF/X, CMYK)
 
 All PNG files use a transparent background and are cropped tight to the artwork.
+The PDFs are vector artwork for print and large-format use — scale to any size
+without loss.
 Social media profile pictures and banners are in the separate social package
 (solid backgrounds, sized per platform).
 
