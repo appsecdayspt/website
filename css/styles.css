@@ -1576,6 +1576,7 @@ h4 {
     background: var(--color-light-surface);
     border-radius: var(--radius-md);
     padding: var(--spacing-md);
+    overflow: hidden;
     transition: all var(--transition-normal);
 }
 
