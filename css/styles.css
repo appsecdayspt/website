@@ -2417,6 +2417,7 @@ body.training-builder {
 .t-badge.beginner     { background: rgba(124,92,255,0.18);  color: #b8a6ff; border: 1px solid rgba(124,92,255,0.35); }
 .t-badge.intermediate { background: rgba(255,179,71,0.18);  color: #ffc56b; border: 1px solid rgba(255,179,71,0.35); }
 .t-badge.free         { background: rgba(34,197,94,0.18);   color: #4ade80; border: 1px solid rgba(34,197,94,0.45); }
+.t-badge.paused       { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.18); }
 
 /* ── Back link (detail pages) ── */
 .back-link {
@@ -2534,6 +2535,36 @@ body.training-builder {
 .training-card .meta-chip svg { width: 12px; height: 12px; }
 .training-card .card-actions { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; margin-top: auto; }
 .training-card .card-actions .btn { flex: 1; font-size: 0.82rem; padding: 0.55rem 1rem; min-width: 0; }
+
+/* ── Training card: registrations paused (de-emphasised) ── */
+.training-card.paused {
+    opacity: 0.55;
+    filter: grayscale(0.85);
+    transition: opacity var(--transition-normal), filter var(--transition-normal), border-color var(--transition-normal);
+}
+.training-card.paused::before { background: rgba(255,255,255,0.15); }
+.training-card.paused:hover {
+    opacity: 0.85;
+    filter: grayscale(0.4);
+    transform: none;
+    border-color: rgba(255,255,255,0.12);
+    box-shadow: none;
+}
+.training-card.paused .paused-note {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--color-text-light-muted);
+    font-style: italic;
+    margin-bottom: var(--spacing-sm);
+}
+.training-card.paused .card-actions .btn-ticket[disabled] {
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.5);
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: none;
+    cursor: not-allowed;
+    pointer-events: none;
+}
 
 .btn-outline-light {
     border: 1.5px solid rgba(255,255,255,0.2);
@@ -2743,6 +2774,14 @@ body.training-builder {
 }
 .ticket-cta .btn-ticket-lg:hover { transform: translateY(-2px); box-shadow: 0 12px 40px var(--training-cta-shadow); opacity: 0.9; }
 .ticket-cta .btn-ticket-lg svg { width: 18px; height: 18px; }
+.ticket-cta .btn-ticket-lg[disabled] {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: none;
+    cursor: not-allowed;
+    pointer-events: none;
+}
 
 /* ── Detail: pull quote ── */
 .quote-block {
