@@ -1563,6 +1563,23 @@ a.sponsor-logo-placeholder:hover {
     height: 80px;
 }
 
+/* Dark tile for logos designed on dark backgrounds (white/neon marks that
+   disappear or read poorly on the default white tile) */
+.sponsor-logo.sponsor-logo-dark {
+    background: var(--color-dark-surface);
+    padding: var(--spacing-sm);
+}
+
+/* Logos with their own solid background: the tile matches the artwork so no
+   white shows at the rounded corners or in the contain-fit letterbox strip */
+.sponsor-logo.sponsor-logo-pwit {
+    background: #e83a35;
+}
+
+.sponsor-logo.sponsor-logo-browserstack {
+    background: #142432;
+}
+
 @media (max-width: 600px) {
     .sponsor-logo-diamond {
         width: 100%;
