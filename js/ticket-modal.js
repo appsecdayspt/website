@@ -66,6 +66,9 @@
             steps: ticketSteps('Training:Hacking BLE 101')
         },
         'security-champions': {
+            // Registrations are paused - the card exposes no modal trigger, and
+            // this flag keeps the modal shut even if one is added back by mistake.
+            paused: true,
             title: { en: 'How to Build a Successful Security Champions Program', pt: 'Como Construir um Programa de Campeões de Segurança' },
             badges: [
                 { cls: 'builder', en: 'Builder', pt: 'Builder' },
@@ -213,7 +216,7 @@
             trigger.addEventListener('click', (e) => {
                 e.preventDefault();
                 const training = TRAININGS[trigger.dataset.ticketModal];
-                if (!training) return;
+                if (!training || training.paused) return;
                 openModal(overlay, training);
             });
         });

@@ -1955,6 +1955,32 @@ a.sponsor-logo-placeholder:hover {
     }
 }
 
+/* An odd number of tiers leaves the last card alone at the start of a new row;
+   centre it over the row instead. Self-cancelling once the count is even. */
+@media (min-width: 700px) {
+    .day2-grid > .day2-tier-card:last-child:nth-child(2n + 1) {
+        grid-column: 1 / span 2;
+        justify-self: center;
+        width: 100%;
+        max-width: calc(50% - var(--spacing-lg) / 2);
+    }
+}
+
+@media (min-width: 1100px) {
+    .day2-grid > .day2-tier-card:last-child:nth-child(2n + 1) {
+        grid-column: auto;
+        justify-self: stretch;
+        max-width: none;
+    }
+
+    .day2-grid > .day2-tier-card:last-child:nth-child(4n + 1) {
+        grid-column: 2 / span 2;
+        justify-self: center;
+        width: 100%;
+        max-width: calc(50% - var(--spacing-lg) / 2);
+    }
+}
+
 .day2-tier-card {
     background: var(--color-light-surface);
     border-radius: var(--radius-lg);
@@ -1967,6 +1993,19 @@ a.sponsor-logo-placeholder:hover {
 
 .day2-tier-card:hover {
     transform: translateY(-5px);
+}
+
+/* De-emphasised tier: not the one we want people buying yet. Comes back to
+   full strength on hover/focus so it stays readable. */
+.day2-tier-card-dim {
+    opacity: 0.55;
+    box-shadow: var(--shadow-sm);
+    transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+.day2-tier-card-dim:hover,
+.day2-tier-card-dim:focus-within {
+    opacity: 1;
 }
 
 .day2-tier-badges {
@@ -2003,6 +2042,13 @@ a.sponsor-logo-placeholder:hover {
 .day2-tier-fees {
     display: block;
     font-size: 0.8rem;
+    color: var(--color-text-dark-muted);
+    margin-bottom: var(--spacing-md);
+}
+
+.day2-tier-note {
+    font-size: 0.8rem;
+    line-height: 1.4;
     color: var(--color-text-dark-muted);
     margin-bottom: var(--spacing-md);
 }
