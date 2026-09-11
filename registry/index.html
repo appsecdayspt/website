@@ -142,6 +142,7 @@
       gap: clamp(12px, 3.2vh, 26px);
       min-height: 0;
       overflow-y: auto;
+      scrollbar-gutter: stable;
       padding: 6px 2px;
       text-align: center;
       animation: resultIn .16s ease-out;
@@ -167,27 +168,31 @@
       border-radius: 18px;
       background: rgba(255,255,255,.07);
       color: white;
+      overflow: hidden;
+    }
+    /* fitText() sizes this span to the width the card actually gives it. The
+       clamp() below is only the pre-script fallback. */
+    .result-value .fit {
+      display: inline-block;
+      white-space: nowrap;
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
       font-weight: 900;
       line-height: 1.05;
       font-variant-numeric: tabular-nums;
-      overflow-wrap: anywhere;
     }
-    .result-value.badge {
+    .result-value.badge .fit {
       font-size: clamp(3.2rem, 23vw, 7rem);
       letter-spacing: .06em;
+    }
+    .result-value.badge {
       border-color: rgba(94,230,168,.4);
       background: rgba(94,230,168,.1);
     }
-    .result-value.order {
+    .result-value.order .fit {
       font-size: clamp(1.9rem, 12.5vw, 3.6rem);
       letter-spacing: .02em;
     }
-    .result-value.unavailable {
-      color: var(--danger);
-      font-size: clamp(1.8rem, 11vw, 3rem);
-      letter-spacing: normal;
-    }
+    .result-value.unavailable { color: var(--danger); }
     .result-warning {
       margin: 0 4px;
       color: var(--danger);
@@ -226,6 +231,12 @@
       background: linear-gradient(135deg, var(--blue-strong), var(--violet));
       box-shadow: 0 12px 28px rgba(44,107,224,.29);
     }
+    .result-panel {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+    }
     .scanner-panel[hidden], .result-panel[hidden] { display: none; }
     .status {
       min-height: 0;
@@ -257,8 +268,8 @@
       .brand-mini span { display: none; }
       .event-logo { width: min(66%, 360px); margin-bottom: 6px; }
       #videoWrap { max-height: 36dvh; }
-      .result-value.badge { font-size: clamp(2.6rem, 17vw, 4.6rem); }
-      .result-value.order { font-size: clamp(1.6rem, 10vw, 2.8rem); }
+      .result-value.badge .fit { font-size: clamp(2.6rem, 17vw, 4.6rem); }
+      .result-value.order .fit { font-size: clamp(1.6rem, 10vw, 2.8rem); }
     }
     @media (max-width: 410px) {
       .hero { padding-top: 16px; }
@@ -297,14 +308,14 @@
     </div>
 
     <div id="resultPanel" class="result-panel" hidden>
-      <div class="result" aria-live="assertive">
+      <div id="resultArea" class="result" aria-live="assertive">
         <div class="result-field badge">
           <p class="result-field-label">Badge number / Registration code</p>
-          <strong id="resultBadge" class="result-value badge"></strong>
+          <strong class="result-value badge"><span id="resultBadge" class="fit"></span></strong>
         </div>
         <div class="result-field order">
           <p class="result-field-label">Order ID</p>
-          <strong id="resultOrder" class="result-value order"></strong>
+          <strong class="result-value order"><span id="resultOrder" class="fit"></span></strong>
         </div>
         <p id="resultWarning" class="result-warning"></p>
         <div class="result-field full">
@@ -328,12 +339,19 @@
   const BADGE_START = 17;
   const BADGE_END = 22;
 
+  // Text is measured once at this size, then scaled to the width available.
+  const MEASURE_FONT_PX = 200;
+  const MIN_FONT_PX = 14;
+  const BADGE_MAX_HEIGHT_RATIO = 0.42;
+  const ORDER_MAX_HEIGHT_RATIO = 0.22;
+
   const $ = id => document.getElementById(id);
   const video = $("video");
   const videoWrap = $("videoWrap");
   const statusEl = $("status");
   const scannerPanel = $("scannerPanel");
   const resultPanel = $("resultPanel");
+  const resultArea = $("resultArea");
   const resultBadge = $("resultBadge");
   const resultOrder = $("resultOrder");
   const resultWarning = $("resultWarning");
@@ -373,8 +391,36 @@
     const slice = value.slice(start - 1, end);
     const complete = slice.length === end - start + 1;
     element.textContent = complete ? slice : "—";
-    element.classList.toggle("unavailable", !complete);
+    element.parentElement.classList.toggle("unavailable", !complete);
     return complete;
+  }
+
+  // Scale one value to the width its box actually offers, capped so two of them
+  // plus the button still fit vertically. Font size scales linearly with text
+  // width (letter-spacing is em-based), so a single measured pass is exact.
+  function fitText(span, maxHeightRatio) {
+    const box = span.parentElement;
+    const boxStyle = getComputedStyle(box);
+    const available = box.clientWidth
+      - parseFloat(boxStyle.paddingLeft)
+      - parseFloat(boxStyle.paddingRight);
+
+    if (!available || !span.textContent) return;
+
+    const ceiling = Math.max(MIN_FONT_PX, resultArea.clientHeight * maxHeightRatio);
+
+    span.style.fontSize = `${MEASURE_FONT_PX}px`;
+    const measured = span.scrollWidth;
+    if (!measured) return;
+
+    const fitted = (available / measured) * MEASURE_FONT_PX * 0.99;
+    span.style.fontSize = `${Math.max(MIN_FONT_PX, Math.min(ceiling, fitted))}px`;
+  }
+
+  function fitValues() {
+    if (resultPanel.hidden) return;
+    fitText(resultBadge, BADGE_MAX_HEIGHT_RATIO);
+    fitText(resultOrder, ORDER_MAX_HEIGHT_RATIO);
   }
 
   function showResult(rawValue) {
@@ -393,6 +439,7 @@
     resultPanel.hidden = false;
     document.body.classList.add("has-result");
     setStatus("");
+    fitValues();
 
     if (navigator.vibrate) navigator.vibrate(90);
     return true;
@@ -492,6 +539,13 @@
   });
 
   $("scanAgainButton").addEventListener("click", scanAgain);
+
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(fitValues).observe(resultPanel);
+  } else {
+    window.addEventListener("resize", fitValues);
+    window.addEventListener("orientationchange", fitValues);
+  }
 
   document.addEventListener("visibilitychange", () => {
     if (document.hidden && stream) stopCamera();
