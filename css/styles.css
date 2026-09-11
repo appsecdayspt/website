@@ -2440,6 +2440,25 @@ a.footer-partner-logo:hover {
     opacity: 0.8;
 }
 
+.footer-bottom .privacy-notice a {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    white-space: nowrap;
+}
+
+.footer-bottom .privacy-notice a::before {
+    content: '·';
+    margin: 0 0.4em;
+    color: var(--color-text-light-muted);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.footer-bottom .privacy-notice a:hover {
+    color: var(--color-accent);
+}
+
 /* --------------------------------------------------------------------------
    Utilities
    -------------------------------------------------------------------------- */
