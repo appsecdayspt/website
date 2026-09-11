@@ -38,6 +38,8 @@
     }
     button { font: inherit; cursor: pointer; touch-action: manipulation; }
     .app {
+      display: flex;
+      flex-direction: column;
       width: min(100%, 720px);
       height: 100dvh;
       margin: 0 auto;
@@ -75,6 +77,15 @@
       border-radius: 24px;
       box-shadow: var(--shadow);
       padding: 12px;
+    }
+    /* A scanned badge gets the whole screen: the logo steps aside and the card grows. */
+    body.has-result .hero { display: none; }
+    body.has-result .card {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      margin-bottom: 4px;
     }
     #videoWrap {
       position: relative;
@@ -124,44 +135,61 @@
     .scanning .camera-placeholder { display: none; }
 
     .result {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: clamp(12px, 3.2vh, 26px);
+      min-height: 0;
+      overflow-y: auto;
+      padding: 6px 2px;
       text-align: center;
-      padding: 4px 2px 2px;
       animation: resultIn .16s ease-out;
     }
     @keyframes resultIn {
       from { opacity: 0; transform: scale(.98); }
       to { opacity: 1; transform: scale(1); }
     }
-    .result-label {
+    .result-field-label {
       margin: 0 0 6px;
-      color: var(--success);
-      font-size: .78rem;
+      color: var(--muted);
+      font-size: .74rem;
       font-weight: 950;
-      letter-spacing: .09em;
+      letter-spacing: .1em;
       text-transform: uppercase;
     }
-    .result-digits {
+    .result-field.badge .result-field-label { color: var(--success); }
+    .result-value {
       display: block;
       margin: 0;
-      padding: 10px 6px;
+      padding: 8px 6px;
       border: 1px solid rgba(255,255,255,.2);
       border-radius: 18px;
       background: rgba(255,255,255,.07);
       color: white;
       font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: clamp(2.6rem, 19vw, 5.6rem);
       font-weight: 900;
       line-height: 1.05;
-      letter-spacing: .06em;
       font-variant-numeric: tabular-nums;
       overflow-wrap: anywhere;
     }
-    .result-digits.unavailable {
+    .result-value.badge {
+      font-size: clamp(3.2rem, 23vw, 7rem);
+      letter-spacing: .06em;
+      border-color: rgba(94,230,168,.4);
+      background: rgba(94,230,168,.1);
+    }
+    .result-value.order {
+      font-size: clamp(1.9rem, 12.5vw, 3.6rem);
+      letter-spacing: .02em;
+    }
+    .result-value.unavailable {
       color: var(--danger);
-      font-size: clamp(2rem, 12vw, 3.4rem);
+      font-size: clamp(1.8rem, 11vw, 3rem);
+      letter-spacing: normal;
     }
     .result-warning {
-      margin: 10px 4px 0;
+      margin: 0 4px;
       color: var(--danger);
       font-size: .82rem;
       font-weight: 800;
@@ -169,9 +197,9 @@
     }
     .result-warning:empty { display: none; }
     .result-full-label {
-      margin: 14px 0 4px;
+      margin: 0 0 4px;
       color: var(--muted);
-      font-size: .7rem;
+      font-size: .68rem;
       font-weight: 850;
       letter-spacing: .09em;
       text-transform: uppercase;
@@ -187,7 +215,8 @@
     .primary {
       width: 100%;
       min-height: 56px;
-      margin-top: 14px;
+      margin-top: 12px;
+      flex: none;
       padding: 0 18px;
       border: 0;
       border-radius: 16px;
@@ -228,7 +257,8 @@
       .brand-mini span { display: none; }
       .event-logo { width: min(66%, 360px); margin-bottom: 6px; }
       #videoWrap { max-height: 36dvh; }
-      .result-digits { font-size: clamp(2.2rem, 15vw, 4.2rem); }
+      .result-value.badge { font-size: clamp(2.6rem, 17vw, 4.6rem); }
+      .result-value.order { font-size: clamp(1.6rem, 10vw, 2.8rem); }
     }
     @media (max-width: 410px) {
       .hero { padding-top: 16px; }
@@ -268,11 +298,19 @@
 
     <div id="resultPanel" class="result-panel" hidden>
       <div class="result" aria-live="assertive">
-        <p class="result-label">Registration code</p>
-        <strong id="resultDigits" class="result-digits"></strong>
+        <div class="result-field badge">
+          <p class="result-field-label">Badge number / Registration code</p>
+          <strong id="resultBadge" class="result-value badge"></strong>
+        </div>
+        <div class="result-field order">
+          <p class="result-field-label">Order ID</p>
+          <strong id="resultOrder" class="result-value order"></strong>
+        </div>
         <p id="resultWarning" class="result-warning"></p>
-        <p class="result-full-label">Full barcode</p>
-        <p id="resultFull" class="result-full"></p>
+        <div class="result-field full">
+          <p class="result-full-label">Full barcode</p>
+          <p id="resultFull" class="result-full"></p>
+        </div>
       </div>
       <button id="scanAgainButton" class="primary" type="button">Scan another</button>
     </div>
@@ -283,9 +321,12 @@
 (() => {
   "use strict";
 
-  // The badge barcode carries the registration code in characters 17 to 22.
-  const DIGITS_START = 17;
-  const DIGITS_END = 22;
+  // The badge barcode packs both values the registration desk needs:
+  // characters 1-11 are the order ID, characters 17-22 the badge number.
+  const ORDER_START = 1;
+  const ORDER_END = 11;
+  const BADGE_START = 17;
+  const BADGE_END = 22;
 
   const $ = id => document.getElementById(id);
   const video = $("video");
@@ -293,7 +334,8 @@
   const statusEl = $("status");
   const scannerPanel = $("scannerPanel");
   const resultPanel = $("resultPanel");
-  const resultDigits = $("resultDigits");
+  const resultBadge = $("resultBadge");
+  const resultOrder = $("resultOrder");
   const resultWarning = $("resultWarning");
   const resultFull = $("resultFull");
 
@@ -327,22 +369,29 @@
     return BarcodeDetectorClass;
   }
 
+  function fillField(element, value, start, end) {
+    const slice = value.slice(start - 1, end);
+    const complete = slice.length === end - start + 1;
+    element.textContent = complete ? slice : "—";
+    element.classList.toggle("unavailable", !complete);
+    return complete;
+  }
+
   function showResult(rawValue) {
     const value = String(rawValue || "").trim();
     if (!value) return false;
 
-    const digits = value.slice(DIGITS_START - 1, DIGITS_END);
-    const complete = digits.length === DIGITS_END - DIGITS_START + 1;
+    const badgeOk = fillField(resultBadge, value, BADGE_START, BADGE_END);
+    const orderOk = fillField(resultOrder, value, ORDER_START, ORDER_END);
 
-    resultDigits.textContent = complete ? digits : "—";
-    resultDigits.classList.toggle("unavailable", !complete);
-    resultWarning.textContent = complete
+    resultWarning.textContent = badgeOk && orderOk
       ? ""
-      : `This barcode has only ${value.length} ${value.length === 1 ? "character" : "characters"}, so positions ${DIGITS_START}–${DIGITS_END} are not available.`;
+      : `This barcode has only ${value.length} ${value.length === 1 ? "character" : "characters"} — at least ${BADGE_END} are expected.`;
     resultFull.textContent = value;
 
     scannerPanel.hidden = true;
     resultPanel.hidden = false;
+    document.body.classList.add("has-result");
     setStatus("");
 
     if (navigator.vibrate) navigator.vibrate(90);
@@ -430,6 +479,7 @@
   function scanAgain() {
     resultPanel.hidden = true;
     scannerPanel.hidden = false;
+    document.body.classList.remove("has-result");
     startCamera();
   }
 
