@@ -308,6 +308,19 @@
       text-align: center;
     }
     .drive-status.ok { color: white; }
+    .legal {
+      margin: 8px auto 0;
+      padding: 0 4px;
+      text-align: center;
+      font-size: .72rem;
+      font-weight: 800;
+    }
+    .legal a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .legal a:hover, .legal a:focus-visible { color: white; }
     .name-chip {
       display: inline-flex;
       align-items: center;
@@ -514,6 +527,7 @@
       .card { padding: 10px; }
       #videoWrap { max-height: 39dvh; }
       .drive-status { margin-top: 5px; font-size: .74rem; }
+      .legal { margin-top: 5px; font-size: .68rem; }
     }
     @media (max-height: 660px) {
       .brand-mini span { display: none; }
@@ -588,6 +602,10 @@
     </section>
 
     <div id="driveStatus" class="drive-status" aria-live="polite"></div>
+
+    <p class="legal">
+      <a href="https://owasp.org/legal/privacy-policy" target="_blank" rel="noopener">OWASP Privacy Policy</a>
+    </p>
   </section>
 
   <div id="helpOverlay" class="help-overlay" hidden>
