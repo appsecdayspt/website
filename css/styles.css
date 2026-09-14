@@ -1511,11 +1511,6 @@ a.sponsor-logo-placeholder:hover {
     transition: all var(--transition-normal);
 }
 
-/* For logos drawn for dark backgrounds (light wordmark on transparency) */
-.sponsor-logo-dark {
-    background: var(--color-dark-bg);
-}
-
 .sponsor-logo:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-lg);
