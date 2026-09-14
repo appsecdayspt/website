@@ -78,6 +78,9 @@
             steps: ticketSteps('Training:Build a Security Champions program')
         },
         'mobile-app-attacks': {
+            // Registrations are paused - the card exposes no modal trigger, and
+            // this flag keeps the modal shut even if one is added back by mistake.
+            paused: true,
             title: { en: 'Practical Mobile App Attacks By Example', pt: 'Ataques Práticos a Aplicações Móveis Com Exemplos' },
             badges: [
                 { cls: 'builder', en: 'Builder', pt: 'Builder' },
