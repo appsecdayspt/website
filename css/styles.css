@@ -1563,6 +1563,79 @@ a.sponsor-logo-placeholder:hover {
     height: 80px;
 }
 
+/* --------------------------------------------------------------------------
+   Trainers wall (#speakers)
+   Mirrors the geometry of the Sessionize SpeakerWall compact cards above it
+   (256px columns, 128px circular photo with a 4px rim, 20px name, 14px
+   tagline) so both walls read as one component. Site font is kept.
+   -------------------------------------------------------------------------- */
+.trainer-wall {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.trainer-wall .trainer {
+    flex-grow: 1;
+    width: 256px;
+    padding: 8px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.trainer-photo {
+    width: 128px;
+    height: 128px;
+    margin: 0 auto 16px;
+    border: 4px solid rgba(238, 238, 238, 0.1);
+    border-radius: 50%;
+    overflow: hidden;
+    transition: border-color var(--transition-normal);
+}
+
+.trainer-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+}
+
+.trainer-name {
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.25;
+    font-weight: 700;
+    color: #eee;
+}
+
+.trainer-name a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-normal);
+}
+
+.trainer:hover .trainer-photo,
+.trainer:focus-within .trainer-photo {
+    border-color: var(--color-primary);
+}
+
+.trainer:hover .trainer-name a,
+.trainer-name a:focus-visible {
+    color: var(--color-primary);
+}
+
+.trainer-tagline {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    color: rgba(238, 238, 238, 0.6);
+}
+
 /* Dark tile for logos designed on dark backgrounds (white/neon marks that
    disappear or read poorly on the default white tile) */
 .sponsor-logo.sponsor-logo-dark {
