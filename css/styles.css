@@ -2081,6 +2081,31 @@ a.sponsor-logo-placeholder:hover {
     opacity: 1;
 }
 
+/* Tier that is no longer on sale: de-emphasised and non-interactive. Comes
+   part-way back on hover so the price stays readable for reference. */
+.day2-tier-card-closed {
+    opacity: 0.55;
+    filter: grayscale(0.85);
+    box-shadow: var(--shadow-sm);
+    transition: opacity var(--transition-normal), filter var(--transition-normal);
+}
+
+.day2-tier-card-closed:hover,
+.day2-tier-card-closed:focus-within {
+    opacity: 0.85;
+    filter: grayscale(0.4);
+    transform: none;
+}
+
+.day2-tier-card-closed .btn[disabled] {
+    background: #e6e6e6;
+    color: var(--color-text-dark-muted);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: none;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
 .day2-tier-badges {
     display: flex;
     align-items: center;
