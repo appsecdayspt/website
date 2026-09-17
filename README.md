@@ -18,7 +18,7 @@ This is a static website for the OWASP AppSec Days Portugal 2026 conference. The
 
 - **Date:** 2026
 - **Location:** Porto, Portugal
-- **Day 1:** Workshops, Trainings, CTF Kick-off
+- **Day 1:** Workshops, Trainings, CTF (evening)
 - **Day 2:** Full conference day with keynotes, talks across 2 tracks, and evening social event
 
 ## Contact
