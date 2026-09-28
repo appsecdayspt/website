@@ -53,7 +53,7 @@
         <div class="page-header-background"></div>
         <div class="container">
             <h1 data-en="Training Workshops" data-pt="Workshops de Formação">Training Workshops</h1>
-            <p data-en="Wednesday, September 23, 2026 · Porto, Portugal · 6 half-day sessions" data-pt="Quarta-feira, 23 de Setembro, 2026 · Porto, Portugal · 6 sessões de meio-dia">Wednesday, September 23, 2026 · Porto, Portugal · 6 half-day sessions</p>
+            <p data-en="Wednesday, September 23, 2026 · Porto, Portugal · That's a wrap" data-pt="Quarta-feira, 23 de Setembro, 2026 · Porto, Portugal · Ficou feito">Wednesday, September 23, 2026 · Porto, Portugal · That's a wrap</p>
         </div>
     </section>
 
@@ -61,10 +61,16 @@
     <section class="section section-dark">
         <div class="container">
 
+            <div class="event-over-banner" style="margin-bottom: var(--spacing-2xl)">
+                <h2 data-en="The 2026 edition is over" data-pt="A edição de 2026 terminou">The 2026 edition is over</h2>
+                <p data-en="Registrations are closed. These pages stay up as a record of what ran on September 23." data-pt="As inscrições estão encerradas. Estas páginas ficam disponíveis como registo do que decorreu a 23 de Setembro.">Registrations are closed. These pages stay up as a record of what ran on September 23.</p>
+                <a href="../" class="btn btn-primary" data-en="See how the event went" data-pt="Ver como correu o evento">See how the event went</a>
+            </div>
+
             <!-- Intro -->
             <div class="trainings-intro">
-                <p data-en="Kick off AppSec Days Portugal with a full day of hands-on security training. Four expert-led workshops run in parallel across two time slots, covering offensive techniques, defensive strategies, and secure development practices. Each session is four hours of focused, practical learning." data-pt="Comece o AppSec Days Portugal com um dia completo de formação prática em segurança. Quatro workshops liderados por especialistas decorrem em paralelo em dois blocos horários, abordando técnicas ofensivas, estratégias defensivas e práticas de desenvolvimento seguro. Cada sessão tem quatro horas de aprendizagem focada e prática.">
-                    Kick off AppSec Days Portugal with a full day of hands-on security training. Four expert-led workshops run in parallel across two time slots, covering offensive techniques, defensive strategies, and secure development practices. Each session is four hours of focused, practical learning.
+                <p data-en="AppSec Days Portugal opened with a full day of hands-on security training. Four expert-led workshops ran in parallel across two time slots, covering offensive techniques, defensive strategies, and secure development practices. Each session was four hours of focused, practical learning." data-pt="O AppSec Days Portugal abriu com um dia completo de formação prática em segurança. Quatro workshops liderados por especialistas decorreram em paralelo em dois blocos horários, abordando técnicas ofensivas, estratégias defensivas e práticas de desenvolvimento seguro. Cada sessão teve quatro horas de aprendizagem focada e prática.">
+                    AppSec Days Portugal opened with a full day of hands-on security training. Four expert-led workshops ran in parallel across two time slots, covering offensive techniques, defensive strategies, and secure development practices. Each session was four hours of focused, practical learning.
                 </p>
 <div class="format-chips">
                     <span class="format-chip">
@@ -102,7 +108,7 @@
             <div class="trainings-grid">
 
                 <!-- LLM Security -->
-                <div class="training-card defender">
+                <div class="training-card defender paused">
                     <div class="badge-row">
                         <span class="t-badge defender" data-en="Defender" data-pt="Defender">Defender</span>
                         <span class="t-badge intermediate" data-en="Intermediate" data-pt="Intermédio">Intermediate</span>
@@ -134,12 +140,12 @@
                     <div class="ticket-price-fees" style="margin-bottom: var(--spacing-sm)">+€14.28 Fee / +€97.75 VAT</div>
                     <div class="card-actions">
                         <a href="llm-security.html" class="btn btn-outline-light" data-en="Learn More" data-pt="Saber Mais">Learn More</a>
-                        <button type="button" class="btn btn-ticket" data-ticket-modal="llm-security" data-en="Book Your Seat" data-pt="Reservar Lugar">Book Your Seat</button>
+                        <button type="button" class="btn btn-ticket" disabled data-en="Event has ended" data-pt="O evento terminou">Event has ended</button>
                     </div>
                 </div>
 
                 <!-- Threat Modeling -->
-                <div class="training-card defender">
+                <div class="training-card defender paused">
                     <div class="badge-row">
                         <span class="t-badge defender" data-en="Defender" data-pt="Defender">Defender</span>
                         <span class="t-badge beginner" data-en="Beginner" data-pt="Iniciante">Beginner</span>
@@ -171,12 +177,12 @@
                     <div class="ticket-price-fees" style="margin-bottom: var(--spacing-sm)">+€4.85 Fee / +€23.00 VAT</div>
                     <div class="card-actions">
                         <a href="threat-modeling.html" class="btn btn-outline-light" data-en="Learn More" data-pt="Saber Mais">Learn More</a>
-                        <button type="button" class="btn btn-ticket" data-ticket-modal="threat-modeling" data-en="Book Your Seat" data-pt="Reservar Lugar">Book Your Seat</button>
+                        <button type="button" class="btn btn-ticket" disabled data-en="Event has ended" data-pt="O evento terminou">Event has ended</button>
                     </div>
                 </div>
 
                 <!-- Juice Shop -->
-                <div class="training-card breaker">
+                <div class="training-card breaker paused">
                     <div class="badge-row">
                         <span class="t-badge breaker" data-en="Breaker" data-pt="Breaker">Breaker</span>
                         <span class="t-badge beginner" data-en="Beginner" data-pt="Iniciante">Beginner</span>
@@ -208,7 +214,7 @@
                     </div>
                     <div class="card-actions">
                         <a href="juice-shop.html" class="btn btn-outline-light" data-en="Learn More" data-pt="Saber Mais">Learn More</a>
-                        <button type="button" class="btn btn-ticket" data-ticket-modal="juice-shop" data-en="Register Free" data-pt="Registar Grátis">Register Free</button>
+                        <button type="button" class="btn btn-ticket" disabled data-en="Event has ended" data-pt="O evento terminou">Event has ended</button>
                     </div>
                 </div>
 
@@ -227,7 +233,7 @@
             <div class="trainings-grid">
 
                 <!-- Hacking BLE -->
-                <div class="training-card breaker">
+                <div class="training-card breaker paused">
                     <div class="badge-row">
                         <span class="t-badge breaker" data-en="Breaker" data-pt="Breaker">Breaker</span>
                         <span class="t-badge beginner" data-en="Beginner" data-pt="Iniciante">Beginner</span>
@@ -259,7 +265,7 @@
                     <div class="ticket-price-fees" style="margin-bottom: var(--spacing-sm)">+€14.77 Fee / +€103.50 VAT</div>
                     <div class="card-actions">
                         <a href="hacking-ble.html" class="btn btn-outline-light" data-en="Learn More" data-pt="Saber Mais">Learn More</a>
-                        <button type="button" class="btn btn-ticket" data-ticket-modal="hacking-ble" data-en="Book Your Seat" data-pt="Reservar Lugar">Book Your Seat</button>
+                        <button type="button" class="btn btn-ticket" disabled data-en="Event has ended" data-pt="O evento terminou">Event has ended</button>
                     </div>
                 </div>
 
@@ -268,7 +274,7 @@
                     <div class="badge-row">
                         <span class="t-badge builder" data-en="Builder" data-pt="Builder">Builder</span>
                         <span class="t-badge intermediate" data-en="Intermediate" data-pt="Intermédio">Intermediate</span>
-                        <span class="t-badge paused" data-en="Registrations Paused" data-pt="Inscrições Suspensas">Registrations Paused</span>
+                        <span class="t-badge paused" data-en="Did not run" data-pt="Não decorreu">Did not run</span>
                     </div>
                     <div class="speaker-row">
                         <div class="speaker-avatar">
@@ -295,10 +301,10 @@
                         </span>
                     </div>
                     <div class="ticket-price-fees" style="margin-bottom: var(--spacing-sm)">+€5.98 Fee / +€29.67 VAT</div>
-                    <div class="paused-note" data-en="Registrations for this training are currently paused." data-pt="As inscrições para esta formação estão temporariamente suspensas.">Registrations for this training are currently paused.</div>
+                    <div class="paused-note" data-en="This workshop did not run." data-pt="Este workshop não chegou a decorrer.">This workshop did not run.</div>
                     <div class="card-actions">
                         <a href="mobile-app-attacks.html" class="btn btn-outline-light" data-en="Learn More" data-pt="Saber Mais">Learn More</a>
-                        <button type="button" class="btn btn-ticket" disabled data-en="Registrations Paused" data-pt="Inscrições Suspensas">Registrations Paused</button>
+                        <button type="button" class="btn btn-ticket" disabled data-en="Did not run" data-pt="Não decorreu">Did not run</button>
                     </div>
                 </div>
 
@@ -307,7 +313,7 @@
                     <div class="badge-row">
                         <span class="t-badge builder" data-en="Builder" data-pt="Builder">Builder</span>
                         <span class="t-badge intermediate" data-en="Intermediate" data-pt="Intermédio">Intermediate</span>
-                        <span class="t-badge paused" data-en="Registrations Paused" data-pt="Inscrições Suspensas">Registrations Paused</span>
+                        <span class="t-badge paused" data-en="Did not run" data-pt="Não decorreu">Did not run</span>
                     </div>
                     <div class="speaker-row">
                         <div class="speaker-avatar">
@@ -334,10 +340,10 @@
                         </span>
                     </div>
                     <div class="ticket-price-fees" style="margin-bottom: var(--spacing-sm)">+€10.68 Fee / +€57.50 VAT</div>
-                    <div class="paused-note" data-en="Registrations for this training are currently paused." data-pt="As inscrições para esta formação estão temporariamente suspensas.">Registrations for this training are currently paused.</div>
+                    <div class="paused-note" data-en="This workshop did not run." data-pt="Este workshop não chegou a decorrer.">This workshop did not run.</div>
                     <div class="card-actions">
                         <a href="security-champions.html" class="btn btn-outline-light" data-en="Learn More" data-pt="Saber Mais">Learn More</a>
-                        <button type="button" class="btn btn-ticket" disabled data-en="Registrations Paused" data-pt="Inscrições Suspensas">Registrations Paused</button>
+                        <button type="button" class="btn btn-ticket" disabled data-en="Did not run" data-pt="Não decorreu">Did not run</button>
                     </div>
                 </div>
 
@@ -350,7 +356,7 @@
     <section class="section" style="background: var(--gradient-cta); text-align: center;">
         <div class="container" style="max-width: 640px;">
             <h2 style="color: #fff; margin-bottom: var(--spacing-md);" data-en="Questions about the trainings?" data-pt="Questões sobre as formações?">Questions about the trainings?</h2>
-            <p style="color: rgba(255,255,255,0.75); margin-bottom: var(--spacing-xl);" data-en="Each workshop is limited in capacity. Training tickets are separate from the main conference ticket." data-pt="Cada workshop tem capacidade limitada. Os bilhetes de formação são separados do bilhete principal da conferência.">Each workshop is limited in capacity. Training tickets are separate from the main conference ticket.</p>
+            <p style="color: rgba(255,255,255,0.75); margin-bottom: var(--spacing-xl);" data-en="The workshops have run, but we are glad to hear from you about the next edition." data-pt="Os workshops já decorreram, mas teremos todo o gosto em falar consigo sobre a próxima edição.">The workshops have run, but we are glad to hear from you about the next edition.</p>
             <a href="mailto:appsecdayspt2026@owasp.org" class="btn btn-primary btn-lg" data-en="Contact the Team" data-pt="Contactar a Equipa">Contact the Team</a>
         </div>
     </section>
