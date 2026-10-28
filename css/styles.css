@@ -1715,6 +1715,18 @@ a.sponsor-logo-placeholder:hover {
     color: var(--color-text-light-muted);
 }
 
+.gallery-cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-2xl);
+}
+
+.page-header-cta {
+    margin-top: var(--spacing-lg);
+}
+
 @media (min-width: 900px) {
     .gallery-grid {
         grid-template-columns: repeat(3, 1fr);
