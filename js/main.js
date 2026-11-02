@@ -170,8 +170,11 @@
         setupIntersectionObserver() {
             const observerOptions = {
                 root: null,
-                rootMargin: '0px',
-                threshold: 0.1
+                // Trigger once ~50px of the element is in view. A ratio threshold
+                // (e.g. 0.1) never fires on load for very tall sections, such as
+                // the talks list, leaving them invisible until the user scrolls.
+                rootMargin: '0px 0px -50px 0px',
+                threshold: 0
             };
 
             const observer = new IntersectionObserver((entries) => {
