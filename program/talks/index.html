@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talks – OWASP AppSec Days Portugal 2026</title>
-    <meta name="description" content="Talk details for OWASP AppSec Days Portugal 2026. September 23-24, 2026 in Porto, Portugal.">
+    <meta name="description" content="Talks from OWASP AppSec Days Portugal 2026 (Porto, September 24, 2026): abstracts, speakers and video recordings.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#5BA4E5">
     <link rel="canonical" href="https://appsecdays.pt/program/talks/">
@@ -62,10 +62,439 @@
         </div>
     </section>
 
-    <!-- Talks -->
+    <!-- Talks (generated from Sessionize + the YouTube playlist) -->
     <section class="section section-dark">
         <div class="container">
-            <script type="text/javascript" src="https://sessionize.com/api/v2/daxafp6d/view/Sessions"></script>
+            <div class="talks-list">
+                <article class="talk-card all" id="talk-it-s-never-been-easier-to-write-in-secure-software-turning-a">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=tunxYC8PBkk" target="_blank" rel="noopener" aria-label="Watch It&#x27;s Never Been Easier to Write (In)Secure Software: Turning AI, the Fastest Coder, into the Safest on YouTube">
+                        <img src="../../assets/talks/video-tunxYC8PBkk.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">09:30–10:20</span><span class="talk-chip">Main Track</span><span class="talk-chip" data-en="Intermediate" data-pt="Intermédio">Intermediate</span></div>
+                        <h3>It&#x27;s Never Been Easier to Write (In)Secure Software: Turning AI, the Fastest Coder, into the Safest</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-lukas-weichselbaum.jpg" alt="Lukas Weichselbaum" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Lukas Weichselbaum</div>
+                                <div class="talk-speaker-tagline">Senior Staff Security Engineer &amp; Manager, Google Product Security</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>It has never been easier to write insecure software. A rapidly growing share of the world's code is now written by or with LLMs. They have accelerated development enormously, and they cheerfully reproduce every vulnerable pattern learned from decades of insecure code, now at machine speed.</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>But it has also never been easier to write secure software.</p>
+                            <p>The very things that make secure-by-design hard for humans make it easy for machines. Safe coding asks developers to change how they work: adopt hardened APIs instead of dangerous ones, accept opinionated frameworks, live with compiler and presubmit enforcement. Human developers push back; LLMs don't. They adapt instantly to constrained, opinionated stacks and can even rewrite incompatible dependencies from scratch. What matters is a secure stack whose invariants are enforced by the foundational building blocks: the browser (strict CSP, Trusted Types), the compiler, and the CI pipeline. Under such enforcement, AI-generated code cannot violate these invariants.</p>
+                            <p>Drawing on a decade of deploying secure-by-design across Google's web ecosystem, where safe coding and web platform enforcement drove down XSS across hundreds of sensitive applications to nearly zero, I'll show why the painful multi-year rollouts of the past can now collapse into weeks or days, and why enforced invariants may soon let us safely reduce the human in the loop, even for security review. I'll also share how Google tackles product security at scale today: agentic vulnerability discovery and patching at machine scale, the Vulnerability Reward Program, and teaching frontier models secure-by-design from the ground up. The same recipe extends far beyond the web: wherever security invariants can be defined and enforced, entire vulnerability classes can be engineered out of existence.</p>
+                            <p>For 25 years, the OWASP community has defined what good looks like. Those definitions are about to become the specification for the machines that write most of our software. AI is already the fastest coder in history. Together, let's make it the safest.</p>
+                        </details>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=tunxYC8PBkk" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+                <article class="talk-card defender" id="talk-securing-devs-and-ai-in-the-age-of-supply-chain-attacks">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=Wz8xDX2skyA" target="_blank" rel="noopener" aria-label="Watch Securing Devs and AI in the Age of Supply Chain Attacks on YouTube">
+                        <img src="../../assets/talks/video-Wz8xDX2skyA.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">10:30–11:15</span><span class="talk-chip">Main Track</span><span class="talk-chip">Defender</span><span class="talk-chip" data-en="Intermediate" data-pt="Intermédio">Intermediate</span></div>
+                        <h3>Securing Devs and AI in the Age of Supply Chain Attacks</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-luis-fontes.jpg" alt="Luis Fontes" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Luis Fontes</div>
+                                <div class="talk-speaker-tagline">Senior Product Security Engineer at XapoBank</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>Supply chain attacks and AI-driven workflows are completely changing the developer threat model, turning tools we use every day into highly targeted attack vectors. This talk shows how we are building guardrails in Xapo Bank that keep teams moving fast and secure them by default.</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>We’ll walk through a practical approach to securing development environments, enforcing controls around dependencies, secrets, and tooling without breaking developer experience. On the AI side, we’ll explore how to safely integrate AI into workflows by replacing risky abstractions with controlled interfaces, scoped permissions, and secure secret management.</p>
+                            <p>You’ll leave with:</p>
+                            <p>A model to secure developer environments against modern supply chain attacks; Practical patterns to safely integrate and leverage AI to its full potential in development workflows. All while enforcing security without sacrificing speed or productivity</p>
+                        </details>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=Wz8xDX2skyA" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+                <article class="talk-card builder" id="talk-containers-won-t-fix-your-code-unraveling-the-elaborate-fabr">
+                    <div class="talk-video talk-video-missing">
+                        <span data-en="Recording not available" data-pt="Gravação não disponível">Recording not available</span>
+                    </div>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">10:30–11:15</span><span class="talk-chip">Alt Track</span><span class="talk-chip">Builder</span><span class="talk-chip" data-en="All levels" data-pt="Todos os níveis">All levels</span></div>
+                        <h3>Containers Won&#x27;t Fix Your Code: Unraveling the Elaborate Fabric of Security Theater</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-kat-fitzgerald.jpg" alt="Kat Fitzgerald" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Kat Fitzgerald</div>
+                                <div class="talk-speaker-tagline">Just your average evilkat making life fun for her neighbor&#x27;s appliances</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>In today’s cybersecurity world, it seems like everyone is chasing the next shiny object—whether it's the latest AI-driven defense tool or the newest, most complicated security gadget. Yet, despite all these fancy toys, breaches continue to rise faster than a teenager’s TikTok following. What gives? Have we lost our way? This talk will take you on a journey through the history of IT, from the days when Sys Admins were the unsung heroes of the server room to today, where cybersecurity professionals juggle acronyms like WAF, EDR, and AI as if they were in a circus. Along the way, we’ll discover that the secret to stopping breaches isn’t found in the latest buzzword-laden product but in good old-fashioned basics. And yes, we’ll reminisce about “The Cuckoo’s Egg” while asking why anyone today would think a container is the magic bullet for insecure code. Spoiler alert: it’s not. By the end, you'll be ready to throw away the smoke and mirrors and focus on what really matters—the foundational practices that keep our digital world spinning.</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="talk-card all" id="talk-threat-modeling-for-ai-systems">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=zroXcBDsal4" target="_blank" rel="noopener" aria-label="Watch Threat Modeling for AI Systems on YouTube">
+                        <img src="../../assets/talks/video-zroXcBDsal4.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">11:15–12:00</span><span class="talk-chip">Main Track</span><span class="talk-chip" data-en="Advanced" data-pt="Avançado">Advanced</span></div>
+                        <h3>Threat Modeling for AI Systems</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-adrien-o-hana.jpg" alt="Adrien O&#x27;Hana" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Adrien O&#x27;Hana</div>
+                                <div class="talk-speaker-tagline">Technology Lead @ Surelio.ai</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>AI systems fail in ways that traditional security approaches don't fully cover. Frameworks such as the NIST AI RMF are useful, but they often stay too high-level to guide real decisions.</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>In this talk, I will share a practical approach to thinking about AI security through threat modeling. We will go through how attacks actually happen, including prompt injection, data leaks, and unintended actions.</p>
+                            <p>The goal is to give you a simple way to reason about your own systems and catch issues early.</p>
+                        </details>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=zroXcBDsal4" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+                <article class="talk-card all" id="talk-appsec-ai-without-the-hype">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=JkpwOPVyw4c" target="_blank" rel="noopener" aria-label="Watch AppSec AI Without the Hype on YouTube">
+                        <img src="../../assets/talks/video-JkpwOPVyw4c.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">11:15–12:00</span><span class="talk-chip">Alt Track</span><span class="talk-chip" data-en="Intermediate" data-pt="Intermédio">Intermediate</span></div>
+                        <h3>AppSec AI Without the Hype</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-bara-shaikhibrahim.jpg" alt="Bara Shaikhibrahim" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Bara Shaikhibrahim</div>
+                                <div class="talk-speaker-tagline">Security Researcher at Datadog</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>AI is already changing application security, but not in the way the loudest demos suggest. The practical question is not whether an LLM can find a bug. It can. The harder question is whether AI can improve real AppSec workflows without adding expensive noise, unsafe automation, or another dashboard no one has time to triage.</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>This talk takes a pragmatic look at AI as an augmentation layer for AppSec, not a replacement for SAST, DAST, IAST, pentesters, or secure engineering judgment. We will examine where AI is genuinely useful today: enriching findings with runtime context, logic testing, exploit chaining, assisting with remediation, generating safer tests, and helping teams retest fixes faster and earlier in the CI/CD.</p>
+                            <p>We will also discuss the key constraint that separates a useful AppSec assistant from a risky agent: context and control. Source code, traces, logs, previous traffic, authentication models, ownership metadata, and production safety boundaries all shape what AI should be allowed to do automatically, what it should merely suggest, and what should require human approval.</p>
+                            <p>The goal is to move past hype and toward a practical framework for evaluating AI in AppSec: where it helps, where it fails, what guardrails are needed, and how teams can use it to reduce signal-to-noise rather than amplify it.</p>
+                            <p>Attendees will leave with a grounded mental model for applying AI across detection, triage, remediation, and retesting in modern AppSec programs.</p>
+                        </details>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=JkpwOPVyw4c" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+                <article class="talk-card builder" id="talk-drogonsec-building-a-parallelized-multi-engine-security-scan">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=TL7kwMFvWL0" target="_blank" rel="noopener" aria-label="Watch DrogonSec: Building a Parallelized, Multi-Engine Security Scanner for DevSecOps on YouTube">
+                        <img src="../../assets/talks/video-TL7kwMFvWL0.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">12:00–12:45</span><span class="talk-chip">Alt Track</span><span class="talk-chip">Builder</span><span class="talk-chip" data-en="All levels" data-pt="Todos os níveis">All levels</span></div>
+                        <h3>DrogonSec: Building a Parallelized, Multi-Engine Security Scanner for DevSecOps</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-filipi-pires.jpg" alt="Filipi Pires" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Filipi Pires</div>
+                                <div class="talk-speaker-tagline">Head of Technical Advocacy</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>Security scanners are often perceived as friction points in the development lifecycle. They are slow, generate excessive false positives, and rarely integrate in a way that aligns with how developers actually build and ship software.</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>This talk presents the engineering journey behind DrogonSec, an open source security scanner designed to address these challenges from first principles. The project was built to be fast enough to run in pre-commit workflows, accurate enough to reduce false positives, and flexible enough to integrate natively into modern CI/CD pipelines.</p>
+                            <p>The session includes live coding of detection engines, real-time vulnerability scanning, and practical CI/CD integrations. Attendees will see how remediation guidance can be generated using large language models, how intelligent secret detection can be implemented through entropy and contextual analysis, and how parallel processing enables scanning tens of thousands of files in under a minute.</p>
+                            <p>DrogonSec is fully open source under Apache 2.0. There are no licensing constraints, proprietary engines, or closed components. The objective of this talk is to share implementation patterns, architectural decisions, lessons learned, and practical tradeoffs encountered while building security tooling from the ground up.</p>
+                            <p>Project repository: <a href="https://github.com/drogonsec/drogonsec" target="_blank">https://github.com/drogonsec/drogonsec</a></p>
+                        </details>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=TL7kwMFvWL0" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+                <article class="talk-card all" id="talk-injection-attacks-through-the-ages-from-turing-machines-to-p">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=NvWKgH1Ift0" target="_blank" rel="noopener" aria-label="Watch Injection Attacks Through the Ages: From Turing Machines to Prompt Injection on YouTube">
+                        <img src="../../assets/talks/video-NvWKgH1Ift0.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">13:00–13:45</span><span class="talk-chip">Main Track</span><span class="talk-chip" data-en="Intermediate" data-pt="Intermédio">Intermediate</span></div>
+                        <h3>Injection Attacks Through the Ages: From Turing Machines to Prompt Injection</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-lucas-ferreira.jpg" alt="Lucas Ferreira" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Lucas Ferreira</div>
+                                <div class="talk-speaker-tagline">Security Manager</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>Injection attacks consistently rank among the most critical security risks. SQL injection, XSS, buffer overflows, prompt injection: we treat them as separate problems, but what if they're not?</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>This talk traces injection attacks across seven decades of computing, from early self-replicating programs and telecom phreaking, through the web era's SQL injection and cross-site scripting, to prompt injection in modern LLMs. With a historic perspective, a pattern emerges: major computing paradigms have introduced their own version of the same fundamental vulnerability, and generations of defenders have worked on the same class of fix.</p>
+                            <p>The audience will leave with a unifying mental model for why injection attacks keep reappearing with each new technology, and why the latest instance may be the hardest one yet.</p>
+                        </details>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=NvWKgH1Ift0" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+                <article class="talk-card all" id="talk-mission-impossible-fully-automated-enterprise-scale-idor-det">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=ZUOAYFkEp2o" target="_blank" rel="noopener" aria-label="Watch Mission: Impossible? Fully Automated Enterprise-Scale IDOR Detection on YouTube">
+                        <img src="../../assets/talks/video-ZUOAYFkEp2o.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">13:45–14:30</span><span class="talk-chip">Main Track</span><span class="talk-chip" data-en="Advanced" data-pt="Avançado">Advanced</span></div>
+                        <h3>Mission: Impossible? Fully Automated Enterprise-Scale IDOR Detection</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-andrei-kan.jpg" alt="Andrei Kan" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Andrei Kan</div>
+                                <div class="talk-speaker-tagline">Application Security Engineer</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>Have you ever heard of a production-scale IDOR detection tool? Neither had I.</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>IDOR is one of those vulnerability classes everyone agrees is critical, yet the industry has quitly accepted that finding it requires manual hunting: two users, a valid IDs, a proper endpoint and human in the loop. Existing tools all stumble on the same things: user management, object lifecycle, and business context. Configuring them costs as much as just hunting by hand. And yes - there are success stories of an agentic LLM at the problem, but still tokens burn rate and non-deterministic results make it hard for large-scale SDLC (actually, it was plan B)</p>
+                            <p>So I built something different - using only what I already had - staging environment, user-generation service, and QA team's e2e tests process turn out to contain everything you need: real users, real IDs, real authenticated sequences, and real business logic. Each e2e test is a valid business scenario waiting to be replayed.</p>
+                            <p>In this talk I'll walk through how I converted e2e process artifacts into Nuclei templates with dynamic parameter propagation, the dead ends I hit, and most important - I'll then show how the IDOR check itself becomes almost trivial on top of that foundation.</p>
+                            <p>You'll leave with a working blueprint for turning QA infrastructure into security infrastructure - fully automated, regression-friendly, and zero manual setup.</p>
+                        </details>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=ZUOAYFkEp2o" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+                <article class="talk-card builder" id="talk-building-layne-scaling-security-scanning-rocket-chat">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=yyYPEK_9RNY" target="_blank" rel="noopener" aria-label="Watch Building Layne: Scaling Security Scanning @ Rocket.Chat on YouTube">
+                        <img src="../../assets/talks/video-yyYPEK_9RNY.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">13:45–14:30</span><span class="talk-chip">Alt Track</span><span class="talk-chip">Builder</span><span class="talk-chip" data-en="Beginner" data-pt="Iniciante">Beginner</span></div>
+                        <h3>Building Layne: Scaling Security Scanning @ Rocket.Chat</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-julio-araujo.jpg" alt="Julio Araujo" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Julio Araujo</div>
+                                <div class="talk-speaker-tagline">Director of Security @ Rocket.Chat</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>Shifting security left is hard to operationalize at scale - especially with a small security team. Every team reinventing its own CI pipeline integration leads to inconsistent coverage and blind spots that slip into production.</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>Layne is how Rocket.Chat's security team scales appsec without scaling headcount. It's a GitHub App that centralizes Semgrep (SAST), Trufflehog (secret detection), and Claude across repositories - without touching a single workflow file. Every pull request gets scanned in parallel, with results surfacing as native GitHub Check Run annotations that block merges on high-severity findings.</p>
+                            <p>We'll cover the architecture, the lessons learned deploying it at Rocket.Chat, and an honest take on where LLMs genuinely add value in a security pipeline.</p>
+                            <p><a href="https://github.com/RocketChat/layne" target="_blank">https://github.com/RocketChat/layne</a></p>
+                        </details>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=yyYPEK_9RNY" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+                <article class="talk-card breaker" id="talk-install-me-maybe-turning-claimable-vs-code-extension-ids-int">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=AA8s5r4HEzY" target="_blank" rel="noopener" aria-label="Watch Install Me Maybe: Turning Claimable VS Code Extension IDs into Supply-Chain Attacks on YouTube">
+                        <img src="../../assets/talks/video-AA8s5r4HEzY.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">14:30–15:15</span><span class="talk-chip">Main Track</span><span class="talk-chip">Breaker</span><span class="talk-chip" data-en="Intermediate" data-pt="Intermédio">Intermediate</span></div>
+                        <h3>Install Me Maybe: Turning Claimable VS Code Extension IDs into Supply-Chain Attacks</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-raphael-silva.jpg" alt="Raphael Silva" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Raphael Silva</div>
+                                <div class="talk-speaker-tagline">Security Researcher @ Aikido Security</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>Developer tools trust extension identifiers more than they probably should.</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>"Extension Confusion" is dependency confusion but for IDE extensions. A repo, devcontainer, IDE, or migration flow references an ID like publisher.extension. The identifier may be trusted in one marketplace, but the editor resolves it in another where the publisher namespace is still unclaimed. If an attacker claims it first, stale config becomes code execution inside a developer environment.</p>
+                            <p>I found this bug class while tracing VS Code extension IDs across the Microsoft Marketplace, Open VSX, VS Code-derived editors, AI IDEs, sync/import tooling, and devcontainer workflows. I will show where the trust boundary breaks, how I found claimable identifiers in the wild, and what happened when I published proof-of-concept extensions to measure real-world impact.</p>
+                            <p>The scale is what surprised me the most: 250k+ callbacks, reports to 100+ organizations, and $130k+ in bounties so far. I’ll show how a handful of these extensions let me hack into laptops, managed corporate machines, remote dev setups, WSL, and containers across SaaS, fintech, Fortune 500, healthcare, government, universities and more.</p>
+                            <p>A trusted name, a missing namespace, and the marketplace gap no one was watching.</p>
+                        </details>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=AA8s5r4HEzY" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+                <article class="talk-card breaker" id="talk-from-out-of-scope-xss-to-account-takeover-the-iframe-sandwic">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=pMddvCAyYfo" target="_blank" rel="noopener" aria-label="Watch From Out-of-Scope XSS to Account Takeover: The Iframe Sandwich on YouTube">
+                        <img src="../../assets/talks/video-pMddvCAyYfo.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">14:30–15:15</span><span class="talk-chip">Alt Track</span><span class="talk-chip">Breaker</span><span class="talk-chip" data-en="Intermediate" data-pt="Intermédio">Intermediate</span></div>
+                        <h3>From Out-of-Scope XSS to Account Takeover: The Iframe Sandwich</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-dinis-costa.jpg" alt="Dinis Costa" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Dinis Costa</div>
+                                <div class="talk-speaker-tagline">Computer Engineering Student @ ISEP | Appsec Intern @ CELFOCUS</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>I would like to shed light on an underrated client-side trick that I recently used while hunting in a bug bounty program, which can be used to escalate apparently non-impactful XSS into something much more impactful.</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>The goal of this presentation is for the audience to learn a cool trick they can keep in their back pocket in case they come across similar situations..</p>
+                        </details>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=pMddvCAyYfo" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+                <article class="talk-card all" id="talk-reading-between-the-lines-exploiting-indirect-injection-in-a">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=kHpUd9IByBI" target="_blank" rel="noopener" aria-label="Watch Reading Between the Lines: Exploiting Indirect Injection in AI Systems on YouTube">
+                        <img src="../../assets/talks/video-kHpUd9IByBI.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">15:15–16:00</span><span class="talk-chip">Main Track</span><span class="talk-chip" data-en="Intermediate" data-pt="Intermédio">Intermediate</span></div>
+                        <h3>Reading Between the Lines: Exploiting Indirect Injection in AI Systems</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-michael-reimsbach.jpg" alt="Michael Reimsbach" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Michael Reimsbach</div>
+                                <div class="talk-speaker-tagline">Product Security @SAP</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>We’ve moved past the era of users manually bypassing chatbot filters with 'Ignore previous instructions.' and entered a more dangerous era: Indirect Injection.</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>The 2025 EchoLeak exploit first proved that a single unread email could trigger Microsoft Copilot to silently exfiltrate private data without a single user click. This was followed by the 2026 Claude Code hijacks, which demonstrated that a poisoned .CLAUDE.md file in a repository could allow an attacker to execute arbitrary shell commands and harvest sensitive environment variables.</p>
+                            <p>The fundamental lack of a security boundary between data and instructions causes LLMs to treat every input as a potential command, transforming seemingly benign files such as a CV or a RAG chunk into an injection vector that can force the model to ignore its safety boundaries.</p>
+                            <p>This session deconstructs real-world injection attack examples and the obfuscation techniques that make them effective. You’ll see how attackers leverage hidden metadata, Unicode steganography, and homoglyph substitution to tunnel malicious instructions through 'invisible' channels.</p>
+                            <p>We conclude by outlining a hardened design pattern for resilient LLMs to ensure your agents<br>can process untrusted data without compromising their internal logic.</p>
+                        </details>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=kHpUd9IByBI" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+                <article class="talk-card defender" id="talk-securing-agentic-alliances-cryptographic-threat-hunting-in-o">
+                    <div class="talk-video talk-video-missing">
+                        <span data-en="Recording not available" data-pt="Gravação não disponível">Recording not available</span>
+                    </div>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">15:15–16:00</span><span class="talk-chip">Alt Track</span><span class="talk-chip">Defender</span><span class="talk-chip" data-en="Advanced" data-pt="Avançado">Advanced</span></div>
+                        <h3>Securing Agentic Alliances: Cryptographic Threat Hunting in OT Environments</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-ahmed-elmesiry.jpg" alt="Ahmed Elmesiry" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Ahmed Elmesiry</div>
+                                <div class="talk-speaker-tagline">Principal Security Researcher at Fujitsu Research of Europe</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>Operational Technology (OT) environments are increasingly deploying autonomous AI agents to monitor complex physical processes and secure the edge. However, a critical paradox remains: while adversaries orchestrate coordinated campaigns across multiple facilities, our defensive AI agents remain trapped in isolated data silos. Sharing raw telemetry to train centralized models violates strict data privacy regulations, competitive secrecy, and introduces severe security risks in AI Agent deployment and integration.</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>This talk focuses on Leveraging Agents for Security by introducing a decentralized cryptographic framework that enables autonomous "Hunter Agents" to collaborate securely. We will demonstrate how multiple edge-deployed agents can collectively identify globally significant threats before individual sites recognize them—all without exposing sensitive operational data or centralizing their models.</p>
+                            <p>By utilizing commutative encryption and secure multi-party computation (SMC), we will deconstruct how to effectively secure Agentic AI at-scale. We will walk through a scenario showing how a decentralized alliance of agents can cryptographically validate that a suspicious sub-threshold anomaly is actually a coordinated, industry-wide attack, triggering immediate defense mechanisms across the sector.</p>
+                            <p>Target Audience: AI researchers, security engineers, and CISOs focused on securing AI agents and deploying autonomous defensive systems in regulated or high-stakes environments.</p>
+                            <p>Attendees will learn:</p>
+                            <p>The Agentic Visibility Paradox: Why traditional, centralized intelligence sharing fails for AI agents in regulated environments and the unique security risks of AI agent integration.</p>
+                            <p>Securing Agentic AI at-Scale: A breakdown of the cryptographic primitives enabling origin-anonymous collaboration and intelligence exchange between autonomous agents.</p>
+                            <p>Explainable Defense: How to use Gen AI to ensure an AI agent's decisions remain interpretable and trustworthy to human operators.</p>
+                            <p>Real-World Impact: Case studies demonstrating how collaborative AI agents provide 10x faster response to distributed attacks.</p>
+                        </details>
+                        </div>
+                    </div>
+                </article>
+                <article class="talk-card defender" id="talk-securing-the-ship-of-theseus">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=o5BzV11g3UI" target="_blank" rel="noopener" aria-label="Watch Securing the Ship of Theseus on YouTube">
+                        <img src="../../assets/talks/video-o5BzV11g3UI.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">16:30–17:15</span><span class="talk-chip">Main Track</span><span class="talk-chip">Defender</span><span class="talk-chip" data-en="Intermediate" data-pt="Intermédio">Intermediate</span></div>
+                        <h3>Securing the Ship of Theseus</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-diogo-sousa.jpg" alt="Diogo Sousa" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Diogo Sousa</div>
+                                <div class="talk-speaker-tagline">Engineering Manager @ Canonical</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>The "Ship of Theseus" paradox asks if a vessel remains the same after every single plank has been replaced. Today, software engineering faces a digital version of this dilemma: Large Language Models (LLMs) allow us to swap legacy functions and bloated dependencies for AI-generated code, restricted only by the size of our context windows and token budgets.</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>Any developer worth their salt knows the "secret" to perfect code is simply prompting "be secure and make no mistakes!", but for those of us living in reality, it's not enough. You need more incantations. How do you secure code that is brand new, yet simultaneously inspired by the billions of lines of training data that came before it? How do you guard against inherent vices? How do you trust that core security properties hold when all tests pass but no trace of the original code remains?</p>
+                            <p>This talk discusses an emerging class of risks for software developers that aligns with the OWASP mission on the generative AI frontier. I will present these new challenges and demonstrate how established OWASP resources can be applied to mitigate these risks. Attendees will gain fresh perspectives on the mechanics of AI-generated code and solidify the knowledge necessary to ensure their software remains seaworthy.</p>
+                        </details>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=o5BzV11g3UI" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+                <article class="talk-card all" id="talk-how-we-stopped-shai-hulud-v4-hunting-a-self-replicating-npm">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=BXuV-s8oSwg" target="_blank" rel="noopener" aria-label="Watch How We Stopped Shai Hulud v4: Hunting a Self-Replicating npm Worm with AI Toolchain Poisoning on YouTube">
+                        <img src="../../assets/talks/video-BXuV-s8oSwg.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip">16:30–17:15</span><span class="talk-chip">Alt Track</span><span class="talk-chip" data-en="All levels" data-pt="Todos os níveis">All levels</span></div>
+                        <h3>How We Stopped Shai Hulud v4: Hunting a Self-Replicating npm Worm with AI Toolchain Poisoning</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-kush-pandya.jpg" alt="Kush Pandya" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Kush Pandya</div>
+                                <div class="talk-speaker-tagline">Security Researcher @ Socket</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>The Shai Hulud worm family has stalked the npm supply chain across multiple variants, stealing credentials from developer and CI environments, propagating via stolen npm and GitHub identities, poisoning workflows, and carrying a dead switch that can wipe home directories on command. Version four just crossed a new line. SANDWORM_MODE, deployed across 19 malicious npm packages, keeps the full prior playbook and adds AI toolchain poisoning via MCP server injection into Claude Code, Claude Desktop, Cursor, and Windsurf. The rogue MCP server uses prompt injection to instruct AI assistants to silently exfiltrate SSH keys, AWS credentials, and LLM API tokens from nine providers, without alerting the user. We present the full story: the Shai Hulud lineage, how the obfuscated three-layer loader was detected, how 19 packages were linked to one operator, how a bidirectional CI worm loop was built from a weaponized GitHub Action, and how coordinated takedown with npm, GitHub, and Cloudflare dismantled the infrastructure, along with what the dormant polymorphic engine tells us about where version five is heading.</p>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=BXuV-s8oSwg" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+                <article class="talk-card all" id="talk-overcoming-the-oversight-illusion-and-securing-the-sdlc-at-m">
+                    <a class="talk-video" href="https://www.youtube.com/watch?v=KZW6zJWOwrk" target="_blank" rel="noopener" aria-label="Watch Overcoming the Oversight Illusion and Securing the SDLC at Machine Speed on YouTube">
+                        <img src="../../assets/talks/video-KZW6zJWOwrk.jpg" alt="" loading="lazy" width="640" height="360">
+                        <span class="talk-play"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                    </a>
+                    <div class="talk-body">
+                        <div class="talk-meta"><span class="talk-chip talk-chip-keynote">Keynote</span><span class="talk-chip">17:15–18:05</span><span class="talk-chip">Main Track</span><span class="talk-chip" data-en="All levels" data-pt="Todos os níveis">All levels</span></div>
+                        <h3>Overcoming the Oversight Illusion and Securing the SDLC at Machine Speed</h3>
+                        <div class="talk-speaker">
+                            <img src="../../assets/talks/speaker-petra-vukmirovic.jpg" alt="Petra Vukmirovic" loading="lazy" width="56" height="56">
+                            <div>
+                                <div class="talk-speaker-name">Petra Vukmirovic</div>
+                                <div class="talk-speaker-tagline">Head of Information Security at Numan and Fractional Head of Product at Devarmor</div>
+                            </div>
+                        </div>
+                        <div class="talk-abstract">
+                        <p>Human-in-the-loop is not a new idea. Traditional machine learning popularised the concept more than a decade ago. At the time it seemed like a pragmatic compromise between automation and accountability. Currently it is heavily emphasised as an important security control, due to the well established security implications of giving LLMs too much agency (LLM06:2025). But does it scale to the volumes generative AI is used nowadays, or does continuous granular oversight simply throttle the productivity (and increase the cost!) LLMs are meant to deliver?</p>
+                        <details class="talk-abstract-more">
+                            <summary data-en="Read full abstract" data-pt="Ler resumo completo">Read full abstract</summary>
+                            <p>There is also a question we should try to candidly answer. Is our oversight a genuine control, or a dopamine-driven ritual of approve-gate clicks dressed up as governance? If every nudge, every tool call, every code diff requires a human blessing, maybe we haven't supervised an agent but built ourselves an expensive autocomplete. Considering how expensive tokens are becoming these days, one might wonder if it’s all worth it in the end. So should we just hand agents full access and walk away?</p>
+                            <p>Neither extreme is defensible. The reality is that if the humans in the loop: the developers reviewing PRs and the security engineers doing manual code review or threat modelling are slowing the agents down, the work routes around us anyway. Already, thousands of lines of code are being approved with LGTM (approval with no real oversight), and features are shipping at a velocity neither side can keep. The value of the human is shifting, and we need to embrace that perhaps this value is not centred around approvals.</p>
+                            <p>The shift is from approver to author of intent. Rather than intersecting the loop, the human value lies in writing unambiguous, assumption-free structured instructions in plain English, stating context, constraints, and success criteria clearly enough that an agent (or a fleet) can act without hallucinating. Agents pull those instructions, turn them into code, guardrails, requirements, reviews, and iterate across the systems that are being built. The practitioner who masters this stops being the button-presser in the loop and becomes the manager of many agents with well-defined, high-level tasks, ready to efficiently burn through every token they've been allocated.</p>
+                            <p>The question isn't whether we keep humans in the loop. It's whether we're honest about what they're doing there and where they bring the most value. If we don't redesign controls for agents, we won't lose it dramatically: we'll lose it quietly, one LGTM at a time.</p>
+                        </details>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=KZW6zJWOwrk" target="_blank" rel="noopener" class="btn btn-primary talk-watch"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span data-en="Watch the talk" data-pt="Ver a talk">Watch the talk</span></a>
+                    </div>
+                </article>
+            </div>
+
+            <div class="gallery-cta">
+                <a href="https://www.youtube.com/watch?v=2aqdui1Nb5c" target="_blank" rel="noopener" class="btn btn-outline" data-en="Opening Session" data-pt="Sessão de Abertura" data-en="Opening Session" data-pt="Sessão de Abertura">Opening Session</a>
+                <a href="https://www.youtube.com/watch?v=YuUKjrSNSJY" target="_blank" rel="noopener" class="btn btn-outline" data-en="Closing Session" data-pt="Sessão de Encerramento" data-en="Closing Session" data-pt="Sessão de Encerramento">Closing Session</a>
+            </div>
         </div>
     </section>
 
